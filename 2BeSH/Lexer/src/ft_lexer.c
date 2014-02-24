@@ -6,7 +6,7 @@
 /*   By: amerle <amerle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/17 18:45:11 by amerle            #+#    #+#             */
-/*   Updated: 2014/02/24 04:12:08 by amerle           ###   ########.fr       */
+/*   Updated: 2014/02/24 04:13:16 by amerle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <termios.h>
-
 
 static t_lexer	*lexer_start()
 {
