@@ -6,7 +6,7 @@
 /*   By: thrivier <thrivier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/17 19:43:09 by thrivier          #+#    #+#             */
-/*   Updated: 2014/02/23 20:00:55 by amerle           ###   ########.fr       */
+/*   Updated: 2014/02/24 04:13:56 by triviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static t_event	*doEvent(char *c)
 {
 	write(1, c, 1);
-	return event_singleton();
+	return (event_singleton());
 }
 
 static void	event_init(t_event *event)
