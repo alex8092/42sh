@@ -1,9 +1,12 @@
-#include "ft_stocker.h"
+#include "ft_stocker_private.h"
 #include <stdlib.h>
 
 static void			stocker_init(t_stocker *stocker)
 {
-	(void)stocker;
+	stocker->m_begin = 0;
+	stocker->m_end = 0;
+	stocker->add_back = p_stocker_add_back_lst;
+	stocker->add_front = p_stocker_add_front_lst;
 }
 
 

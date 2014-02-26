@@ -68,7 +68,8 @@ SRCSSECURITY = ft_security.c
 
 SRCSDISPLAY = ft_display.c
 
-SRCSSTOCKER = ft_stocker.c
+SRCSSTOCKER = ft_stocker.c \
+			  ft_list_stocker.c
 
 SRCS = main.c
 
