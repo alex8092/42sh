@@ -22,12 +22,12 @@ t_lst_stocker	*p_stocker_new_lst_el(char c)
 	return (el);
 }
 
-void			p_stocker_add_back_lst(t_lst_stocker *el)
+void			p_stocker_add_back_lst(char c)
 {
-	(void)el;
+	(void)c;
 }
 
-void			p_stocker_add_front_lst(t_lst_stocker *el)
+void			p_stocker_add_front_lst(char c)
 {
-	(void)el;
+	(void)c;
 }
