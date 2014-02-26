@@ -1,12 +1,14 @@
 #include "ft_event.h"
+#include "ft_display.h"
 #include "common.h"
 #include <stdlib.h>
 #include <unistd.h>
 
 static t_event	*doEvent(char *c)
 {
+
 	if (ft_isprint(c[0]) || c[0] == '\n')
-		write(1, c, 1);
+		display_singleton()->display_char(c[0]);
 	return (event_singleton());
 }
 

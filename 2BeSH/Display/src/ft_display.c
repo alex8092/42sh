@@ -1,12 +1,21 @@
 #include "ft_display.h"
 #include <stdlib.h>
+#include <unistd.h>
 
-static void	display_init(t_display *dis)
+
+static t_display	*display_char(char c)
 {
+	write(1, &c, 1);
+	return (display_singleton());
+}
+
+static void			display_init(t_display *dis)
+{
+	dis->display_char = display_char;
 	(void)dis;
 }
 
-t_display	*display_singleton()
+t_display			*display_singleton()
 {
 	static t_display	*singleton = NULL;
 
@@ -19,3 +28,4 @@ t_display	*display_singleton()
 	}
 	return (singleton);
 }
+

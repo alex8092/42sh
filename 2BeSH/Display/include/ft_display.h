@@ -5,9 +5,9 @@ typedef struct s_display	t_display;
 
 struct	s_display
 {
-	t_display	*(*doEvent)(char *c);
+	t_display		*(*display_char)(char c);
 };
 
-t_display	*event_singleton();
+t_display	*display_singleton();
 
 #endif
