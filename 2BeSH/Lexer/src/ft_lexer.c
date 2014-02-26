@@ -6,7 +6,11 @@
 /*   By: amerle <amerle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/17 18:45:11 by amerle            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2014/02/24 04:13:16 by amerle           ###   ########.fr       */
+=======
+/*   Updated: 2014/02/24 04:17:09 by triviere         ###   ########.fr       */
+>>>>>>> cade3c487cf7f9bb6ae75caf4e0ec7cd6cfbf190
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +20,11 @@
 #include <unistd.h>
 #include <termios.h>
 
-static t_lexer	*lexer_start()
+static t_lexer		*lexer_start(void)
 {
 	ssize_t			ret;
 	char			c[4];
+
 	while (42)
 	{
 		write(1, "[#] : ", 6);
@@ -32,25 +37,24 @@ static t_lexer	*lexer_start()
 				event_singleton()->doEvent(c);
 			if (c[0] == '\n')
 				lexer_singleton()->m_event_complete();
-//			printf("[%d]-[%d]-[%d]-[%d]\n", c[0], c[1], c[2], c[3]);
 		}
 	}
-	return lexer_singleton();
+	return (lexer_singleton());
 }
 
-static t_lexer	*lexer_onComplete(void (*f)())
+static t_lexer		*lexer_onComplete(void (*f)())
 {
 	lexer_singleton()->m_event_complete = f;
-	return lexer_singleton();
+	return (lexer_singleton());
 }
 
-static void	lexer_init(t_lexer *lexer)
+static void			lexer_init(t_lexer *lexer)
 {
 	lexer->start = lexer_start;
 	lexer->onComplete = lexer_onComplete;
 }
 
-t_lexer		*lexer_singleton()
+t_lexer				*lexer_singleton()
 {
 	static t_lexer	*singleton = NULL;
 
