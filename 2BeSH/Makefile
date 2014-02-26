@@ -46,7 +46,10 @@ CFLAGS += -I$(INCLUDEDIRLEXER) -I$(INCLUDEDIRPARSER) -I$(INCLUDEDIRRESOLVER)
 CFLAGS += -I$(INCLUDEDIRVALIDATOR) -I$(INCLUDEDIRSECURITY) -I$(INCLUDEDIR)
 CFLAGS += -I$(INCLUDEDIRDISPLAY) -I$(INCLUDEDIRSTOCKER)
 
-SRCSCOMMON = ft_isprint.c
+SRCSCOMMON = ft_isprint.c \
+			 ft_isinarray.c \
+			 ft_isprint.c \
+			 ft_findfirstof.c
 
 SRCSEVENT = ft_event.c
 
@@ -54,7 +57,8 @@ SRCSEXECUTOR =
 
 SRCSLEXER = ft_lexer.c
 
-SRCSPARSER = ft_parser.c
+SRCSPARSER = ft_parser.c \
+			 ft_parser_parse.c
 
 SRCSRESOLVER = 
 
