@@ -1,7 +1,7 @@
 #include "ft_stocker.h"
+#include <stdlib.h>
 
-
-static void	*stocker_init(t_stocker *stocker)
+static void			stocker_init(t_stocker *stocker)
 {
 	(void)stocker;
 }
