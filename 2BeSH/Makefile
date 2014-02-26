@@ -156,7 +156,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 clean:
 	rm -f $(OBJS_COMMON) $(OBJS_EVENT) $(OBJS_EXECUTOR) $(OBJS_LEXER)
 	rm -f $(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS)
-	rm -f $(OBJS_SECURITY) $(OBJS_DISPLAY)
+	rm -f $(OBJS_SECURITY) $(OBJS_DISPLAY) $(OBJS_STOCKER)
 
 fclean: clean
 	rm -f $(NAME)
