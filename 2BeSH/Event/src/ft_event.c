@@ -1,10 +1,12 @@
 #include "ft_event.h"
+#include "common.h"
 #include <stdlib.h>
 #include <unistd.h>
 
 static t_event	*doEvent(char *c)
 {
-	write(1, c, 1);
+	if (ft_isprint(c[0]) || c[0] == '\n')
+		write(1, c, 1);
 	return (event_singleton());
 }
 
