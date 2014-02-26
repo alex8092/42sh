@@ -54,7 +54,7 @@ SRCSEXECUTOR =
 
 SRCSLEXER = ft_lexer.c
 
-SRCSPARSER = 
+SRCSPARSER = ft_parser.c
 
 SRCSRESOLVER = 
 
@@ -120,6 +120,8 @@ $(OBJDIRLEXER)/ft_lexer.o: $(INCLUDEDIRLEXER)/ft_lexer.h
 $(OBJDIRLEXER)/%.o: $(SRCDIRLEXER)/%.c
 	mkdir -p $(OBJDIRLEXER)
 	$(CC) -o $@ -c $< $(CFLAGS)
+
+$(OBJDIRPARSER)/ft_parser.o: $(INCLUDEDIRPARSER)/ft_parser.h
 
 $(OBJDIRPARSER)/%.o: $(SRCDIRPARSER)/%.c
 	mkdir -p $(OBJDIRPARSER)
