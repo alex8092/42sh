@@ -9,13 +9,13 @@
 
 int		main(int ac, char **av)
 {
-	/* TEST TRIVIERE START */
-	printf("### TEST TRIVIERE START ###\n");
+	/* TEST TRIVIERE START 
+	printf("--------- TEST TRIVIERE START ---------\n");
 		t_stocker	*stocker;
 
 		stocker = stocker_singleton();
 
-		printf("# TEST RM STOCKER EMPTY FRONT #\n");
+		printf("# TEST RM STOCKER EMPTY FRONT #\n\n");
 		stocker->rm_front()->rm_front()->rm_front();
 		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
 
@@ -43,8 +43,8 @@ int		main(int ac, char **av)
 		stocker->rm_back()->rm_back()->rm_back();
 		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
 
-	printf("### TEST TRIVIERE END ###\n");
-	/* TEST TRIVIERE END */
+	printf("--------- TEST TRIVIERE END ---------\n\n");
+	 TEST TRIVIERE END */
 	
 	printf("PATH : %s\n", env_singleton()->get("PATH"));
 	printf("\"cd\" buildins ? : %d\n", buildins_singleton()->is_buildin("cd"));
