@@ -1,4 +1,4 @@
-CC = gcc
+CC = llvm-gcc
 CFLAGS = -Wall -Wextra -Werror
 DEBUG = true
 ifeq ($(DEBUG),true)
@@ -55,7 +55,9 @@ SRCSCOMMON = ft_isprint.c \
 			 ft_findfirstof.c \
 			 ft_tabstrlen.c \
 			 ft_bzero.c \
-			 ft_memalloc.c
+			 ft_memalloc.c \
+			 ft_strncmp.c \
+			 ft_strlen.c
 
 SRCSEVENT = ft_event.c
 

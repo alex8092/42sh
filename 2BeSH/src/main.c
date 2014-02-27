@@ -6,7 +6,7 @@
 
 int		main(int ac, char **av)
 {
-	(void)env_singleton();
+	printf("PATH : %s\n", env_singleton()->get("PATH"));
 	security_singleton()->activeRaw(true);
 	lexer_singleton()->onComplete(parser_singleton()->start)->start();
 	(void)ac;
