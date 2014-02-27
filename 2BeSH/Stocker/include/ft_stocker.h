@@ -27,6 +27,8 @@ struct	s_stocker
 	t_stocker			*(*push)(char c);
 	t_stocker			*(*mv_prev)(void);
 	t_stocker			*(*mv_next)(void);
+	t_stocker			*(*mv_front)(void);
+	t_stocker			*(*mv_back)(void);
 };
 
 t_stocker	*stocker_singleton();

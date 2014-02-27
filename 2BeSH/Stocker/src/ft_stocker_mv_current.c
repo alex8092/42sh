@@ -25,3 +25,21 @@ t_stocker	*p_stocker_current_next(void)
 	stocker->m_current = cursor;
 	return (stocker);
 }
+
+t_stocker	*p_stocker_current_front(void)
+{
+	t_stocker			*stocker;
+
+	stocker = stocker_singleton();
+	stocker->m_current = stocker->m_start;
+	return (stocker);
+}
+
+t_stocker	*p_stocker_current_back(void)
+{
+	t_stocker			*stocker;
+
+	stocker = stocker_singleton();
+	stocker->m_current = stocker->m_end;
+	return (stocker);
+}

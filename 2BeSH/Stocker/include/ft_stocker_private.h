@@ -23,6 +23,8 @@ t_stocker		*p_stocker_clean_lst(void);
 t_stocker		*p_stocker_after_current_push(char c);
 t_stocker		*p_stocker_current_prev(void);
 t_stocker		*p_stocker_current_next(void);
+t_stocker		*p_stocker_current_front(void);
+t_stocker		*p_stocker_current_back(void);
 
 char			*p_stocker_to_string(void);
 
