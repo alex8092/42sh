@@ -5,14 +5,29 @@
 
 static t_display	*display_char(char c)
 {
-	write(1, &c, 1);
-	return (display_singleton());
+	static t_display	*dis = NULL;
+
+	if (!dis)
+		dis = display_singleton();
+	write(dis->m_out, &c, 1);
+	return (dis);
+}
+
+static t_display	*display_on(int fd)
+{
+	static t_display	*dis = NULL;
+
+	if (!dis)
+		dis = display_singleton();
+	dis->m_out = fd;
+	return ((t_display *)dis);
 }
 
 static void			display_init(t_display *dis)
 {
-	dis->display_char = display_char;
-	(void)dis;
+	dis->writec = display_char;
+	dis->m_out = 1;
+	dis->set_out = display_on;
 }
 
 t_display			*display_singleton()

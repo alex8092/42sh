@@ -2,5 +2,5 @@
 
 int				p_stocker_size(void)
 {
-	return (stocker_singleton()->length);
+	return (stocker_singleton()->m_length);
 }

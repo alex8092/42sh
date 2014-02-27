@@ -14,12 +14,13 @@ struct	s_lst_stocker
 
 t_lst_stocker	*p_stocker_new_lst_el(char c);
 
-t_stocker		*p_stocker_add_back_lst(char c);
-t_stocker		*p_stocker_add_front_lst(char c);
+t_stocker		*p_stocker_push_back_lst(char c);
+t_stocker		*p_stocker_push_front_lst(char c);
 
 t_stocker		*p_stocker_remove_back_lst(void);
 t_stocker		*p_stocker_remove_front_lst(void);
 
+char			*p_stocker_to_string(void);
 
 int				p_stocker_size(void);
 
