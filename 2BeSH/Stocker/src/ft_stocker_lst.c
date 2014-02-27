@@ -27,7 +27,7 @@ char			*p_stocker_to_string(void)
 	stocker = stocker_singleton();
 	str = (char*)malloc(sizeof(sizeof(char) * (stocker->m_length + 1)));
 	cursor = stocker->m_start;
-	while (i < stocker->m_length)
+	while (cursor)
 	{
 		str[i] = cursor->c;
 		i++;
