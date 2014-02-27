@@ -10,7 +10,7 @@ char	**ft_tabstradd(char **tab, char *str)
 	size_tab = (tab) ? ft_tabstrlen(tab) : 0;
 	if (tab)
 	{
-		newtab = (char **)ft_memalloc(sizeof(char *) * (size_tab + 1));
+		newtab = (char **)ft_memalloc(sizeof(char *) * (size_tab + 2));
 		ft_memcpy(newtab, tab, sizeof(char *) * size_tab);
 	}
 	else

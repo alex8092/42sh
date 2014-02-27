@@ -11,7 +11,7 @@ static t_event	*doEvent(char *c)
 	{
 		display_singleton()->writec(c[0]);
 		if (c[0] != '\n')
-			stocker_singleton()->push(c[0]);
+			stocker_singleton()->push_back(c[0]);
 	}
 	return (event_singleton());
 }
