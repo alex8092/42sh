@@ -3,6 +3,6 @@
 
 void	p_buildins_echo(char **argv)
 {
-	printf("echo exec");
+	printf("echo exec\n");
 	(void)argv;
 }

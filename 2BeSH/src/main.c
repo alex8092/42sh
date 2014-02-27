@@ -64,7 +64,7 @@ int		main(int ac, char **av)
 	printf("\"tamere\" buildins ? : %d\n", buildins_singleton()->is_buildin("tamere"));
 	display_singleton()->set_out(2)->writec('O')->writec('K')->writec('\n')->set_out(1);
 	t_operation	*op = (t_operation *)ft_memalloc(sizeof(t_operation));
-	op->str = "echo";
+	op->str = "tamere";
 	resolver_singleton()->start(op);
 	// TEST AMERLE END */
 	security_singleton()->activeRaw(true);
