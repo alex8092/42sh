@@ -16,6 +16,10 @@ struct	s_stocker
 
 	t_stocker			*(*add_back)(char c);
 	t_stocker			*(*add_front)(char c);
+
+	t_stocker			*(*rm_back)(void);
+	t_stocker			*(*rm_front)(void);
+
 	t_stocker			*(*to_str)(void);
 };
 
