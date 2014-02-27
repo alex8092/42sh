@@ -2,12 +2,16 @@
 # define FT_OPERATION_H
 
 typedef struct s_operation t_operation;
+enum	e_op { OP_PIPE, OP_DBL_PIPE, OP_PV, OP_EP, OP_DBL_EP};
+typedef enum e_op	t_op;
 
-t_operation
+struct	s_operation
 {
 	char			*str;
-	char			op[2];
+	t_op			op;
 	t_operation		*next;
 };
+
+t_operation		*ft_init_operation(void);
 
 #endif

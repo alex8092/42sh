@@ -6,7 +6,6 @@
 
 static t_event	*doEvent(char *c)
 {
-
 	if (ft_isprint(c[0]) || c[0] == '\n')
 		display_singleton()->display_char(c[0]);
 	return (event_singleton());

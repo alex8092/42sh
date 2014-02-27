@@ -1,4 +1,5 @@
 #include "ft_operation.h"
+#include "stdlib.h"
 
 t_operation		*ft_init_operation(void)
 {
