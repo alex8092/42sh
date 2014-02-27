@@ -44,7 +44,7 @@ int		main(int ac, char **av)
 		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
 
 	printf("--------- TEST TRIVIERE END ---------\n\n");
-	 TEST TRIVIERE END */
+	// TEST TRIVIERE END */
 	
 	printf("PATH : %s\n", env_singleton()->get("PATH"));
 	printf("\"cd\" buildins ? : %d\n", buildins_singleton()->is_buildin("cd"));
