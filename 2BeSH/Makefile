@@ -83,7 +83,7 @@ SRCSDISPLAY = ft_display.c
 
 SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_lst.c \
-			  ft_stocker_add_lst.c \
+			  ft_stocker_push_lst.c \
 			  ft_stocker_other.c \
 			  ft_stocker_init.c \
 			  ft_stocker_remove_lst.c \
