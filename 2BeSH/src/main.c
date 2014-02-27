@@ -13,7 +13,9 @@ int		main(int ac, char **av)
 	/* END TEST TRIVIERE */
 	printf("PATH : %s\n", env_singleton()->get("PATH"));
 	printf("\"cd\" buildins ? : %d\n", buildins_singleton()->is_buildin("cd"));
-	printf("\"fake\" buildins ? : %d\n", buildins_singleton()->is_buildin("fake"));
+	printf("\"echo\" buildins ? : %d\n", buildins_singleton()->is_buildin("echo"));
+	printf("\"exit\" buildins ? : %d\n", buildins_singleton()->is_buildin("exit"));
+	printf("\"tamere\" buildins ? : %d\n", buildins_singleton()->is_buildin("tamere"));
 	security_singleton()->activeRaw(true);
 	lexer_singleton()->onComplete(parser_singleton()->start)->start();
 	(void)ac;

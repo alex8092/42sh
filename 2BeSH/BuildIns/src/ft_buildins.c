@@ -4,18 +4,15 @@
 
 static t_buildin	*buildins_get(char *name)
 {
-	static t_buildin	refs[] = 
-	{
-		{ "cd", p_buildins_cd }
-	};
-	size_t				index;
+	t_buildin	*cur;
 
-	index = 0;
-	while (index < sizeof(refs) / sizeof(t_buildin))
+	cur = buildins_singleton()->m_begin;
+
+	while (cur)
 	{
-		if (!ft_strcmp(refs[index].name, name))
-			return (&refs[index]);
-		++index;
+		if (!ft_strcmp(cur->name, name))
+			return (cur);
+		cur = cur->next;
 	}
 	return (NULL);
 }
@@ -33,6 +30,7 @@ static t_bool	buildins_isbuildins(char *name)
 static void		buildins_init(t_buildins *bi)
 {
 	bi->is_buildin = buildins_isbuildins;
+	p_buildins_init_builds(bi);
 }
 
 t_buildins		*buildins_singleton(void)
