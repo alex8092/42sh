@@ -56,11 +56,14 @@ t_stocker	*p_stocker_after_current_push(char c)
 		if (current->next)
 		{
 			el->next = current->next;
+			el->prev = current;
 			el->next->prev = el;
+			current->next = el;
 		}
 		else
 		{
 			stocker->m_end->next = el;
+			el->prev = stocker->m_end;
 			stocker->m_end = el;
 		}
 		current->next = el;
