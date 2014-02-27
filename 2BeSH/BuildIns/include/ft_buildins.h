@@ -10,6 +10,7 @@ struct		s_buildins
 {
 	t_buildin	*m_begin;
 	t_bool		(*is_buildin)(char *);
+	int			(*exec)(char *, char **);
 };
 
 t_buildins	*buildins_singleton();

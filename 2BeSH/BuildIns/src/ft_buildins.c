@@ -27,9 +27,18 @@ static t_bool	buildins_isbuildins(char *name)
 	return (false);
 }
 
+static int		buildins_exec(char *name, char **argv)
+{
+	const t_buildin	*buildin = buildins_get(name);
+
+	buildin->exec(argv);
+	return (0);
+}
+
 static void		buildins_init(t_buildins *bi)
 {
 	bi->is_buildin = buildins_isbuildins;
+	bi->exec = buildins_exec;
 	p_buildins_init_builds(bi);
 }
 
