@@ -14,6 +14,7 @@ int		ft_tabstrlen(char **tab);
 void	ft_bzero(void *ptr, int size);
 void	*ft_memalloc(int size);
 int		ft_strncmp(char *str, char *str2, size_t n);
+int		ft_strcmp(char *str, char *str2);
 size_t	ft_strlen(char *str);
 
 #endif
