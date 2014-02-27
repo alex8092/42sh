@@ -41,16 +41,19 @@ void	 		p_parser_parse(char *str)
 
 	tmp = str;
 	begin = cmd_op;
+	last = NULL;
 	while ((i = ft_findfirstof(tmp, ";|&")) != -1)
 	{
 		cmd_op = ft_init_operation();
 		cmd_op->str = ft_strndup(str, (i + (tmp - str)));
 		ft_check_op(tmp[i], tmp[i + 1], &cmd_op);
-		++i;
-		last->next = cmd_op;
+		if (tmp[i] == tmp[i + 1])
+			++i;
+		if (last)
+			last->next = cmd_op;
 		last = cmd_op;
 		str = tmp + i + 1;
-		tmp = tmp +i + 1;
+		tmp = tmp + i + 1;
 	}
 	last->op = OP_END;
 	last->str = ft_strdup(tmp);
