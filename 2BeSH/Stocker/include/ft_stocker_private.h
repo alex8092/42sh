@@ -24,4 +24,7 @@ char			*p_stocker_to_string(void);
 
 int				p_stocker_size(void);
 
+void			p_stocker_init_methods(t_stocker *stocker);
+void			p_stocker_init_attributes(t_stocker *stocker);
+
 #endif
