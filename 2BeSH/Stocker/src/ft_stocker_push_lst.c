@@ -53,7 +53,7 @@ t_stocker	*p_stocker_after_current_push(char c)
 	el = p_stocker_new_lst_el(c);
 	if (stocker->m_length > 1)
 	{
-		if (stocker->m_current->next)
+		if (current->next)
 		{
 			el->next = current->next;
 			el->next->prev = el;
