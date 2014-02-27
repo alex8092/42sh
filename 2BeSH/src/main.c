@@ -47,7 +47,7 @@ int		main(int ac, char **av)
 	printf("--------- TEST TRIVIERE END ---------\n\n");
 	// TEST TRIVIERE END */
 	
-	//* TEST AMERLE BEGIN
+	/* TEST AMERLE BEGIN
 	printf("PATH : %s\n", env_singleton()->get("PATH"));
 	printf("\"cd\" buildins ? : %d\n", buildins_singleton()->is_buildin("cd"));
 	printf("\"echo\" buildins ? : %d\n", buildins_singleton()->is_buildin("echo"));
