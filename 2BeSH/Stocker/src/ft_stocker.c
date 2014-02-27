@@ -8,6 +8,8 @@ static void			stocker_init(t_stocker *stocker)
 	stocker->m_end = 0;
 	stocker->add_back = p_stocker_add_back_lst;
 	stocker->add_front = p_stocker_add_front_lst;
+	stocker->rm_back = p_stocker_remove_back_lst;
+	stocker->rm_front = p_stocker_remove_front_lst;
 	stocker->size = p_stocker_size;
 }
 

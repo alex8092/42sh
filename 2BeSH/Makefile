@@ -81,7 +81,7 @@ SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_add_lst.c \
 			  ft_stocker_other.c \
 			  ft_stocker_init.c \
-			  
+			  ft_stocker_remove_lst.c \
 
 SRCSENV = ft_environment.c
 
