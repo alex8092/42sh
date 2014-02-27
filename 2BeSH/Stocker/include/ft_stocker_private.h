@@ -10,10 +10,11 @@ struct	s_lst_stocker
 	t_lst_stocker	*next;
 };
 
-t_lst_stocker	*p_stocker_new_lst();
 t_lst_stocker	*p_stocker_new_lst_el(char c);
 
-void			p_stocker_add_back_lst(char c);
-void			p_stocker_add_front_lst(char c);
+t_stocker		*p_stocker_add_back_lst(char c);
+t_stocker		*p_stocker_add_front_lst(char c);
+
+int				p_stocker_size(void);
 
 #endif
