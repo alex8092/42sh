@@ -10,7 +10,7 @@
 
 int		main(int ac, char **av)
 {
-	//* TEST TRIVIERE START 
+	/* TEST TRIVIERE START 
 	printf("--------- TEST TRIVIERE START ---------\n");
 		t_stocker	*stocker;
 
@@ -28,6 +28,10 @@ int		main(int ac, char **av)
 		stocker->push('H')->push('e')->push('l')->push('l')->push('o')->push(' ');
 		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
 
+		printf("# TEST CLEAN STOCKER #\n");
+		stocker->clean();
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
 		printf("# TEST PUSH STOCKER BACK #\n");
 		stocker->push_back('W')->push_back('o')->push_back('r')->push_back('d');
 		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
@@ -35,7 +39,6 @@ int		main(int ac, char **av)
 		printf("# TEST MULTIPLE [3] RM STOCKER FRONT #\n");
 		stocker->rm_front()->rm_front()->rm_front()->rm_front()->rm_front()->rm_front();
 		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
-
 
 		printf("# TEST PUSH STOCKER FRONT #\n");
 		stocker->push_front(' ')->push_front('o')->push_front('l')->push_front('l')->push_front('e')->push_front('H');
