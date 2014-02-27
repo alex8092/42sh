@@ -4,6 +4,7 @@
 #include "ft_stocker.h"
 #include "ft_environment.h"
 #include "ft_buildins.h"
+#include "ft_display.h"
 #include <stdio.h>
 
 int		main(int ac, char **av)
@@ -47,7 +48,10 @@ int		main(int ac, char **av)
 	
 	printf("PATH : %s\n", env_singleton()->get("PATH"));
 	printf("\"cd\" buildins ? : %d\n", buildins_singleton()->is_buildin("cd"));
-	printf("\"fake\" buildins ? : %d\n", buildins_singleton()->is_buildin("fake"));
+	printf("\"echo\" buildins ? : %d\n", buildins_singleton()->is_buildin("echo"));
+	printf("\"exit\" buildins ? : %d\n", buildins_singleton()->is_buildin("exit"));
+	printf("\"tamere\" buildins ? : %d\n", buildins_singleton()->is_buildin("tamere"));
+	display_singleton()->set_out(2)->writec('O')->writec('K')->writec('\n')->set_out(1);
 	security_singleton()->activeRaw(true);
 	lexer_singleton()->onComplete(parser_singleton()->start)->start();
 	(void)ac;
