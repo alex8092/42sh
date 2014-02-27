@@ -49,7 +49,8 @@ CFLAGS += -I$(INCLUDEDIRDISPLAY) -I$(INCLUDEDIRSTOCKER)
 SRCSCOMMON = ft_isprint.c \
 			 ft_isinarray.c \
 			 ft_isprint.c \
-			 ft_findfirstof.c
+			 ft_findfirstof.c \
+			 ft_strndup.c \
 
 SRCSEVENT = ft_event.c
 
