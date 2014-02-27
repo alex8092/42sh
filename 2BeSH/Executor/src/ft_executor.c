@@ -1,9 +1,20 @@
 #include "ft_executor.h"
 #include "common.h"
+#include "ft_buildins.h"
 #include <unistd.h>
 
 static void	executor_start(t_operation *ops)
 {
+	t_operation	*cur;
+	const t_buildins	*bi = buildins_singleton();
+
+	cur = ops;
+	while (cur)
+	{
+		if (bi->is_buildin(cur->str))
+			bi->exec(cur->str, NULL);
+		cur = cur->next;
+	}
 	(void)ops;
 }
 
