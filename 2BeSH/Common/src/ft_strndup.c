@@ -10,7 +10,7 @@ char		*ft_strndup(char *str, int nb)
 	dup = (char*)ft_memalloc(sizeof(char) * nb + 1);
 	if (!dup)
 		exit (1);
-	while (i < nb && str[i] != '\0')
+	while (i < nb)
 	{
 		dup[i] = str[i];
 		i++;

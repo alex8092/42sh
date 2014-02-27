@@ -73,7 +73,7 @@ SRCSCOMMON = ft_isprint.c \
 
 SRCSEVENT = ft_event.c
 
-SRCSEXECUTOR =
+SRCSEXECUTOR = ft_executor.c
 
 SRCSOPERATION = ft_operation.c
 
@@ -82,7 +82,7 @@ SRCSLEXER = ft_lexer.c
 SRCSPARSER = ft_parser.c \
 			 ft_parser_parse.c
 
-SRCSRESOLVER = 
+SRCSRESOLVER = ft_resolver.c
 
 SRCSVALIDATOR = ft_validator.c
 
