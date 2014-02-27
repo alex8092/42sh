@@ -13,7 +13,7 @@ static void	resolver_start(t_operation *ops)
 	cur = ops;
 	while (cur)
 	{
-		printf("op : %s\n", cur->str);
+		printf("resolv op : %s\n", cur->str);
 		cur = cur->next;
 	}
 	exec_singleton()->start(ops);

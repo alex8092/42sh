@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ft_buildins.h"
 #include <unistd.h>
+#include <stdio.h>
 
 static void	executor_start(t_operation *ops)
 {
@@ -11,6 +12,7 @@ static void	executor_start(t_operation *ops)
 	cur = ops;
 	while (cur)
 	{
+		printf("exec op : %s\n", cur->str);
 		if (bi->is_buildin(cur->str))
 			bi->exec(cur->str, NULL);
 		cur = cur->next;
