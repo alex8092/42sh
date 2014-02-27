@@ -1,6 +1,8 @@
 #ifndef FT_STOCKER_H
 # define FT_STOCKER_H
 
+# include "common.h"
+
 typedef struct s_lst_stocker		t_lst_stocker;
 typedef struct s_stocker			t_stocker;
 

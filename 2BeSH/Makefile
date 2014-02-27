@@ -77,7 +77,11 @@ SRCSSECURITY = ft_security.c
 SRCSDISPLAY = ft_display.c
 
 SRCSSTOCKER = ft_stocker.c \
-			  ft_list_stocker.c
+			  ft_stocker_lst.c \
+			  ft_stocker_add_lst.c \
+			  ft_stocker_other.c \
+			  ft_stocker_init.c \
+			  
 
 SRCSENV = ft_environment.c
 
