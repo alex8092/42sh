@@ -4,12 +4,16 @@
 t_lst_stocker	*p_stocker_new_lst_el(char c)
 {
 	t_lst_stocker	*el;
+	t_stocker		*stocker;
 
+	stocker = stocker_singleton();
 	el = (t_lst_stocker*)malloc(sizeof(t_lst_stocker));
 	el->next = 0;
 	el->prev = 0;
 	el->is_print = true;
 	el->c = c;
+	stocker->m_current = el;
+	stocker->m_length++;
 	return (el);
 }
 

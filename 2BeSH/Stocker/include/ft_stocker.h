@@ -11,16 +11,19 @@ struct	s_stocker
 	t_lst_stocker		*m_start;
 	t_lst_stocker		*m_end;
 	int					m_length;
+	t_lst_stocker		*m_current;
 
 	int					(*size)(void);
 
+	char				*(*to_string)(void);
+
 	t_stocker			*(*push_back)(char c);
 	t_stocker			*(*push_front)(char c);
-
 	t_stocker			*(*rm_back)(void);
 	t_stocker			*(*rm_front)(void);
-
-	char				*(*to_string)(void);
+	t_stocker			*(*push)(char c);
+	t_stocker			*(*mv_prev)(void);
+	t_stocker			*(*mv_next)(void);
 };
 
 t_stocker	*stocker_singleton();

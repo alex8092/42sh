@@ -24,11 +24,20 @@ int		main(int ac, char **av)
 		stocker->rm_back()->rm_back()->rm_back();
 		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
 
-		printf("# TEST ADD STOCKER BACK #\n");
+		printf("# TEST PUSH STOCKER AFTER CURRENT #\n");
+		stocker->push('H')->push('e')->push('l')->push('l')->push('o')->push(' ');
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
+		printf("# TEST PUSH STOCKER BACK #\n");
 		stocker->push_back('W')->push_back('o')->push_back('r')->push_back('d');
 		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
 
-		printf("# TEST ADD STOCKER FRONT #\n");
+		printf("# TEST MULTIPLE [3] RM STOCKER FRONT #\n");
+		stocker->rm_front()->rm_front()->rm_front()->rm_front()->rm_front()->rm_front();
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
+
+		printf("# TEST PUSH STOCKER FRONT #\n");
 		stocker->push_front(' ')->push_front('o')->push_front('l')->push_front('l')->push_front('e')->push_front('H');
 		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
 
