@@ -14,6 +14,7 @@ t_stocker		*p_stocker_remove_back_lst(void)
 		cursor->is_print = false;
 		stocker->m_length--;
 	}
+	stocker->m_current = stocker->m_end;
 	return (stocker);
 }
 
@@ -31,5 +32,6 @@ t_stocker		*p_stocker_remove_front_lst(void)
 		cursor->is_print = false;
 		stocker->m_length--;
 	}
+	stocker->m_current = stocker->m_start;
 	return (stocker);
 }
