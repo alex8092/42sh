@@ -15,7 +15,7 @@ static void	resolver_start(t_operation *ops)
 	while (cur)
 	{
 		printf("resolv op : %s\n", cur->str);
-		tmp = ft_strsplit(cur->str, '\"', true);
+		tmp = ft_strsplit(cur->str, '"', true);
 		while (*tmp)
 		{
 			printf("resolv op[part] : %s\n", *tmp);
