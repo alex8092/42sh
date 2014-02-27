@@ -7,7 +7,7 @@ t_stocker	*p_stocker_current_prev(void)
 
 	stocker = stocker_singleton();
 	cursor = stocker->m_current;
-	while (cursor && cursor->prev && !cursor->prev->is_print)
+	while (cursor && cursor->prev)
 		cursor = cursor->prev;
 	stocker->m_current = cursor;
 	return (stocker);
@@ -20,7 +20,7 @@ t_stocker	*p_stocker_current_next(void)
 
 	stocker = stocker_singleton();
 	cursor = stocker->m_current;
-	while (cursor && cursor->next && !cursor->prev->is_print)
+	while (cursor && cursor->next)
 		cursor = cursor->next;
 	stocker->m_current = cursor;
 	return (stocker);

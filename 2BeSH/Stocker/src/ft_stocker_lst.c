@@ -10,7 +10,6 @@ t_lst_stocker	*p_stocker_new_lst_el(char c)
 	el = (t_lst_stocker*)malloc(sizeof(t_lst_stocker));
 	el->next = 0;
 	el->prev = 0;
-	el->is_print = true;
 	el->c = c;
 	stocker->m_current = el;
 	stocker->m_length++;
@@ -30,11 +29,8 @@ char			*p_stocker_to_string(void)
 	cursor = stocker->m_start;
 	while (i < stocker->m_length)
 	{
-		if (cursor->is_print)
-		{
-			str[i] = cursor->c;
-			i++;
-		}
+		str[i] = cursor->c;
+		i++;
 		cursor = cursor->next;
 	}
 	str[i] = 0;

@@ -21,6 +21,9 @@ struct	s_stocker
 	t_stocker			*(*push_front)(char c);
 	t_stocker			*(*rm_back)(void);
 	t_stocker			*(*rm_front)(void);
+	t_stocker			*(*rm_prev)(void);
+	t_stocker			*(*rm_next)(void);
+	t_stocker			*(*clean)(void);
 	t_stocker			*(*push)(char c);
 	t_stocker			*(*mv_prev)(void);
 	t_stocker			*(*mv_next)(void);

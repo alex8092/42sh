@@ -10,13 +10,13 @@
 
 int		main(int ac, char **av)
 {
-	/* TEST TRIVIERE START 
+	//* TEST TRIVIERE START 
 	printf("--------- TEST TRIVIERE START ---------\n");
 		t_stocker	*stocker;
 
 		stocker = stocker_singleton();
 
-		printf("# TEST RM STOCKER EMPTY FRONT #\n\n");
+		printf("# TEST RM STOCKER EMPTY FRONT #\n");
 		stocker->rm_front()->rm_front()->rm_front();
 		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
 

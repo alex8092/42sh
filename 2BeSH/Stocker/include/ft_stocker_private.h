@@ -7,7 +7,6 @@
 struct	s_lst_stocker
 {
 	char				c;
-	t_bool				is_print;
 	t_lst_stocker		*prev;
 	t_lst_stocker		*next;
 };
@@ -18,6 +17,9 @@ t_stocker		*p_stocker_push_back_lst(char c);
 t_stocker		*p_stocker_push_front_lst(char c);
 t_stocker		*p_stocker_remove_back_lst(void);
 t_stocker		*p_stocker_remove_front_lst(void);
+t_stocker		*p_stocker_remove_next_lst(void);
+t_stocker		*p_stocker_remove_prev_lst(void);
+t_stocker		*p_stocker_clean_lst(void);
 t_stocker		*p_stocker_after_current_push(char c);
 t_stocker		*p_stocker_current_prev(void);
 t_stocker		*p_stocker_current_next(void);
