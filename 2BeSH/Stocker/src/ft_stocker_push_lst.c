@@ -59,7 +59,10 @@ t_stocker	*p_stocker_after_current_push(char c)
 			el->next->prev = el;
 		}
 		else
+		{
+			stocker->m_end->next = el;
 			stocker->m_end = el;
+		}
 		current->next = el;
 	}
 	else
