@@ -3,10 +3,12 @@
 
 static void			stocker_init(t_stocker *stocker)
 {
-	stocker->m_begin = 0;
+	stocker->length = 0;
+	stocker->m_start = 0;
 	stocker->m_end = 0;
 	stocker->add_back = p_stocker_add_back_lst;
 	stocker->add_front = p_stocker_add_front_lst;
+	stocker->size = p_stocker_size;
 }
 
 
