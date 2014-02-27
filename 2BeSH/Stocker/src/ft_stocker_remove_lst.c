@@ -18,7 +18,6 @@ t_stocker		*p_stocker_remove_back_lst(void)
 		else
 		{
 			free(stocker->m_start);
-			free(stocker->m_end);
 			stocker->m_start = 0;
 			stocker->m_end = 0;
 		}
