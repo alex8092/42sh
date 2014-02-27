@@ -31,7 +31,7 @@ static void		ft_check_op(char c, char d, t_operation **op)
 		ft_put_single_op(c, op);
 }
 
-void	 		p_parser_parse(char *str)
+t_operation	 	*p_parser_parse(char *str)
 {
 	int			i;
 	char		*tmp;
@@ -40,11 +40,12 @@ void	 		p_parser_parse(char *str)
 	t_operation	*last;
 
 	tmp = str;
-	begin = cmd_op;
+	begin = ft_init_operation();
 	last = NULL;
 	while ((i = ft_findfirstof(tmp, ";|&")) != -1)
 	{
-		cmd_op = ft_init_operation();
+		if (last)
+			cmd_op = ft_init_operation();
 		cmd_op->str = ft_strndup(str, (i + (tmp - str)));
 		ft_check_op(tmp[i], tmp[i + 1], &cmd_op);
 		if (tmp[i] == tmp[i + 1])
@@ -55,6 +56,9 @@ void	 		p_parser_parse(char *str)
 		str = tmp + i + 1;
 		tmp = tmp + i + 1;
 	}
+	if (!last)
+		last = begin;
 	last->op = OP_END;
 	last->str = ft_strdup(tmp);
+	return (begin);
 }

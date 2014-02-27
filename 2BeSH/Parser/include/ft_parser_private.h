@@ -4,6 +4,6 @@
 # include "ft_parser.h"
 # include "ft_operation.h"
 
-void		p_parser_parse(char *str);
+t_operation	*p_parser_parse(char *str);
 
 #endif

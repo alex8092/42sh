@@ -7,6 +7,7 @@ static void	resolver_start(t_operation *ops)
 {
 	static t_resolver	*rv = NULL;
 	t_operation			*cur;
+	char				**tmp;
 
 	if (!rv)
 		rv = resolver_singleton();
@@ -14,6 +15,12 @@ static void	resolver_start(t_operation *ops)
 	while (cur)
 	{
 		printf("resolv op : %s\n", cur->str);
+		tmp = ft_strsplit(cur->str, '\"', true);
+		while (*tmp)
+		{
+			printf("resolv op[part] : %s\n", *tmp);
+			++tmp;
+		}
 		cur = cur->next;
 	}
 	exec_singleton()->start(ops);

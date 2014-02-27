@@ -1,9 +1,16 @@
 #include "ft_parser_private.h"
+#include "ft_stocker.h"
+#include "ft_resolver.h"
 #include <stdlib.h>
 
 static void	parser_start()
 {
-	parser_singleton()->parse("ls -lRa | grep \"tmp\" && xargs rm ; cd tmpdir || mkdir -p tmpdir");
+	t_operation	*ops;
+
+	ops = parser_singleton()->parse(stocker_singleton()->to_string());
+	resolver_singleton()->start(ops);
+	while (stocker_singleton()->size() > 0)
+		stocker_singleton()->rm_back();
 	return ;
 }
 

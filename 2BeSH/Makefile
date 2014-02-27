@@ -70,6 +70,9 @@ SRCSCOMMON = ft_isprint.c \
 			 ft_strlen.c \
 			 ft_strcmp.c \
 			 ft_strdup.c \
+			 ft_tabstradd.c \
+			 ft_memcpy.c \
+			 ft_strsplit.c
 
 SRCSEVENT = ft_event.c
 
@@ -96,7 +99,7 @@ SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_other.c \
 			  ft_stocker_init.c \
 			  ft_stocker_remove_lst.c \
-			  ft_stocker_current.c \
+			  ft_stocker_current.c
 
 SRCSENV = ft_environment.c
 
