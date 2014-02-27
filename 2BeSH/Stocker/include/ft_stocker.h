@@ -10,8 +10,9 @@ struct	s_stocker
 {
 	t_lst_stocker		*m_start;
 	t_lst_stocker		*m_end;
-	int					m_length;
 	t_lst_stocker		*m_current;
+
+	int					m_length;
 
 	int					(*size)(void);
 
@@ -31,6 +32,6 @@ struct	s_stocker
 	t_stocker			*(*mv_back)(void);
 };
 
-t_stocker	*stocker_singleton();
+t_stocker				*stocker_singleton();
 
 #endif
