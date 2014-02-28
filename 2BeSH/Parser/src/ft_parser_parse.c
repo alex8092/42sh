@@ -41,6 +41,7 @@ t_operation	 	*p_parser_parse(char *str)
 
 	tmp = str;
 	begin = ft_init_operation();
+	cmd_op = begin;
 	last = NULL;
 	while ((i = ft_findfirstof(tmp, ";|&")) != -1)
 	{
