@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: amerle <amerle@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/02/17 18:45:29 by amerle            #+#    #+#              #
-#    Updated: 2014/02/17 20:17:58 by thrivier         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 DEBUG = true
@@ -18,8 +6,9 @@ ifeq ($(DEBUG),true)
 else
 	CFLAGS += -O2
 endif
-LDFLAGS =
+LDFLAGS = -ltermcap -std=c89
 INCLUDEDIRCOMMON = Common/include
+INCLUDEDIROPERATION = Operation/include
 INCLUDEDIREVENT = Event/include
 INCLUDEDIREXECUTOR = Executor/include
 INCLUDEDIRLEXER = Lexer/include
@@ -27,7 +16,12 @@ INCLUDEDIRPARSER = Parser/include
 INCLUDEDIRRESOLVER = Resolver/include
 INCLUDEDIRVALIDATOR = Validator/include
 INCLUDEDIRSECURITY = Security/include
+INCLUDEDIRDISPLAY = Display/include
+INCLUDEDIRSTOCKER = Stocker/include
+INCLUDEDIRENV = Environment/include
+INCLUDEDIRBUILDINS = BuildIns/include
 INCLUDEDIR = include
+
 SRCDIRCOMMON = Common/src
 SRCDIREVENT = Event/src
 SRCDIREXECUTOR = Executor/src
@@ -36,8 +30,15 @@ SRCDIRPARSER = Parser/src
 SRCDIRRESOLVER = Resolver/src
 SRCDIRVALIDATOR = Validator/src
 SRCDIRSECURITY = Security/src
+SRCDIRDISPLAY = Display/src
+SRCDIRSTOCKER = Stocker/src
+SRCDIRENV = Environment/src
+SRCDIRBUILDINS = BuildIns/src
+SRCDIROPERATION = Operation/src
 SRCDIR = src
+
 OBJDIRCOMMON = Common/obj
+OBJDIROPERATION = Operation/obj
 OBJDIREVENT = Event/obj
 OBJDIREXECUTOR = Executor/obj
 OBJDIRLEXER = Lexer/obj
@@ -45,27 +46,71 @@ OBJDIRPARSER = Parser/obj
 OBJDIRRESOLVER = Resolver/obj
 OBJDIRVALIDATOR = Validator/obj
 OBJDIRSECURITY = Security/obj
+OBJDIRDISPLAY = Display/obj
+OBJDIRSTOCKER = Stocker/obj
+OBJDIRENV = Environment/obj
+OBJDIRBUILDINS = BuildIns/obj
 OBJDIR = obj
 
 CFLAGS += -I$(INCLUDEDIRCOMMON) -I$(INCLUDEDIREVENT) -I$(INCLUDEDIREXECUTOR)
 CFLAGS += -I$(INCLUDEDIRLEXER) -I$(INCLUDEDIRPARSER) -I$(INCLUDEDIRRESOLVER)
 CFLAGS += -I$(INCLUDEDIRVALIDATOR) -I$(INCLUDEDIRSECURITY) -I$(INCLUDEDIR)
+CFLAGS += -I$(INCLUDEDIRDISPLAY) -I$(INCLUDEDIRSTOCKER) -I$(INCLUDEDIRENV)
+CFLAGS += -I$(INCLUDEDIRBUILDINS) -I$(INCLUDEDIROPERATION)
 
-SRCSCOMMON = ft_isprint.c
+SRCSCOMMON = ft_isprint.c \
+			 ft_isinarray.c \
+			 ft_isprint.c \
+			 ft_findfirstof.c \
+			 ft_strndup.c \
+			 ft_tabstrlen.c \
+			 ft_bzero.c \
+			 ft_memalloc.c \
+			 ft_strncmp.c \
+			 ft_strlen.c \
+			 ft_strcmp.c \
+			 ft_strdup.c \
+			 ft_tabstradd.c \
+			 ft_memcpy.c \
+			 ft_strsplit.c
 
 SRCSEVENT = ft_event.c
 
-SRCSEXECUTOR =
+SRCSEXECUTOR = ft_executor.c
+
+SRCSOPERATION = ft_operation.c
 
 SRCSLEXER = ft_lexer.c
 
-SRCSPARSER = 
+SRCSPARSER = ft_parser.c \
+			 ft_parser_parse.c
 
-SRCSRESOLVER = 
+SRCSRESOLVER = ft_resolver.c
 
-SRCSVALIDATOR =
+SRCSVALIDATOR = ft_validator.c
 
 SRCSSECURITY = ft_security.c
+
+SRCSDISPLAY = ft_display.c
+
+SRCSSTOCKER = ft_stocker.c \
+			  ft_stocker_lst.c \
+			  ft_stocker_push_lst.c \
+			  ft_stocker_other.c \
+			  ft_stocker_init.c \
+			  ft_stocker_remove_lst.c \
+			  ft_stocker_mv_current.c
+
+SRCSENV = ft_environment.c
+
+SRCSBUILDINS = ft_buildins.c \
+			   ft_cd.c \
+			   ft_buildins_util.c \
+			   ft_echo.c \
+			   ft_env.c \
+			   ft_exit.c \
+			   ft_setenv.c \
+			   ft_unsetenv.c
 
 SRCS = main.c
 
@@ -73,20 +118,30 @@ OBJSBASECOMMON = $(SRCSCOMMON:.c=.o)
 OBJSBASEEVENT = $(SRCSEVENT:.c=.o)
 OBJSBASEEXECUTOR = $(SRCSEXECUTOR:.c=.o)
 OBJSBASELEXER = $(SRCSLEXER:.c=.o)
+OBJSBASEOPERATION = $(SRCSOPERATION:.c=.o)
 OBJSBASEPARSER = $(SRCSPARSER:.c=.o)
 OBJSBASERESOLVER = $(SRCSRESOLVER:.c=.o)
 OBJSBASEVALIDATOR = $(SRCSVALIDATOR:.c=.o)
 OBJSBASESECURITY = $(SRCSSECURITY:.c=.o)
+OBJSBASEDISPLAY = $(SRCSDISPLAY:.c=.o)
+OBJSBASESTOCKER = $(SRCSSTOCKER:.c=.o)
+OBJSBASEENV = $(SRCSENV:.c=.o)
+OBJSBASEBUILDINS = $(SRCSBUILDINS:.c=.o)
 OBJSBASE = $(SRCS:.c=.o)
 
 OBJS_COMMON = $(addprefix $(OBJDIRCOMMON)/, $(OBJSBASECOMMON))
 OBJS_EVENT = $(addprefix $(OBJDIREVENT)/, $(OBJSBASEEVENT))
 OBJS_EXECUTOR = $(addprefix $(OBJDIREXECUTOR)/, $(OBJSBASEEXECUTOR))
 OBJS_LEXER = $(addprefix $(OBJDIRLEXER)/, $(OBJSBASELEXER))
+OBJS_OPERATION = $(addprefix $(OBJDIROPERATION)/, $(OBJSBASEOPERATION))
 OBJS_PARSER = $(addprefix $(OBJDIRPARSER)/, $(OBJSBASEPARSER))
 OBJS_RESOLVER = $(addprefix $(OBJDIRRESOLVER)/, $(OBJSBASERESOLVER))
 OBJS_VALIDATOR = $(addprefix $(OBJDIRVALIDATOR)/, $(OBJSBASEVALIDATOR))
 OBJS_SECURITY = $(addprefix $(OBJDIRSECURITY)/, $(OBJSBASESECURITY))
+OBJS_DISPLAY = $(addprefix $(OBJDIRDISPLAY)/, $(OBJSBASEDISPLAY))
+OBJS_STOCKER = $(addprefix $(OBJDIRSTOCKER)/, $(OBJSBASESTOCKER))
+OBJS_ENV = $(addprefix $(OBJDIRENV)/, $(OBJSBASEENV))
+OBJS_BUILDINS = $(addprefix $(OBJDIRBUILDINS)/, $(OBJSBASEBUILDINS))
 OBJS = $(addprefix $(OBJDIR)/, $(OBJSBASE))
 
 NAME = 42sh
@@ -94,7 +149,9 @@ NAME = 42sh
 all: $(NAME)
 
 $(NAME): $(OBJS_COMMON) $(OBJS_EVENT) $(OBJS_EXECUTOR) $(OBJS_LEXER) \
-	$(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS_SECURITY) $(OBJS)
+	$(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS_SECURITY) \
+	$(OBJS) $(OBJS_DISPLAY) $(OBJS_STOCKER) $(OBJS_ENV) $(OBJS_BUILDINS) \
+	$(OBJS_OPERATION)
 	$(CC) -o $(NAME) $^ $(LDFLAGS)
 
 $(OBJDIRCOMMON)/%.o: $(SRCDIRCOMMON)/%.c
@@ -117,6 +174,12 @@ $(OBJDIRLEXER)/%.o: $(SRCDIRLEXER)/%.c
 	mkdir -p $(OBJDIRLEXER)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
+$(OBJDIROPERATION)/%.o: $(SRCDIROPERATION)/%.c
+	mkdir -p $(OBJDIROPERATION)
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+$(OBJDIRPARSER)/ft_parser.o: $(INCLUDEDIRPARSER)/ft_parser.h
+
 $(OBJDIRPARSER)/%.o: $(SRCDIRPARSER)/%.c
 	mkdir -p $(OBJDIRPARSER)
 	$(CC) -o $@ -c $< $(CFLAGS)
@@ -124,6 +187,8 @@ $(OBJDIRPARSER)/%.o: $(SRCDIRPARSER)/%.c
 $(OBJDIRRESOLVER)/%.o: $(SRCDIRRESOLVER)/%.c
 	mkdir -p $(OBJDIRRESOLVER)
 	$(CC) -o $@ -c $< $(CFLAGS)
+
+$(OBJDIRVALIDATOR)/ft_validator.o: $(INCLUDEDIRVALIDATOR)/ft_validator.h
 
 $(OBJDIRVALIDATOR)/%.o: $(SRCDIRVALIDATOR)/%.c
 	mkdir -p $(OBJDIRVALIDATOR)
@@ -133,6 +198,30 @@ $(OBJDIRSECURITY)/%.o: $(SRCDIRSECURITY)/%.c
 	mkdir -p $(OBJDIRSECURITY)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
+$(OBJDIRDISPLAY)/ft_display.o: $(INCLUDEDIRDISPLAY)/ft_display.h
+
+$(OBJDIRDISPLAY)/%.o: $(SRCDIRDISPLAY)/%.c
+	mkdir -p $(OBJDIRDISPLAY)
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+$(OBJDIRSTOCKER)/ft_stocker.o: $(INCLUDEDIRSTOCKER)/ft_stocker.h
+
+$(OBJDIRSTOCKER)/%.o: $(SRCDIRSTOCKER)/%.c
+	mkdir -p $(OBJDIRSTOCKER)
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+$(OBJDIRENV)/ft_environment.o: $(INCLUDEDIRENV)/ft_environment.h
+
+$(OBJDIRENV)/%.o: $(SRCDIRENV)/%.c
+	mkdir -p $(OBJDIRENV)
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+$(OBJDIRBUILDINS)/ft_buildins.o: $(INCLUDEDIRBUILDINS)/ft_buildins.h
+
+$(OBJDIRBUILDINS)/%.o: $(SRCDIRBUILDINS)/%.c
+	mkdir -p $(OBJDIRBUILDINS)
+	$(CC) -o $@ -c $< $(CFLAGS)
+
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
 	$(CC) -o $@ -c $< $(CFLAGS)
@@ -140,7 +229,8 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 clean:
 	rm -f $(OBJS_COMMON) $(OBJS_EVENT) $(OBJS_EXECUTOR) $(OBJS_LEXER)
 	rm -f $(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS)
-	rm -f $(OBJS_SECURITY)
+	rm -f $(OBJS_SECURITY) $(OBJS_DISPLAY) $(OBJS_STOCKER) $(OBJS_ENV)
+	rm -f $(OBJS_BUILDINS) $(OBJs_OPERATION)
 
 fclean: clean
 	rm -f $(NAME)

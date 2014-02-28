@@ -1,22 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_event.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: thrivier <thrivier@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/17 19:43:09 by thrivier          #+#    #+#             */
-/*   Updated: 2014/02/24 04:13:56 by triviere         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_event.h"
+#include "ft_display.h"
+#include "ft_stocker.h"
+#include "common.h"
 #include <stdlib.h>
 #include <unistd.h>
 
 static t_event	*doEvent(char *c)
 {
-	write(1, c, 1);
+	if (ft_isprint(c[0]) || c[0] == '\n')
+	{
+		display_singleton()->writec(c[0]);
+		if (c[0] != '\n')
+			stocker_singleton()->push_back(c[0]);
+	}
 	return (event_singleton());
 }
 

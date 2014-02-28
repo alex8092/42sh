@@ -1,28 +1,98 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amerle <amerle@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/17 18:45:25 by amerle            #+#    #+#             */
-/*   Updated: 2014/02/24 04:19:15 by triviere         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_lexer.h"
+#include "ft_parser.h"
 #include "ft_security.h"
+#include "ft_stocker.h"
+#include "ft_environment.h"
+#include "ft_buildins.h"
+#include "ft_display.h"
+#include "ft_resolver.h"
 #include <stdio.h>
-
-void	end(void)
-{
-	return ;
-}
 
 int		main(int ac, char **av)
 {
+	/* TEST TRIVIERE START 
+	printf("--------- TEST TRIVIERE START ---------\n");
+		t_stocker	*stocker;
+
+		stocker = stocker_singleton();
+
+		printf("# TEST RM STOCKER EMPTY FRONT #\n");
+		stocker->rm_front()->rm_front()->rm_front();
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
+		printf("# TEST RM STOCKER EMPTY BACK #\n");
+		stocker->rm_back()->rm_back()->rm_back();
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
+		printf("# TEST PUSH STOCKER AFTER CURRENT #\n");
+		stocker->push('H')->push('e')->push('l')->push('l')->push('o')->push(' ');
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
+		printf("# TEST CLEAN STOCKER #\n");
+		stocker->clean();
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
+		printf("# TEST PUSH STOCKER BACK #\n");
+		stocker->push_back('W')->push_back('o')->push_back('r')->push_back('d');
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
+		printf("# TEST MULTIPLE [3] RM STOCKER FRONT #\n");
+		stocker->rm_front()->rm_front()->rm_front()->rm_front()->rm_front()->rm_front();
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
+		printf("# TEST PUSH STOCKER FRONT #\n");
+		stocker->push_front(' ')->push_front('o')->push_front('l')->push_front('l')->push_front('e')->push_front('H');
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
+		printf("# TEST MULTIPLE [3] RM STOCKER FRONT #\n");
+		stocker->push_front(' ')->push_front('>')->push_front('-');
+		printf("-> Stocker [%d] : %s\n", stocker->size(), stocker->to_string());
+		stocker->rm_front()->rm_front()->rm_front();
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
+		printf("# TEST MULTIPLE [3] RM STOCKER BACK #\n");
+		stocker->push_back(' ')->push_back('<')->push_back('-');
+		printf("-> Stocker [%d] : %s\n", stocker->size(), stocker->to_string());
+		stocker->rm_back()->rm_back()->rm_back();
+		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
+
+	printf("--------- TEST TRIVIERE END ---------\n\n");
+	// TEST TRIVIERE END */
+
+
+
+	/* TEST AMERLE BEGIN
+	printf("--------- TEST AMERLE START ---------\n");
+	printf("PATH : %s\n", env_singleton()->get("PATH"));
+	printf("\"cd\" buildins ? : %d\n", buildins_singleton()->is_buildin("cd"));
+	printf("\"echo\" buildins ? : %d\n", buildins_singleton()->is_buildin("echo"));
+	printf("\"exit\" buildins ? : %d\n", buildins_singleton()->is_buildin("exit"));
+	printf("\"tamere\" buildins ? : %d\n", buildins_singleton()->is_buildin("tamere"));
+	display_singleton()->set_out(2)->writec('O')->writec('K')->writec('\n')->set_out(1);
+	t_operation	*op = (t_operation *)ft_memalloc(sizeof(t_operation));
+	op->str = "tamere";
+	resolver_singleton()->start(op);
+	printf("--------- TEST AMERLE START ---------\n");
+	// TEST AMERLE END */
+
+
+
+	/* TEST THRIVIER START
+	printf("--------- TEST THRIVIER START ---------\n");
+	printf("--------- TEST THRIVIER START ---------\n");
+	 // TEST THRIVIER END */
+
+
+
+	/* TEST TUARDOUI START
+	printf("--------- TEST TUARDOUI START ---------\n");
+	printf("--------- TEST TUARDOUI START ---------\n");
+	// TEST TUARDOUI END */
+
+
+
 	security_singleton()->activeRaw(true);
-	lexer_singleton()->onComplete(end)->start();
+	lexer_singleton()->onComplete(parser_singleton()->start)->start();
 	(void)ac;
 	(void)av;
 	security_singleton()->activeRaw(false);
