@@ -44,11 +44,14 @@ t_operation	 	*p_parser_parse(char *str)
 	last = NULL;
 	while ((i = ft_findfirstof(tmp, ";|&")) != -1)
 	{
+		printf("nb = %ld\n", (i + (tmp - str)));
 		if (last)
 			cmd_op = ft_init_operation();
 		if (i + (tmp - str) != 0)
 		{
-			cmd_op->str = ft_strndup(str, (i + (tmp - str)));
+			printf("rwar\n");
+			cmd_op->str = ft_strdup(str, (i + (tmp - str)));
+			printf("test1\n");
 			ft_check_op(tmp[i], tmp[i + 1], &cmd_op);
 			if (tmp[i] == tmp[i + 1])
 				++i;
