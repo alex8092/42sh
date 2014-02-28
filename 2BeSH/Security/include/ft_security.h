@@ -10,6 +10,6 @@ struct	s_security
 	t_security	*(*activeRaw)(t_bool);
 };
 
-t_security	*security_singleton();
+t_security	*security_singleton(void);
 
 #endif

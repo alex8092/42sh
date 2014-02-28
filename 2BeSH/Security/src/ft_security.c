@@ -29,7 +29,7 @@ static void	secu_init(t_security *secu)
 	secu->activeRaw = secu_activeRaw;
 }
 
-t_security	*security_singleton()
+t_security	*security_singleton(void)
 {
 	static t_security	*singleton = NULL;
 

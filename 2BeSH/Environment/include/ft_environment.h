@@ -12,6 +12,6 @@ struct		s_env
 	size_t	(*size)(void);
 };
 
-t_env	*env_singleton();
+t_env	*env_singleton(void);
 
 #endif

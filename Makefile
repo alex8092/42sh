@@ -1,4 +1,5 @@
 all:
+	echo "Hello"
 	make -C 2BeSH
 
 re:

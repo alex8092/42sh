@@ -13,6 +13,6 @@ struct		s_buildins
 	int			(*exec)(char *, char **);
 };
 
-t_buildins	*buildins_singleton();
+t_buildins	*buildins_singleton(void);
 
 #endif

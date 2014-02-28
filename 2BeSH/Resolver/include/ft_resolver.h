@@ -10,6 +10,6 @@ struct		s_resolver
 	void	(*start)(t_operation *ops);
 };
 
-t_resolver	*resolver_singleton();
+t_resolver	*resolver_singleton(void);
 
 #endif

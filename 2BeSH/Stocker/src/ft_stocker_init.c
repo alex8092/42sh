@@ -1,5 +1,13 @@
 #include "ft_stocker_private.h"
 
+void		p_stocker_init_attributes(t_stocker *stocker)
+{
+	stocker->m_length = 0;
+	stocker->m_start = 0;
+	stocker->m_end = 0;
+	stocker->m_current = 0;
+}
+
 void		p_stocker_init_methods(t_stocker*stocker)
 {
 	stocker->push = p_stocker_after_current_push;
@@ -16,12 +24,4 @@ void		p_stocker_init_methods(t_stocker*stocker)
 	stocker->mv_back = p_stocker_current_back;
 	stocker->size = p_stocker_size;
 	stocker->to_string = p_stocker_to_string;
-}
-
-void		p_stocker_init_attributes(t_stocker *stocker)
-{
-	stocker->m_length = 0;
-	stocker->m_start = 0;
-	stocker->m_end = 0;
-	stocker->m_current = 0;
 }
