@@ -14,6 +14,6 @@ struct	s_lexer
 	t_lexer	*(*onComplete)(void (*)());
 };
 
-t_lexer	*lexer_singleton();
+t_lexer	*lexer_singleton(void);
 
 #endif

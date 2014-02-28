@@ -35,7 +35,7 @@ static void			lexer_init(t_lexer *lexer)
 	lexer->onComplete = lexer_onComplete;
 }
 
-t_lexer				*lexer_singleton()
+t_lexer				*lexer_singleton(void)
 {
 	static t_lexer	*singleton = NULL;
 

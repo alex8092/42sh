@@ -19,7 +19,7 @@ static void	parser_init(t_parser *p)
 	p->parse = p_parser_parse;
 }
 
-t_parser	*parser_singleton()
+t_parser	*parser_singleton(void)
 {
 	static t_parser	*singleton = NULL;
 

@@ -30,7 +30,7 @@ static void			display_init(t_display *dis)
 	dis->set_out = display_on;
 }
 
-t_display			*display_singleton()
+t_display			*display_singleton(void)
 {
 	static t_display	*singleton = NULL;
 

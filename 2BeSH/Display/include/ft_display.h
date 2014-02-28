@@ -13,6 +13,6 @@ struct	s_display
 	t_display		*(*writec)(char c);
 };
 
-t_display	*display_singleton();
+t_display	*display_singleton(void);
 
 #endif

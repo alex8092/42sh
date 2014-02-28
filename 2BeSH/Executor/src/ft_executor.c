@@ -25,7 +25,7 @@ static void	executor_init(t_executor *exec)
 	exec->start = executor_start;
 }
 
-t_executor	*exec_singleton()
+t_executor	*exec_singleton(void)
 {
 	static t_executor	*singleton = NULL;
 
