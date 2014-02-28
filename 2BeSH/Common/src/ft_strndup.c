@@ -1,6 +1,6 @@
 #include "common.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 char		*ft_strndup(char *str, int nb)
 {
 	char	*dup;

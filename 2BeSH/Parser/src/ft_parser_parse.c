@@ -8,19 +8,34 @@
 static void		ft_put_dbl_op(char c, t_operation **cmd_op)
 {
 	if (c == '|')
+	{
+		printf("OP vaut : ||\n");
 		(*cmd_op)->op = OP_DBL_PIPE;
+	}
 	else
+	{
+		printf("OP vaut : &&\n");
 		(*cmd_op)->op = OP_DBL_EP;
+	}
 }
 
 static void		ft_put_single_op(char c, t_operation **cmd_op)
 {
 	if (c == ';')
+	{
+		printf("OP vaut : ;\n");
 		(*cmd_op)->op = OP_PV;
+	}
 	else if (c == '|')
+	{
+		printf("OP vaut : |\n");
 		(*cmd_op)->op = OP_PIPE;
+	}
 	else
+	{
+		printf("OP vaut : &");
 		(*cmd_op)->op = OP_EP;
+	}
 }
 
 static void		ft_check_op(char c, char d, t_operation **op)
@@ -33,6 +48,7 @@ static void		ft_check_op(char c, char d, t_operation **op)
 
 t_operation	 	*p_parser_parse(char *str)
 {
+	printf("## begin parser ##\n");
 	int			i;
 	char		*tmp;
 	t_operation	*cmd_op;
@@ -41,23 +57,22 @@ t_operation	 	*p_parser_parse(char *str)
 
 	tmp = str;
 	begin = ft_init_operation();
+	cmd_op = begin;
 	last = NULL;
 	while ((i = ft_findfirstof(tmp, ";|&")) != -1)
 	{
-		printf("nb = %ld\n", (i + (tmp - str)));
 		if (last)
 			cmd_op = ft_init_operation();
 		if (i + (tmp - str) != 0)
 		{
-			printf("rwar\n");
-			cmd_op->str = ft_strdup(str, (i + (tmp - str)));
-			printf("test1\n");
+			cmd_op->str = ft_strndup(str, (i + (tmp - str)));
 			ft_check_op(tmp[i], tmp[i + 1], &cmd_op);
 			if (tmp[i] == tmp[i + 1])
 				++i;
 			if (last)
 				last->next = cmd_op;
 			last = cmd_op;
+			printf("La chaine ds la struc vaut : %s\n", cmd_op->str);
 		}
 		str = tmp + i + 1;
 		tmp = tmp + i + 1;
@@ -66,5 +81,11 @@ t_operation	 	*p_parser_parse(char *str)
 		last = begin;
 	last->op = OP_END;
 	last->str = ft_strdup(tmp);
+
+
+
+	printf("OP vaut : end\n");
+	printf("La chaine ds la struc vaut : %s\n", str);
+	printf("## end parseur ##\n");
 	return (begin);
 }
