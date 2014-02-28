@@ -41,18 +41,22 @@ t_operation	 	*p_parser_parse(char *str)
 
 	tmp = str;
 	begin = ft_init_operation();
+	cmd_op = begin;
 	last = NULL;
 	while ((i = ft_findfirstof(tmp, ";|&")) != -1)
 	{
 		if (last)
 			cmd_op = ft_init_operation();
-		cmd_op->str = ft_strndup(str, (i + (tmp - str)));
-		ft_check_op(tmp[i], tmp[i + 1], &cmd_op);
-		if (tmp[i] == tmp[i + 1])
-			++i;
-		if (last)
-			last->next = cmd_op;
-		last = cmd_op;
+		if (i + (tmp - str) != 0)
+		{
+			cmd_op->str = ft_strndup(str, (i + (tmp - str)));
+			ft_check_op(tmp[i], tmp[i + 1], &cmd_op);
+			if (tmp[i] == tmp[i + 1])
+				++i;
+			if (last)
+				last->next = cmd_op;
+			last = cmd_op;
+		}
 		str = tmp + i + 1;
 		tmp = tmp + i + 1;
 	}

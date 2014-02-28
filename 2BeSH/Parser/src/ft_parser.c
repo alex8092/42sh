@@ -9,8 +9,7 @@ static void	parser_start()
 
 	ops = parser_singleton()->parse(stocker_singleton()->to_string());
 	resolver_singleton()->start(ops);
-	while (stocker_singleton()->size() > 0)
-		stocker_singleton()->rm_back();
+	stocker_singleton()->clean();
 	return ;
 }
 

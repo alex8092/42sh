@@ -14,6 +14,8 @@ struct	s_stocker
 
 	int					m_length;
 
+
+
 	int					(*size)(void);
 
 	char				*(*to_string)(void);

@@ -10,7 +10,7 @@
 
 int		main(int ac, char **av)
 {
-	/* TEST TRIVIERE START 
+	//* TEST TRIVIERE START 
 	printf("--------- TEST TRIVIERE START ---------\n");
 		t_stocker	*stocker;
 
@@ -58,7 +58,9 @@ int		main(int ac, char **av)
 
 	printf("--------- TEST TRIVIERE END ---------\n\n");
 	// TEST TRIVIERE END */
-	
+
+
+
 	/* TEST AMERLE BEGIN
 	printf("PATH : %s\n", env_singleton()->get("PATH"));
 	printf("\"cd\" buildins ? : %d\n", buildins_singleton()->is_buildin("cd"));
@@ -70,8 +72,9 @@ int		main(int ac, char **av)
 	op->str = "tamere";
 	resolver_singleton()->start(op);
 	// TEST AMERLE END */
-	security_singleton()->activeRaw(true);
-	lexer_singleton()->onComplete(parser_singleton()->start)->start();
+
+
+
 	/*
 	 * THRIVIER
 	 * */
@@ -79,6 +82,11 @@ int		main(int ac, char **av)
 	/*
 	 *END
 	 * */
+
+
+
+	security_singleton()->activeRaw(true);
+	lexer_singleton()->onComplete(parser_singleton()->start)->start();
 	(void)ac;
 	(void)av;
 	security_singleton()->activeRaw(false);
