@@ -63,8 +63,6 @@ t_operation	 	*p_parser_parse(char *str)
 	y = 0;
 	while ((i = ft_findfirstof((str + y), ";|&")) != -1)
 	{
-//		printf("begin :  i = %d\n", i);
-//		printf("begin :  y = %d\n", y);
 		if (last)
 			cmd_op = ft_init_operation();
 		if (i != 0)
@@ -76,11 +74,8 @@ t_operation	 	*p_parser_parse(char *str)
 			if (last)
 				last->next = cmd_op;
 			last = cmd_op;
-			printf("La chaine ds la struc vaut : %s\n", cmd_op->str);
 		}
 		y += i + 1;
-//		printf(" end  :  i = %c\n", str[i]);
-//		printf(" end  :  y = %c\n\n", str[y]);
 	}
 	if (!last)
 		last = begin;
@@ -89,10 +84,5 @@ t_operation	 	*p_parser_parse(char *str)
 		last->str = ft_strdup(str + y);
 	else
 		last->str = ft_strdup(" ");
-
-
-	printf("OP vaut : end\n");
-	printf("La chaine ds la struc vaut : %s\n", last->str);
-	printf("\n## end parseur ##\n\n");
 	return (begin);
 }
