@@ -79,7 +79,7 @@ t_stocker		*p_stocker_remove_next_lst(void)
 
 	stocker = stocker_singleton();
 	current = stocker->m_current;
-	if (current &&current->next)
+	if (current && current->next)
 	{
 		tmp = current->next;
 		current->next = tmp->next;

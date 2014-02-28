@@ -58,8 +58,11 @@ int		main(int ac, char **av)
 
 	printf("--------- TEST TRIVIERE END ---------\n\n");
 	// TEST TRIVIERE END */
-	
+
+
+
 	/* TEST AMERLE BEGIN
+	printf("--------- TEST AMERLE START ---------\n");
 	printf("PATH : %s\n", env_singleton()->get("PATH"));
 	printf("\"cd\" buildins ? : %d\n", buildins_singleton()->is_buildin("cd"));
 	printf("\"echo\" buildins ? : %d\n", buildins_singleton()->is_buildin("echo"));
@@ -69,16 +72,27 @@ int		main(int ac, char **av)
 	t_operation	*op = (t_operation *)ft_memalloc(sizeof(t_operation));
 	op->str = "tamere";
 	resolver_singleton()->start(op);
+	printf("--------- TEST AMERLE START ---------\n");
 	// TEST AMERLE END */
+
+
+
+	/* TEST THRIVIER START
+	printf("--------- TEST THRIVIER START ---------\n");
+	printf("--------- TEST THRIVIER START ---------\n");
+	 // TEST THRIVIER END */
+
+
+
+	/* TEST TUARDOUI START
+	printf("--------- TEST TUARDOUI START ---------\n");
+	printf("--------- TEST TUARDOUI START ---------\n");
+	// TEST TUARDOUI END */
+
+
+
 	security_singleton()->activeRaw(true);
 	lexer_singleton()->onComplete(parser_singleton()->start)->start();
-	/*
-	 * THRIVIER
-	 * */
-
-	/*
-	 *END
-	 * */
 	(void)ac;
 	(void)av;
 	security_singleton()->activeRaw(false);
