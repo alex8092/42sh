@@ -21,9 +21,12 @@ static t_bool	buildins_isbuildins(char *name)
 {
 	t_buildin	*find;
 
-	find = buildins_get(name);
-	if (find)
-		return (true);
+	if (name)
+	{
+		find = buildins_get(name);
+		if (find)
+			return (true);
+	}
 	return (false);
 }
 

@@ -45,18 +45,14 @@ t_operation	 	*p_parser_parse(char *str)
 	last = NULL;
 	i = 0;
 	y = 0;
-	printf("str : \"%s\" | \"%s\"\n", str, stocker_singleton()->to_string());
 	while ((i = ft_findfirstof((str + y), ";|&")) != -1)
 	{
-		printf("str [%d] : \"%s\" => \"%s\"\n", i, str, (str + i));
 		if (last)
 			cmd_op = ft_init_operation();
 		if (i != 0)
 		{
-			printf("str [%d] : \"%s\" => \"%s\"\n", i, cmd_op->str, (str + i));
 			cmd_op->str = ft_strndup((str + y), i);
-			printf("str [%d] : \"%s\" => \"%s\"\n", i, cmd_op->str, (str + i));
-			printf("str = %s\n", cmd_op->str);
+			printf("str  : \"%s\"\n",cmd_op->str);
 			ft_check_op(str[i + y], str[i + y + 1], &cmd_op);
 			if (str[i + y] == str[y + i + 1])
 				++i;
@@ -69,10 +65,7 @@ t_operation	 	*p_parser_parse(char *str)
 	if (!last)
 		last = begin;
 	last->op = OP_END;
-	if (str[y] != '\0')
-		last->str = ft_strdup(str + y);
-	else
-		last->str = ft_strdup(" ");
+	cmd_op->str = ft_strdup(str + y);
 	printf("str = %s\n", cmd_op->str);
 	return (begin);
 }
