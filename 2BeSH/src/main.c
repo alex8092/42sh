@@ -56,6 +56,8 @@ int		main(int ac, char **av)
 		stocker->rm_back()->rm_back()->rm_back();
 		printf("-> Stocker [%d] : %s\n\n", stocker->size(), stocker->to_string());
 
+		stocker->clean();
+
 	printf("--------- TEST TRIVIERE END ---------\n\n");
 	// TEST TRIVIERE END */
 

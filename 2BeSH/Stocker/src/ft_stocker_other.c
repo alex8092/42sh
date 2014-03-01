@@ -1,6 +1,8 @@
 #include "ft_stocker_private.h"
 #include <stdlib.h>
 
+#include <stdio.h>
+
 int				p_stocker_size(void)
 {
 	return (stocker_singleton()->m_length);
@@ -20,9 +22,8 @@ char			*p_stocker_to_string(void)
 	while (cursor)
 	{
 		str[i] = cursor->c;
-		i++;
 		cursor = cursor->next;
+		i++;
 	}
-	str[i] = 0;
 	return (str);
 }
