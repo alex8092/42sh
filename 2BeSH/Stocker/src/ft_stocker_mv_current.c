@@ -7,9 +7,13 @@ t_stocker	*p_stocker_current_prev(void)
 
 	stocker = stocker_singleton();
 	cursor = stocker->m_current;
-	while (cursor && cursor->prev)
-		cursor = cursor->prev;
-	stocker->m_current = cursor;
+	if (stocker->m_pos)
+	{
+		if (cursor && cursor->prev)
+			cursor = cursor->prev;
+		stocker->m_current = cursor;
+		stocker->m_pos--;
+	}
 	return (stocker);
 }
 
@@ -20,9 +24,13 @@ t_stocker	*p_stocker_current_next(void)
 
 	stocker = stocker_singleton();
 	cursor = stocker->m_current;
-	while (cursor && cursor->next)
-		cursor = cursor->next;
-	stocker->m_current = cursor;
+	if (stocker->m_pos != stocker->m_length)
+	{
+		if (cursor && cursor->next)
+			cursor = cursor->next;
+		stocker->m_current = cursor;
+		stocker->m_pos++;
+	}
 	return (stocker);
 }
 
@@ -32,6 +40,7 @@ t_stocker	*p_stocker_current_front(void)
 
 	stocker = stocker_singleton();
 	stocker->m_current = stocker->m_start;
+	stocker->m_pos = 0;
 	return (stocker);
 }
 
@@ -41,5 +50,6 @@ t_stocker	*p_stocker_current_back(void)
 
 	stocker = stocker_singleton();
 	stocker->m_current = stocker->m_end;
+	stocker->m_pos = stocker->m_length;
 	return (stocker);
 }

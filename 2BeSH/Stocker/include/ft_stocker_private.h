@@ -17,7 +17,7 @@ t_stocker		*p_stocker_push_back_lst(char c);
 t_stocker		*p_stocker_push_front_lst(char c);
 t_stocker		*p_stocker_remove_back_lst(void);
 t_stocker		*p_stocker_remove_front_lst(void);
-t_stocker		*p_stocker_remove_next_lst(void);
+t_stocker		*p_stocker_remove_current_lst(void);
 t_stocker		*p_stocker_remove_prev_lst(void);
 t_stocker		*p_stocker_clean_lst(void);
 t_stocker		*p_stocker_after_current_push(char c);
