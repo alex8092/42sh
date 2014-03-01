@@ -22,6 +22,33 @@ static char	*env_get(char *name)
 	return (NULL);
 }
 
+static t_env	*env_set(char *name, char *value)
+{
+	t_env		*env;
+	int			index;
+	const int	len_str = ft_strlen(name);
+	char	*tmp;
+	
+	tmp = ft_strjoin(name, "=");
+	env = env_singleton();
+	index = 0;
+	while (env->m_env[index])
+	{
+		if (!ft_strncmp(name, env->m_env[index], len_str)
+				&& env->m_env[index][len_str] == '=')
+		{
+			free(env->m_env[index]);
+			env->m_env[index] = ft_strjoin(tmp, value);
+			free(tmp);
+			return (env);
+		}
+		++index;
+	}
+	env->m_env = ft_tabstradd(env->m_env, ft_strjoin(tmp, value));
+	free(tmp);
+	return (env);
+}
+
 static size_t	env_size(void)
 {
 	return (ft_tabstrlen(env_singleton()->m_env));
@@ -42,6 +69,7 @@ static void	env_init(t_env *env)
 	env->m_env[index] = 0;
 	env->get = env_get;
 	env->size = env_size;
+	env->set = env_set;
 }
 
 t_env		*env_singleton(void)
