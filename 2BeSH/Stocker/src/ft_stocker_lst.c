@@ -11,7 +11,6 @@ t_lst_stocker	*p_stocker_new_lst_el(char c)
 	el->next = 0;
 	el->prev = 0;
 	el->c = c;
-	stocker->m_current = el;
 	stocker->m_length++;
 	return (el);
 }

@@ -2,9 +2,12 @@
 
 void		p_stocker_init_attributes(t_stocker *stocker)
 {
+	t_lst_stocker		*first;
+
+	first = p_stocker_new_lst_el(0);
 	stocker->m_length = 0;
-	stocker->m_start = 0;
-	stocker->m_end = 0;
+	stocker->m_start = first;
+	stocker->m_end = first;
 	stocker->m_current = 0;
 }
 
