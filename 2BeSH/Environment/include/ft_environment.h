@@ -9,6 +9,7 @@ struct		s_env
 {
 	char	**m_env;
 	char	*(*get)(char *name);
+	t_env	*(*set)(char *name, char *value);
 	size_t	(*size)(void);
 };
 
