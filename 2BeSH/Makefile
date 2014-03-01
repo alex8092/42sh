@@ -117,7 +117,8 @@ SRCSBUILDINS = ft_buildins.c \
 
 SRCSHISTORY = ft_history.c \
 			  ft_history_init.c \
-			  ft_history_other.c
+			  ft_history_other.c \
+			  ft_history_push.c
 
 SRCS = main.c
 
