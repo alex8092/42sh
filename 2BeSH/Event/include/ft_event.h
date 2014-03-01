@@ -8,6 +8,6 @@ struct	s_event
 	t_event	*(*doEvent)(char *c);
 };
 
-t_event	*event_singleton();
+t_event	*event_singleton(void);
 
 #endif

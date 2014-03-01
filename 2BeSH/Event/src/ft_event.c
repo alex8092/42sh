@@ -21,7 +21,7 @@ static void	event_init(t_event *event)
 	event->doEvent = doEvent;
 }
 
-t_event		*event_singleton()
+t_event		*event_singleton(void)
 {
 	static t_event	*singleton = NULL;
 

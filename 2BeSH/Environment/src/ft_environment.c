@@ -44,7 +44,7 @@ static void	env_init(t_env *env)
 	env->size = env_size;
 }
 
-t_env		*env_singleton()
+t_env		*env_singleton(void)
 {
 	static t_env	*env = NULL;
 

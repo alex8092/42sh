@@ -10,6 +10,6 @@ struct		s_executor
 	void	(*start)(t_operation *);
 };
 
-t_executor	*exec_singleton();
+t_executor	*exec_singleton(void);
 
 #endif

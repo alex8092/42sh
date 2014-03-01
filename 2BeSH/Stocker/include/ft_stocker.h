@@ -34,6 +34,6 @@ struct	s_stocker
 	t_stocker			*(*mv_back)(void);
 };
 
-t_stocker				*stocker_singleton();
+t_stocker				*stocker_singleton(void);
 
 #endif

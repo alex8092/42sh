@@ -8,7 +8,7 @@ static void			stocker_init(t_stocker *stocker)
 }
 
 
-t_stocker			*stocker_singleton()
+t_stocker			*stocker_singleton(void)
 {
 	static t_stocker	*singleton = NULL;
 

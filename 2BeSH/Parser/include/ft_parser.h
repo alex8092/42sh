@@ -10,6 +10,6 @@ struct		s_parser
 	t_operation		*(*parse)(char *);
 };
 
-t_parser	*parser_singleton();
+t_parser	*parser_singleton(void);
 
 #endif

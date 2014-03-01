@@ -32,7 +32,7 @@ static void	resolver_init(t_resolver *rv)
 	rv->start = resolver_start;
 }
 
-t_resolver	*resolver_singleton()
+t_resolver	*resolver_singleton(void)
 {
 	static t_resolver	*singleton = NULL;
 
