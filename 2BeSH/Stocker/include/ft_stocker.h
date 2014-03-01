@@ -13,7 +13,7 @@ struct	s_stocker
 	t_lst_stocker		*m_current;
 
 	int					m_length;
-
+	int					m_pos;
 
 
 	int					(*size)(void);
@@ -25,7 +25,7 @@ struct	s_stocker
 	t_stocker			*(*rm_back)(void);
 	t_stocker			*(*rm_front)(void);
 	t_stocker			*(*rm_prev)(void);
-	t_stocker			*(*rm_next)(void);
+	t_stocker			*(*rm_cur)(void);
 	t_stocker			*(*clean)(void);
 	t_stocker			*(*push)(char c);
 	t_stocker			*(*mv_prev)(void);

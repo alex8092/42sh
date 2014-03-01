@@ -36,7 +36,7 @@ static void	env_init(t_env *env)
 	index = 0;
 	while (index < tab_len)
 	{
-		env->m_env[index] = environ[index];
+		env->m_env[index] = ft_strdup(environ[index]);
 		++index;
 	}
 	env->m_env[index] = 0;

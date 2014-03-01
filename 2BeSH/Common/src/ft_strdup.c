@@ -1,5 +1,5 @@
 #include "common.h"
-
+#include <stdio.h>
 char		*ft_strdup(char *str)
 {
 	int		index;
