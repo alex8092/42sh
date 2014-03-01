@@ -6,7 +6,7 @@
 typedef struct s_lst_history		t_lst_history;
 typedef struct s_history			t_history;
 
-struct	t_history
+struct	s_history
 {
 	t_lst_history		*m_start;
 	t_lst_history		*m_end;
@@ -15,8 +15,8 @@ struct	t_history
 	int					m_length;
 
 
-	int					*(*size)(void);
-}
+	int					(*size)(void);
+};
 
 t_history		*history_singleton(void);
 

@@ -5,7 +5,10 @@ void		p_history_init_attributes(t_history *history)
 	history->size = p_history_size;
 }
 
-void		p_stocker_init_methods(t_history *history)
+void		p_history_init_methods(t_history *history)
 {
-	history->length = 0;
+	history->m_length = 0;
+	history->m_start = 0;
+	history->m_end = 0;
+	history->m_current = 0;
 }

@@ -2,11 +2,14 @@
 
 t_bool	ft_isinarray(char c, char *ref)
 {
-	while (*ref)
+	int		i;
+
+	i = 0;
+	while (ref[i])
 	{
-		if (*ref == c)
+		if (ref[i] == c)
 			return (true);
-		++ref;
+		++i;
 	}
 	return (false);
 }

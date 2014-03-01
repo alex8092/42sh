@@ -13,7 +13,7 @@ struct	s_lst_history
 
 int				p_history_size(void);
 
-t_history		p_history_init_attributes(t_history *history);
-t_history		p_history_init_methods(t_history *history);
+void		p_history_init_attributes(t_history *history);
+void		p_history_init_methods(t_history *history);
 
 #endif

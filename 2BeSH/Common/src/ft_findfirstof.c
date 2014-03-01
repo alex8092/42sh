@@ -1,4 +1,5 @@
 #include "common.h"
+#include <stdio.h>
 
 int	ft_findfirstof(char *str, char *ref)
 {

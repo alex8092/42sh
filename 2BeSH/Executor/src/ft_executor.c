@@ -17,7 +17,6 @@ static void	executor_start(t_operation *ops)
 			bi->exec(cur->str, NULL);
 		cur = cur->next;
 	}
-	(void)ops;
 }
 
 static void	executor_init(t_executor *exec)
