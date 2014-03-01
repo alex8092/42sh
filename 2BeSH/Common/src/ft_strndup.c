@@ -1,6 +1,7 @@
 #include "common.h"
 #include <stdlib.h>
 #include <stdio.h>
+
 char		*ft_strndup(char *str, int nb)
 {
 	char	*dup;
@@ -10,7 +11,7 @@ char		*ft_strndup(char *str, int nb)
 	dup = (char*)ft_memalloc(sizeof(char) * (nb + 1));
 	if (!dup)
 		exit (1);
-	while (i < nb)
+	while (i < nb && str[i])
 	{
 		dup[i] = str[i];
 		i++;
