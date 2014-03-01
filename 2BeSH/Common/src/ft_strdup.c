@@ -5,6 +5,7 @@ char		*ft_strdup(char *str)
 	int		index;
 	char	*dup;
 
+	printf("str dup : %s\n", str);
 	index = 0;
 	dup = ft_memalloc(sizeof(char) * (ft_strlen(str) + 1));
 	while (str[index])

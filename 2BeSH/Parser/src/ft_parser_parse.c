@@ -45,12 +45,14 @@ t_operation	 	*p_parser_parse(char *str)
 	last = NULL;
 	i = 0;
 	y = 0;
+	printf("str base : %s\n", str);
 	while ((i = ft_findfirstof((str + y), ";|&")) != -1)
 	{
 		if (last)
 			cmd_op = ft_init_operation();
 		if (i != 0)
 		{
+			printf("i : %d\n", i);
 			cmd_op->str = ft_strndup((str + y), i);
 			printf("str  : \"%s\"\n",cmd_op->str);
 			ft_check_op(str[i + y], str[i + y + 1], &cmd_op);
@@ -65,7 +67,7 @@ t_operation	 	*p_parser_parse(char *str)
 	if (!last)
 		last = begin;
 	last->op = OP_END;
-	cmd_op->str = ft_strdup(str + y);
-	printf("str = %s\n", cmd_op->str);
+	last->str = ft_strdup(str + y);
+	printf("str = %s\n", last->str);
 	return (begin);
 }
