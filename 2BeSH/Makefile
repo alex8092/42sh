@@ -21,6 +21,7 @@ INCLUDEDIRSTOCKER = Stocker/include
 INCLUDEDIRENV = Environment/include
 INCLUDEDIRBUILDINS = BuildIns/include
 INCLUDEDIRHISTORY = History/include
+INCLUDEDIRREGEX = Regex/include
 INCLUDEDIR = include
 
 SRCDIRCOMMON = Common/src
@@ -37,6 +38,7 @@ SRCDIRENV = Environment/src
 SRCDIRBUILDINS = BuildIns/src
 SRCDIROPERATION = Operation/src
 SRCDIRHISTORY = History/src
+SRCDIRREGEX = Regex/src
 SRCDIR = src
 
 OBJDIRCOMMON = Common/obj
@@ -53,6 +55,7 @@ OBJDIRSTOCKER = Stocker/obj
 OBJDIRENV = Environment/obj
 OBJDIRBUILDINS = BuildIns/obj
 OBJDIRHISTORY = History/obj
+OBJDIRREGEX = Regex/obj
 OBJDIR = obj
 
 CFLAGS += -I$(INCLUDEDIRCOMMON) -I$(INCLUDEDIREVENT) -I$(INCLUDEDIREXECUTOR)
@@ -60,6 +63,7 @@ CFLAGS += -I$(INCLUDEDIRLEXER) -I$(INCLUDEDIRPARSER) -I$(INCLUDEDIRRESOLVER)
 CFLAGS += -I$(INCLUDEDIRVALIDATOR) -I$(INCLUDEDIRSECURITY) -I$(INCLUDEDIR)
 CFLAGS += -I$(INCLUDEDIRDISPLAY) -I$(INCLUDEDIRSTOCKER) -I$(INCLUDEDIRHISTORY)
 CFLAGS += -I$(INCLUDEDIRBUILDINS) -I$(INCLUDEDIROPERATION) -I$(INCLUDEDIRENV)
+CFLAGS += -I$(INCLUDEDIRREGEX)
 
 SRCSCOMMON = ft_isprint.c \
 			 ft_isinarray.c \
@@ -75,7 +79,13 @@ SRCSCOMMON = ft_isprint.c \
 			 ft_strdup.c \
 			 ft_tabstradd.c \
 			 ft_memcpy.c \
-			 ft_strsplit.c
+			 ft_strsplit.c \
+			 ft_strjoin.c \
+			 ft_strchr.c \
+			 ft_strsub.c \
+			 ft_strncpy.c \
+			 ft_atoi.c \
+			 ft_strtrim.c
 
 SRCSEVENT = ft_event.c
 
@@ -120,6 +130,19 @@ SRCSHISTORY = ft_history.c \
 			  ft_history_other.c \
 			  ft_history_push.c
 
+SRCSREGEX = ft_reg_create.c \
+			ft_reg_isinarray.c \
+			ft_reg_match_begend.c \
+			ft_reg_match_pipe.c \
+			ft_reg_match_rep.c \
+			ft_reg_match_sub.c \
+			ft_reg_matcher.c \
+			ft_regmatch.c \
+			ft_regmatch_parser.c \
+			ft_regmatch_replace.c \
+			ft_regmatch_sub.c \
+			ft_match_any.c
+
 SRCS = main.c
 
 OBJSBASECOMMON = $(SRCSCOMMON:.c=.o)
@@ -136,6 +159,7 @@ OBJSBASESTOCKER = $(SRCSSTOCKER:.c=.o)
 OBJSBASEENV = $(SRCSENV:.c=.o)
 OBJSBASEBUILDINS = $(SRCSBUILDINS:.c=.o)
 OBJSBASEHISTORY = $(SRCSHISTORY:.c=.o)
+OBJSBASEREGEX = $(SRCSREGEX:.c=.o)
 OBJSBASE = $(SRCS:.c=.o)
 
 OBJS_COMMON = $(addprefix $(OBJDIRCOMMON)/, $(OBJSBASECOMMON))
@@ -152,6 +176,7 @@ OBJS_STOCKER = $(addprefix $(OBJDIRSTOCKER)/, $(OBJSBASESTOCKER))
 OBJS_ENV = $(addprefix $(OBJDIRENV)/, $(OBJSBASEENV))
 OBJS_BUILDINS = $(addprefix $(OBJDIRBUILDINS)/, $(OBJSBASEBUILDINS))
 OBJS_HISTORY = $(addprefix $(OBJDIRHISTORY)/, $(OBJSBASEHISTORY))
+OBJS_REGEX = $(addprefix $(OBJDIRREGEX)/, $(OBJSBASEREGEX))
 OBJS = $(addprefix $(OBJDIR)/, $(OBJSBASE))
 
 NAME = 42sh
@@ -161,14 +186,14 @@ all: $(NAME)
 $(NAME): $(OBJS_COMMON) $(OBJS_EVENT) $(OBJS_EXECUTOR) $(OBJS_LEXER) \
 	$(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS_SECURITY) \
 	$(OBJS) $(OBJS_DISPLAY) $(OBJS_STOCKER) $(OBJS_ENV) $(OBJS_BUILDINS) \
-	$(OBJS_OPERATION) $(OBJS_HISTORY)
+	$(OBJS_OPERATION) $(OBJS_HISTORY) $(OBJS_REGEX)
 	$(CC) -o $(NAME) $^ $(LDFLAGS)
 
 $(OBJDIRCOMMON)/%.o: $(SRCDIRCOMMON)/%.c
 	mkdir -p $(OBJDIRCOMMON)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(OBJDIRCOMMON)/ft_isprint.o: $(INCLUDEDIRCOMMON)/common.h
+$(OBJDIRCOMMON)/%.o: $(INCLUDEDIRCOMMON)/common.h
 
 $(OBJDIREVENT)/%.o: $(SRCDIREVENT)/%.c
 	mkdir -p $(OBJDIREVENT)
@@ -178,7 +203,7 @@ $(OBJDIREXECUTOR)/%.o: $(SRCDIREXECUTOR)/%.c
 	mkdir -p $(OBJDIREXECUTOR)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(OBJDIRLEXER)/ft_lexer.o: $(INCLUDEDIRLEXER)/ft_lexer.h
+$(OBJDIRLEXER)/%.o: $(INCLUDEDIRLEXER)/ft_lexer.h
 
 $(OBJDIRLEXER)/%.o: $(SRCDIRLEXER)/%.c
 	mkdir -p $(OBJDIRLEXER)
@@ -188,7 +213,7 @@ $(OBJDIROPERATION)/%.o: $(SRCDIROPERATION)/%.c
 	mkdir -p $(OBJDIROPERATION)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(OBJDIRPARSER)/ft_parser.o: $(INCLUDEDIRPARSER)/ft_parser.h
+$(OBJDIRPARSER)/%.o: $(INCLUDEDIRPARSER)/ft_parser.h
 
 $(OBJDIRPARSER)/%.o: $(SRCDIRPARSER)/%.c
 	mkdir -p $(OBJDIRPARSER)
@@ -208,7 +233,7 @@ $(OBJDIRSECURITY)/%.o: $(SRCDIRSECURITY)/%.c
 	mkdir -p $(OBJDIRSECURITY)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(OBJDIRDISPLAY)/ft_display.o: $(INCLUDEDIRDISPLAY)/ft_display.h
+$(OBJDIRDISPLAY)/%.o: $(INCLUDEDIRDISPLAY)/ft_display.h
 
 $(OBJDIRDISPLAY)/%.o: $(SRCDIRDISPLAY)/%.c
 	mkdir -p $(OBJDIRDISPLAY)
@@ -218,25 +243,31 @@ $(OBJDIRSTOCKER)/%.o: $(SRCDIRSTOCKER)/%.c
 	mkdir -p $(OBJDIRSTOCKER)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(OBJDIRSTOCKER)/ft_stocker.o: $(INCLUDEDIRSTOCKER)/ft_stocker.h
+$(OBJDIRSTOCKER)/%.o: $(INCLUDEDIRSTOCKER)/ft_stocker.h
 
 $(OBJDIRENV)/%.o: $(SRCDIRENV)/%.c
 	mkdir -p $(OBJDIRENV)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(OBJDIRENV)/ft_environment.o: $(INCLUDEDIRENV)/ft_environment.h
+$(OBJDIRENV)/%.o: $(INCLUDEDIRENV)/ft_environment.h
 
 $(OBJDIRBUILDINS)/%.o: $(SRCDIRBUILDINS)/%.c
 	mkdir -p $(OBJDIRBUILDINS)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(OBJDIRBUILDINS)/ft_buildins.o: $(INCLUDEDIRBUILDINS)/ft_buildins.h
+$(OBJDIRBUILDINS)/%.o: $(INCLUDEDIRBUILDINS)/ft_buildins.h
 
 $(OBJDIRHISTORY)/%.o: $(SRCDIRHISTORY)/%.c
 	mkdir -p $(OBJDIRHISTORY)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(OBJDIRHISTORY)/ft_history.o: $(INCLUDEDIRHISTORY)/ft_history.h
+$(OBJDIRHISTORY)/%.o: $(INCLUDEDIRHISTORY)/ft_history.h
+
+$(OBJDIRREGEX)/%.o: $(SRCDIRREGEX)/%.c
+	mkdir -p $(OBJDIRREGEX)
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+$(OBJDIRREGEX)/%.o: $(INCLUDEDIRREGEX)/ft_regex.h
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
@@ -247,6 +278,7 @@ clean:
 	rm -f $(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS)
 	rm -f $(OBJS_SECURITY) $(OBJS_DISPLAY) $(OBJS_STOCKER) $(OBJS_ENV)
 	rm -f $(OBJS_BUILDINS) $(OBJS_OPERATION) $(OBJS_HISTORY)
+	rm -f $(OBJS_REGEX)
 
 fclean: clean
 	rm -f $(NAME)

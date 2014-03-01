@@ -3,6 +3,6 @@
 
 void	p_buildins_cd(char **argv)
 {
-	printf("cd exec");
+	printf("cd exec\n");
 	(void)argv;
 }
