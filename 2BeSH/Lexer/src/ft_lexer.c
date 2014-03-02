@@ -15,9 +15,12 @@ static t_lexer		*lexer_start(void)
 		c[0] = 0;
 		while (c[0] != '\n' && (ret = read(0, &c, 4)) > 0)
 		{
-			event_singleton()->doEvent(c);
+			event_singleton()->read(c);
 			if (c[0] == '\n')
 				lexer_singleton()->m_event_complete();
+			c[1] = 0;
+			c[2] = 0;
+			c[3] = 0;
 		}
 	}
 	return (lexer_singleton());

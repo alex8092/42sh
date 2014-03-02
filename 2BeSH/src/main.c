@@ -6,6 +6,7 @@
 #include "ft_buildins.h"
 #include "ft_display.h"
 #include "ft_resolver.h"
+#include "ft_debug.h"
 #include <stdio.h>
 
 int		main(int ac, char **av)

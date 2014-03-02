@@ -1,4 +1,5 @@
-#include "ft_event.h"
+#include "ft_event_private.h"
+#include "ft_stocker.h"
 #include "common.h"
 #include <unistd.h>
 
@@ -15,18 +16,3 @@ t_event_item	*p_event_add_item(t_event_item *p, int key, void (*f)(void))
 		p->next = item;
 	return (item);
 }
-
-static void ft_ev_key_up()
-{
-}
-
-void			p_event_init(t_event *event)
-{
-	t_event_item	*item;
-	int				calc;
-
-	calc = (27 << 24) | (91 << 16) | (65 << 8);
-	item = p_event_add_item(NULL, calc, ft_ev_key_up);
-	event->m_begin = item;
-}
-

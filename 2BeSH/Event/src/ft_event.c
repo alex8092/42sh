@@ -1,39 +1,16 @@
 #include "ft_event.h"
 #include "ft_display.h"
 #include "ft_stocker.h"
+#include "ft_event_private.h"
 #include "common.h"
 #include <stdlib.h>
 #include <unistd.h>
 
-static t_event	*doEvent(char *c)
-{
-	t_event_item	*cur;
-
-	if (ft_isprint(c[0]) || c[0] == '\n')
-	{
-		display_singleton()->writec(c[0]);
-		if (c[0] != '\n')
-			stocker_singleton()->push_back(c[0]);
-	}
-	else
-	{
-		cur = event_singleton()->m_begin;
-		while (cur)
-		{
-			if ((int)c == cur->key)
-			{
-				cur->function();
-				break ;
-			}
-		}
-	}
-	return (event_singleton());
-}
-
 static void	event_init(t_event *event)
 {
-	event->doEvent = doEvent;
-	p_event_init(event);
+	p_event_init_attributes(event);
+	p_event_init_methodes(event);
+	p_event_init_mapping_key(event);
 }
 
 t_event		*event_singleton(void)
