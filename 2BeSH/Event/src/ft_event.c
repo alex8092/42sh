@@ -12,15 +12,6 @@ static t_event	*doEvent(char *c)
 		display_singleton()->writec(c[0]);
 		if (c[0] != '\n')
 			stocker_singleton()->push_back(c[0]);
-		int index = 0;
-		while (st->size)
-		{
-			if (st->elem->key == (int)c;
-				st->elem->function(...)
-		}
-		c[0] = 27
-		c[1] = 91
-		c[2] = 65
 	}
 	return (event_singleton());
 }
@@ -43,10 +34,3 @@ t_event		*event_singleton(void)
 	}
 	return (singleton);
 }
-
-struct s_evs
-{
-	int		key;
-	void 	(*function)(...);
-	s_evs	*next;
-};
