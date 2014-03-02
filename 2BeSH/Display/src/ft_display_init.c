@@ -9,4 +9,5 @@ void		p_display_init_methodes(t_display *display)
 {
 	display->putchar = p_display_putchar;
 	display->set_fd = p_display_set_fd;
+	display->prompt = p_display_write_prompt;
 }
