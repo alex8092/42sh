@@ -107,7 +107,10 @@ SRCSLEXER = ft_lexer.c \
 			ft_lexem_template.c
 
 SRCSPARSER = ft_parser.c \
-			 ft_parser_parse.c
+			 ft_parser_parse.c \
+			 ft_init_pars.c \
+			 ft_pars_find_op.c \
+			 ft_pars_put.c
 
 SRCSRESOLVER = ft_resolver.c
 
