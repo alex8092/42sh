@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c89
 DEBUG = true
 ifeq ($(DEBUG),true)
 	CFLAGS += -ggdb3
@@ -128,7 +128,8 @@ SRCSBUILDINS = ft_buildins.c \
 
 SRCSHISTORY = ft_history.c \
 			  ft_history_init.c \
-			  ft_history_other.c
+			  ft_history_other.c \
+			  ft_history_push.c
 
 SRCSREGEX = ft_reg_create.c \
 			ft_reg_isinarray.c \

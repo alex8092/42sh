@@ -1,5 +1,4 @@
 #include "ft_stocker_private.h"
-#include <stdio.h>
 
 t_stocker		*p_stocker_push_back_lst(char c)
 {
