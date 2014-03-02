@@ -7,11 +7,25 @@
 
 static t_event	*doEvent(char *c)
 {
+	t_event_item	*cur;
+
 	if (ft_isprint(c[0]) || c[0] == '\n')
 	{
 		display_singleton()->writec(c[0]);
 		if (c[0] != '\n')
 			stocker_singleton()->push_back(c[0]);
+	}
+	else
+	{
+		cur = event_singleton()->m_begin;
+		while (cur)
+		{
+			if ((int)c == cur->key)
+			{
+				cur->function();
+				break ;
+			}
+		}
 	}
 	return (event_singleton());
 }
@@ -19,6 +33,7 @@ static t_event	*doEvent(char *c)
 static void	event_init(t_event *event)
 {
 	event->doEvent = doEvent;
+	p_event_init(event);
 }
 
 t_event		*event_singleton(void)
@@ -27,7 +42,7 @@ t_event		*event_singleton(void)
 
 	if (!singleton)
 	{
-		singleton = (t_event*)malloc(sizeof(t_event));
+		singleton = (t_event*)ft_memalloc(sizeof(t_event));
 		if (!singleton)
 			exit(1);
 		event_init(singleton);
