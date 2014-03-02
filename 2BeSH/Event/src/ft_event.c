@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include <stdio.h>
+
 static t_event	*doEvent(char *c)
 {
 	t_event_item	*cur;
@@ -13,7 +15,7 @@ static t_event	*doEvent(char *c)
 	{
 		display_singleton()->writec(c[0]);
 		if (c[0] != '\n')
-			stocker_singleton()->push_back(c[0]);
+			stocker_singleton()->push(c[0]);
 	}
 	else
 	{
@@ -25,6 +27,7 @@ static t_event	*doEvent(char *c)
 				cur->function();
 				break ;
 			}
+			cur = cur->next;
 		}
 	}
 	return (event_singleton());
