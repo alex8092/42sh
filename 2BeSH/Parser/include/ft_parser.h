@@ -14,7 +14,8 @@ struct 		s_pars
 	t_lex	*left;
 	t_lex	*parent;
 
-}
+};
+
 struct		s_parser
 {
 	void			(*start)();
