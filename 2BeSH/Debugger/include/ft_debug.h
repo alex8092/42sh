@@ -3,6 +3,8 @@
 
 # define BESH_DEBUG
 
+void	debug(int n, ...);
 void	debug_write(char *str);
 
 #endif
+
