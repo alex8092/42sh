@@ -28,7 +28,7 @@ t_pars			*p_put_op(t_pars *lst, t_lex *begin)
 	if (!lst)
 		lst = p_pars_init();
 	op = p_find_op(begin);
-	if ((op->op / 10) >= 0)
+	if ((op->op / 10) > 0)
 	{
 		tmp = op->next;
 		op->next = NULL;

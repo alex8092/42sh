@@ -1,33 +1,11 @@
-#include "ft_display.h"
+#include "ft_display_private.h"
 #include <stdlib.h>
 #include <unistd.h>
 
-
-static t_display	*display_char(char c)
+static void			display_init(t_display *display)
 {
-	static t_display	*dis = NULL;
-
-	if (!dis)
-		dis = display_singleton();
-	write(dis->m_out, &c, 1);
-	return (dis);
-}
-
-static t_display	*display_on(int fd)
-{
-	static t_display	*dis = NULL;
-
-	if (!dis)
-		dis = display_singleton();
-	dis->m_out = fd;
-	return ((t_display *)dis);
-}
-
-static void			display_init(t_display *dis)
-{
-	dis->writec = display_char;
-	dis->m_out = 1;
-	dis->set_out = display_on;
+	p_display_init_attributes(display);
+	p_display_init_methodes(display);
 }
 
 t_display			*display_singleton(void)
