@@ -12,7 +12,7 @@ struct s_lex
 	int		l_op;
 	char	*t_word;
 	t_lex	*t_next;
-}
+};
 
 struct	s_lexer
 {
