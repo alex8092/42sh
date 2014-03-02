@@ -9,9 +9,9 @@ typedef struct s_lex	t_lex;
 
 struct s_lex
 {
-	int		l_op;
-	char	*t_word;
-	t_lex	*t_next;
+	int		op;
+	char	*str;
+	t_lex	*next;
 };
 
 struct	s_lexer
