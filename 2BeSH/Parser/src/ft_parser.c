@@ -11,22 +11,7 @@
 
 static void	parser_start(t_lex *begin)
 {
-	t_pars		*test;
-
-	test = parser_singleton()->parse(begin);
-
-/*	printf("op test = : %d\n", test->op->op);
-	if (test->right)
-		printf("op test right = : %d\n", test->right->op->op);
-	else
-		printf("op test right = : NULL\n");
-	if (test->left)
-		printf("op test left  = : %d\n", test->left->op->op);
-	else
-		printf("op test left = : NULL \n");*/
-	/*	ops = parser_singleton()->parse(stocker_singleton()->to_string());
-	resolver_singleton()->start(ops);
-	stocker_singleton()->clean(); */
+	parser_singleton()->parse(begin);
 	return ;
 }
 

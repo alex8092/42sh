@@ -25,24 +25,19 @@ static void			puttree(t_pars *tree)
 {
 	t_lex	*cur;
 
+	if (tree->left)
+		puttree(tree->left);
 	if (tree->op)
 	{
 		cur = tree->op;
-		while (cur)
+		while(cur)
 		{
 			printf("%s ", cur->str);
 			cur = cur->next;
 		}
-		printf("\n");
-	}
-	if (tree->left)
-	{
-		puttree(tree->left);
 	}
 	if (tree->right)
-	{
 		puttree(tree->right);
-	}
 }
 
 t_pars			*p_parser_parse(t_lex *lst)
@@ -52,6 +47,8 @@ t_pars			*p_parser_parse(t_lex *lst)
 	parseur = NULL;
 	parseur = p_put_op(parseur , lst);
 	parseur = p_put_child(parseur);
+	printf("[#] ");
 	puttree(parseur);
+	printf("\n");
 	return (parseur);
 }
