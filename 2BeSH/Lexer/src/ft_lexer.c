@@ -32,9 +32,6 @@ static t_lexer		*lexer_start(void)
 						continue ;
 					}
 				}
-				c[1] = 0;
-				c[2] = 0;
-				c[3] = 0;
 			}
 		}
 	}

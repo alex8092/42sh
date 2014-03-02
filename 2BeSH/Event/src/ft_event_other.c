@@ -36,6 +36,10 @@ t_event		*p_event_read(char *c)
 			}
 			cur = cur->next;
 		}
+		c[0] = 0;
+		c[1] = 0;
+		c[2] = 0;
+		c[3] = 0;
 	}
 	return (event_singleton());
 }
