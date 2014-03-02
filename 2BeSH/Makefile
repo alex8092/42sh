@@ -93,6 +93,7 @@ SRCSCOMMON = ft_isprint.c \
 SRCSEVENT = ft_event.c \
 			ft_event_init.c \
 			ft_event_map_mv.c \
+			ft_event_map_dell.c \
 			ft_event_map_key.c \
 			ft_event_other.c \
 			ft_event_item.c
@@ -106,7 +107,10 @@ SRCSLEXER = ft_lexer.c \
 			ft_lexem_template.c
 
 SRCSPARSER = ft_parser.c \
-			 ft_parser_parse.c
+			 ft_parser_parse.c \
+			 ft_init_pars.c \
+			 ft_pars_find_op.c \
+			 ft_pars_put.c
 
 SRCSRESOLVER = ft_resolver.c
 

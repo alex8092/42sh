@@ -9,17 +9,16 @@ typedef struct s_pars	t_pars;
 
 struct 		s_pars
 {
-	t_lex	*t_op;
-	t_lex	*right;
-	t_lex	*left;
-	t_lex	*parent;
-
+	t_lex	*op;
+	t_pars	*right;
+	t_pars	*left;
+	t_pars	*parent;
 };
 
 struct		s_parser
 {
-	void			(*start)();
-	t_operation		*(*parse)(char *);
+	void			(*start)(t_lex *begin);
+	t_pars		*(*parse)(t_lex*);
 };
 
 t_parser	*parser_singleton(void);

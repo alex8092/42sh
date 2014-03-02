@@ -1,15 +1,32 @@
 #include "ft_parser_private.h"
 #include "ft_stocker.h"
 #include "ft_resolver.h"
+
+
+#include "ft_lexer.h"
+#include "common.h"
+#include <stdio.h>
+
 #include <stdlib.h>
 
-static void	parser_start()
+static void	parser_start(t_lex *begin)
 {
-	t_operation	*ops;
+	t_pars		*test;
 
-	ops = parser_singleton()->parse(stocker_singleton()->to_string());
+	test = parser_singleton()->parse(begin);
+
+	printf("op test = : %d\n", test->op->op);
+	if (test->right)
+		printf("op test right = : %d\n", test->right->op->op);
+	else
+		printf("op test right = : NULL\n");
+	if (test->left)
+		printf("op test left  = : %d\n", test->left->op->op);
+	else
+		printf("op test left = : NULL \n");
+	/*	ops = parser_singleton()->parse(stocker_singleton()->to_string());
 	resolver_singleton()->start(ops);
-	stocker_singleton()->clean();
+	stocker_singleton()->clean(); */
 	return ;
 }
 

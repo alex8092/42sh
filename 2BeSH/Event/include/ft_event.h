@@ -10,6 +10,11 @@ struct	s_event
 
 	t_event			*(*read)(char *c);
 	t_event			*(*map_prev)(void);
+	t_event			*(*map_next)(void);
+	t_event			*(*map_back)(void);
+	t_event			*(*map_front)(void);
+	t_event			*(*dell_cur)(void);
+	t_event			*(*dell_prev)(void);
 };
 
 t_event			*event_singleton(void);
