@@ -13,12 +13,12 @@ enum	e_lex_op
 {
 		LEX_OP_WORD = 1,
 		LEX_OP_STR = 2,
-		LEX_OP_AND = 10,
-		LEX_OP_OR = 11,
-		LEX_OP_PIPE = 20,
+		LEX_UNKNOW = 3,
+		LEX_OP_PIPE = 10,
+		LEX_OP_AND = 20,
+		LEX_OP_OR = 21,
 		LEX_OP_SEPARATOR = 30,
 		LEX_OP_BACK = 31,
-		LEX_UNKNOW = 10000
 };
 
 struct			s_lex
