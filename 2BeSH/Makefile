@@ -91,6 +91,10 @@ SRCSCOMMON = ft_isprint.c \
 			 ft_strtrim.c
 
 SRCSEVENT = ft_event.c \
+			ft_event_init.c \
+			ft_event_map_mv.c \
+			ft_event_map_key.c \
+			ft_event_other.c \
 			ft_event_item.c
 
 SRCSEXECUTOR = ft_executor.c
@@ -110,7 +114,11 @@ SRCSVALIDATOR = ft_validator.c
 
 SRCSSECURITY = ft_security.c
 
-SRCSDISPLAY = ft_display.c
+SRCSDISPLAY = ft_display.c \
+			  ft_display_init.c \
+			  ft_display_terms.c \
+			  ft_display_write.c \
+			  ft_display_other.c \
 
 SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_lst.c \

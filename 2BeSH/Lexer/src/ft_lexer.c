@@ -17,7 +17,7 @@ static t_lexer		*lexer_start(void)
 		{
 			while (c[0])
 			{
-				event_singleton()->doEvent(c);
+				event_singleton()->read(c);
 				if (c[0] == '\n')
 				{
 					ft_lexer_lex_str(stocker_singleton()->to_string());

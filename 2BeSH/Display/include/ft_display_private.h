@@ -3,14 +3,10 @@
 
 # include "ft_display.h"
 
-t_display	*p_priv_init_terms(t_bool active)
-{
-	char	*termtype;
+void			p_display_init_attributes(t_display *display);
+void			p_display_init_methodes(t_display *display);
 
-	termtype = 
-	if (active)
-	{
-	}
-}
+t_display		*p_display_putchar(char c);
+t_display		*p_display_set_fd(int fd);
 
 #endif
