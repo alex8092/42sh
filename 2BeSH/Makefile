@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c89
 DEBUG = true
 ifeq ($(DEBUG),true)
 	CFLAGS += -ggdb3
