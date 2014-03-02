@@ -17,7 +17,8 @@ enum	e_lex_op
 		LEX_OP_OR = 11,
 		LEX_OP_PIPE = 20,
 		LEX_OP_SEPARATOR = 30,
-		LEX_OP_BACK = 31
+		LEX_OP_BACK = 31,
+		LEX_UNKNOW = 10000
 };
 
 struct			s_lex
@@ -30,9 +31,9 @@ struct			s_lex
 struct	s_lexer
 {
 	t_lex_reg	*m_reg_begin;
-	void		(*m_event_complete)();
+	void		(*m_event_complete)(t_lex *);
 	t_lexer		*(*start)();
-	t_lexer		*(*onComplete)(void (*)());
+	t_lexer		*(*onComplete)(void (*)(t_lex *));
 };
 
 t_lexer	*lexer_singleton(void);
