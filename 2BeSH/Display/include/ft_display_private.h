@@ -6,7 +6,7 @@
 void			p_display_init_attributes(t_display *display);
 void			p_display_init_methodes(t_display *display);
 
-t_display		*p_display_write_char(char c);
+t_display		*p_display_putchar(char c);
 t_display		*p_display_set_fd(int fd);
 
 #endif
