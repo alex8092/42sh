@@ -1,6 +1,10 @@
 #!/bin/sh
 
-while [ -z $1 ];
+while : ;
 do
-	nc -l 4242 >> ../../debug.log
+	if [ ! -z $1 ]; then
+		nc -l 4242 >> $1
+	else
+		nc -l 4242
+	fi
 done

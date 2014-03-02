@@ -1,13 +1,27 @@
 #include "ft_debug.h"
 #include "common.h"
-#include <stdlib.h>
+
+#ifdef BESH_DEBUG
+# include <stdlib.h>
+# include <stdio.h>
 
 void	debug_write(char *str)
 {
-#ifdef BESH_DEBUG
-	system(ft_strjoin(ft_strjoin("echo \"", str), "\" > .tmp_debug"));
+	char	tmp[2048];
+	ssize_t	ret;
+
+	ret = sprintf(tmp, "echo \"%s\" > .tmp_debug", str);
+	tmp[ret] = 0;
+	system(tmp);
 	system("nc localhost 4242 < .tmp_debug");
 	system("rm .tmp_debug");
-#endif
 }
+
+# else
+
+void	debug_write(char *str)
+{
+}
+
+#endif
 

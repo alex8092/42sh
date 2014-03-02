@@ -52,8 +52,8 @@ int		main(int ac, char **av)
 
 
 	security_singleton()->activeRaw(true);
-	lexer_singleton()->onComplete(parser_singleton()->start)->start();
 	debug_write("test");
+	lexer_singleton()->onComplete(parser_singleton()->start)->start();
 	(void)ac;
 	(void)av;
 	security_singleton()->activeRaw(false);
