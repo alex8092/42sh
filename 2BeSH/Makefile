@@ -93,6 +93,7 @@ SRCSCOMMON = ft_isprint.c \
 SRCSEVENT = ft_event.c \
 			ft_event_init.c \
 			ft_event_map_mv.c \
+			ft_event_map_dell.c \
 			ft_event_map_key.c \
 			ft_event_other.c \
 			ft_event_item.c

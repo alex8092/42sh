@@ -10,7 +10,7 @@ t_event		*p_event_read(char *c)
 
 	if (ft_isprint(c[0]) || c[0] == '\n')
 	{
-		display_singleton()->writec(c[0]);
+		display_singleton()->putchar(c[0]);
 		if (c[0] != '\n')
 			stocker_singleton()->push((char)c[0]);
 	}

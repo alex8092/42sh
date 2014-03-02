@@ -1,6 +1,6 @@
 #include "ft_display_private.h"
 
-t_display		*p_display_write_char(char c)
+t_display		*p_display_putchar(char c)
 {
 	static t_display	*dis = NULL;
 
