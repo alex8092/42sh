@@ -1,6 +1,7 @@
 #include "ft_resolver.h"
 #include "common.h"
 #include "ft_executor.h"
+#include "ft_debug.h"
 #include <stdio.h>
 
 static void	resolver_start(t_operation *ops)
