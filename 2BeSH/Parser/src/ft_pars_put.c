@@ -42,5 +42,7 @@ t_pars			*p_put_op(t_pars *lst, t_lex *begin)
 		if (tmp != op)
 			lst = put_children(lst, begin , LEFT);
 	}
+	else
+		lst->op = op;
 	return (lst);
 }
