@@ -1,4 +1,3 @@
-
 #ifndef FT_LEXER_H
 # define FT_LEXER_H
 
@@ -14,7 +13,6 @@ struct s_lex
 	char	*t_word;
 	t_lex	*t_next;
 }
-
 
 struct	s_lexer
 {
