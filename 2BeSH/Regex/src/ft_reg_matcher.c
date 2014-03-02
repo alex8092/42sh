@@ -6,7 +6,7 @@
 /*   By: amerle <amerle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 11:05:14 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/01 23:08:04 by amerle           ###   ########.fr       */
+/*   Updated: 2014/03/02 18:01:41 by amerle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static t_bool	ft_match_brack(t_op_brack *op, t_reg *reg);
 static t_bool	ft_match_base(t_op_base *op, t_reg *reg);
-
 
 t_bool	ft_match_op(t_regop *op, t_reg *reg)
 {

@@ -12,9 +12,18 @@ static t_event	*doEvent(char *c)
 
 	if (ft_isprint(c[0]) || c[0] == '\n')
 	{
-		display_singleton()->writec(c[0]);
-		if (c[0] != '\n')
-			stocker_singleton()->push(c[0]);
+		while (c[0])
+		{
+			display_singleton()->writec(c[0]);
+			if (c[0] != '\n')
+				stocker_singleton()->push(c[0]);
+			else
+				break ;
+			c[0] = c[1];
+			c[1] = c[2];
+			c[2] = c[3];
+			c[3] = 0;
+		}
 	}
 	else
 	{

@@ -97,7 +97,9 @@ SRCSEXECUTOR = ft_executor.c
 
 SRCSOPERATION = ft_operation.c
 
-SRCSLEXER = ft_lexer.c
+SRCSLEXER = ft_lexer.c \
+			ft_lexer_lex.c \
+			ft_lexem_template.c
 
 SRCSPARSER = ft_parser.c \
 			 ft_parser_parse.c
