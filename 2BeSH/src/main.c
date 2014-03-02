@@ -13,7 +13,9 @@ int		main(int ac, char **av)
 	/* TEST TRIVIERE START 
 	printf("--------- TEST TRIVIERE START ---------\n");
 
-	printf("--------- TEST TRIVIERE END ---------\n\n");
+
+
+	printf("---------  TEST TRIVIERE END  ---------\n\n");
 	// TEST TRIVIERE END */
 
 
