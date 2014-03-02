@@ -23,8 +23,18 @@ static t_pars		*p_put_child(t_pars *cur)
 
 static void			puttree(t_pars *tree)
 {
+	t_lex	*cur;
+
 	if (tree->op)
-		printf("op : %d\n", tree->op->op);
+	{
+		cur = tree->op;
+		while (cur)
+		{
+			printf("%s ", cur->str);
+			cur = cur->next;
+		}
+		printf("\n");
+	}
 	if (tree->left)
 	{
 		puttree(tree->left);

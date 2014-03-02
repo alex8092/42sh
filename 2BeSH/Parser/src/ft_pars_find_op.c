@@ -11,7 +11,7 @@ t_lex		*p_find_op(t_lex *begin)
 	nb = begin->op / 10;
 	while (cur != NULL)
 	{
-		if ((cur->op / 10) > nb)
+		if ((cur->op / 10) > nb && cur->op > 10)
 		{
 			nb = (cur->op / 10);
 			op = cur;

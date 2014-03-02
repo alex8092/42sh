@@ -21,6 +21,10 @@ void			p_lexer_template_init(t_lexer *lexer)
 	t = ft_new_lti(NULL, ";", LEX_OP_SEPARATOR);
 	lexer->m_reg_begin = t;
 	t = ft_new_lti(t, "[\\/.a-zA-Z0-9-]{1,}", LEX_OP_WORD);
+	t = ft_new_lti(t, "[123]?>>", LEX_OP_APPEND_OUT);
+	t = ft_new_lti(t, "[123]?>", LEX_OP_REDIRECT_OUT);
+	t = ft_new_lti(t, "<", LEX_OP_REDIRECT_IN);
+	t = ft_new_lti(t, "\".{0,}[^\\]\"", LEX_OP_STR);
 	t = ft_new_lti(t, "&&", LEX_OP_AND);
 	t = ft_new_lti(t, "&", LEX_OP_BACK);
 	t = ft_new_lti(t, "||", LEX_OP_OR);

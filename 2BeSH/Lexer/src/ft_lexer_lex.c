@@ -31,19 +31,20 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 	debug(1, "\n\t[COMPARE]");
 	while (cur)
 	{
-		debug(5, "compare match : { \\\"", *str, "\\\" } <=> pattern { \\\"", cur->pattern, "\\\" }\n");
+		printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);
+/*		debug(5, "compare match : { \\\"", *str, "\\\" } <=> pattern { \\\"", cur->pattern, "\\\" }\n");*/
 		if ((res = ft_regmatch(*str, cur->pattern, &len)) == *str)
 		{
 			printf("\tlen : %ld\n", len);
 			debug(1, "\t[MATCH]\n");
 			*str += len;
-			return (ft_create_lex(parent, ft_strsub(*str, 0, len), cur->op));
+			return (ft_create_lex(parent, ft_strsub((*str) - len, 0, len), cur->op));
 		}
 		cur = cur->next;
 	}
 	++(*str);
 	debug(1, "\t[NOMATCH]\n");
-	return (ft_create_lex(parent, ft_strsub(*str, 0, len), cur->op));
+	return (ft_create_lex(parent, ft_strsub((*str) - 1, 0, 1), LEX_UNKNOW));
 }
 
 void			ft_lexer_lex_str(char *str)
@@ -60,7 +61,7 @@ void			ft_lexer_lex_str(char *str)
 	tmp = str;
 	while (*tmp)
 	{
-		if (*tmp != ' ')
+		if (*tmp != ' ' && *tmp != '\t')
 		{
 			end = ft_lexer_get_lex(end, &tmp);
 			if (!begin)
