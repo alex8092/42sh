@@ -45,16 +45,16 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 	debug(1, "\n\t[COMPARE]");
 	while (cur)
 	{
-		printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);
-/*		debug(5, "compare match : { \\\"", *str, "\\\" } <=> pattern { \\\"", cur->pattern, "\\\" }\n");*/
+/*		printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);
+		debug(5, "compare match : { \\\"", *str, "\\\" } <=> pattern { \\\"", cur->pattern, "\\\" }\n");*/
 		if ((res = ft_regmatch(*str, cur->pattern, &len)) == *str)
 		{
 			if (cur->op == LEX_OP_WORD)
 				ft_manage_word(*str, &len);
 			if (len != 0)
 			{
-				printf("\tlen : %ld\n", len);
-				debug(1, "\t[MATCH]\n");
+				/*printf("\tlen : %ld\n", len);
+				debug(1, "\t[MATCH]\n");*/
 				*str += len;
 				return (ft_create_lex(parent, ft_strsub((*str) - len, 0, len), cur->op));
 			}
@@ -62,7 +62,7 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 		cur = cur->next;
 	}
 	++(*str);
-	debug(1, "\t[NOMATCH]\n");
+/*	debug(1, "\t[NOMATCH]\n");*/
 	return (ft_create_lex(parent, ft_strsub((*str) - 1, 0, 1), LEX_UNKNOW));
 }
 
@@ -75,7 +75,7 @@ void			ft_lexer_lex_str(char *str)
 
 	begin = NULL;
 	end = NULL;
-	debug(1, "$> start lexer");
+/*	debug(1, "$> start lexer");*/
 	index = 0;
 	tmp = str;
 	while (*tmp)
