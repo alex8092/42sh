@@ -24,7 +24,7 @@ void		p_event_init_mapping_key(t_event *event)
 	t_event_item	*item;
 	int				calc;
 
-	if (!env_singleton()->get("TERM"))
+	if (env_singleton()->get("TERM"))
 	{
 		calc = (27 << 24) | (91 << 16) | (68 << 8);
 		item = p_event_add_item(NULL, calc, (void *)event->map_prev);
