@@ -11,6 +11,8 @@
 
 static void	parser_start(t_lex *begin)
 {
+	t_pars		*test;
+
 	test = parser_singleton()->parse(begin);
 
 	printf("op test = : %d\n", test->op->op);

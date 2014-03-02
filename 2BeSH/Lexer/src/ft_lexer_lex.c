@@ -18,7 +18,7 @@ static t_lex	*ft_create_lex(t_lex *parent, char *str, t_lex_op op)
 	return (item);
 }
 
-t_lex			*ft_lexer_get_lex(char **str)
+t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 {
 	static t_lex_reg	*begin = NULL;
 	t_lex_reg			*cur;
@@ -29,7 +29,7 @@ t_lex			*ft_lexer_get_lex(char **str)
 		begin = lexer_singleton()->m_reg_begin;
 	cur = begin;
 	debug(1, "\n\t[COMPARE]");
-	while ((*str)[0] != ' ' && cur)
+	while (cur)
 	{
 		debug(5, "compare match : { \\\"", *str, "\\\" } <=> pattern { \\\"", cur->pattern, "\\\" }\n");
 		if ((res = ft_regmatch(*str, cur->pattern, &len)) == *str)
@@ -37,13 +37,13 @@ t_lex			*ft_lexer_get_lex(char **str)
 			printf("\tlen : %ld\n", len);
 			debug(1, "\t[MATCH]\n");
 			*str += len;
-			return (NULL);
+			return (ft_create_lex(parent, ft_strsub(*str, 0, len), cur->op));
 		}
 		cur = cur->next;
 	}
 	++(*str);
 	debug(1, "\t[NOMATCH]\n");
-	return (NULL);
+	return (ft_create_lex(parent, ft_strsub(*str, 0, len), cur->op));
 }
 
 void			ft_lexer_lex_str(char *str)
@@ -51,22 +51,24 @@ void			ft_lexer_lex_str(char *str)
 	t_lex		*begin;
 	t_lex		*end;
 	size_t		index;
-	t_lex_reg	*beg_reg;
 	char		*tmp;
 
 	begin = NULL;
 	end = NULL;
 	debug(1, "$> start lexer");
 	index = 0;
-	beg_reg = lexer_singleton()->m_reg_begin;
 	tmp = str;
 	while (*tmp)
 	{
 		if (*tmp != ' ')
-			ft_lexer_get_lex(&tmp);
+		{
+			end = ft_lexer_get_lex(end, &tmp);
+			if (!begin)
+				begin = end;
+		}
 		else
 			++tmp;
 	}
-	(void)ft_create_lex;
+	lexer_singleton()->m_event_complete(begin);
 }
 
