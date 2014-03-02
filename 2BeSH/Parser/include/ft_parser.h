@@ -3,7 +3,17 @@
 # include "ft_operation.h"
 
 typedef struct s_parser	t_parser;
+typedef struct s_pars	t_pars;
 
+
+struct 		s_pars
+{
+	t_lex	*t_op;
+	t_lex	*right;
+	t_lex	*left;
+	t_lex	*parent;
+
+}
 struct		s_parser
 {
 	void			(*start)();
