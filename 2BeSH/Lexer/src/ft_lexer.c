@@ -18,6 +18,9 @@ static t_lexer		*lexer_start(void)
 			event_singleton()->doEvent(c);
 			if (c[0] == '\n')
 				lexer_singleton()->m_event_complete();
+			c[1] = 0;
+			c[2] = 0;
+			c[3] = 0;
 		}
 	}
 	return (lexer_singleton());

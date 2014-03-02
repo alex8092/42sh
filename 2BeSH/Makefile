@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c89
 DEBUG = true
 ifeq ($(DEBUG),true)
 	CFLAGS += -ggdb3
@@ -22,6 +22,7 @@ INCLUDEDIRENV = Environment/include
 INCLUDEDIRBUILDINS = BuildIns/include
 INCLUDEDIRHISTORY = History/include
 INCLUDEDIRREGEX = Regex/include
+INCLUDEDIRDEBUG = Debugger/include
 INCLUDEDIR = include
 
 SRCDIRCOMMON = Common/src
@@ -39,6 +40,7 @@ SRCDIRBUILDINS = BuildIns/src
 SRCDIROPERATION = Operation/src
 SRCDIRHISTORY = History/src
 SRCDIRREGEX = Regex/src
+SRCDIRDEBUG = Debugger/src
 SRCDIR = src
 
 OBJDIRCOMMON = Common/obj
@@ -56,6 +58,7 @@ OBJDIRENV = Environment/obj
 OBJDIRBUILDINS = BuildIns/obj
 OBJDIRHISTORY = History/obj
 OBJDIRREGEX = Regex/obj
+OBJDIRDEBUG = Debugger/obj
 OBJDIR = obj
 
 CFLAGS += -I$(INCLUDEDIRCOMMON) -I$(INCLUDEDIREVENT) -I$(INCLUDEDIREXECUTOR)
@@ -63,7 +66,7 @@ CFLAGS += -I$(INCLUDEDIRLEXER) -I$(INCLUDEDIRPARSER) -I$(INCLUDEDIRRESOLVER)
 CFLAGS += -I$(INCLUDEDIRVALIDATOR) -I$(INCLUDEDIRSECURITY) -I$(INCLUDEDIR)
 CFLAGS += -I$(INCLUDEDIRDISPLAY) -I$(INCLUDEDIRSTOCKER) -I$(INCLUDEDIRHISTORY)
 CFLAGS += -I$(INCLUDEDIRBUILDINS) -I$(INCLUDEDIROPERATION) -I$(INCLUDEDIRENV)
-CFLAGS += -I$(INCLUDEDIRREGEX)
+CFLAGS += -I$(INCLUDEDIRREGEX) -I$(INCLUDEDIRDEBUG)
 
 SRCSCOMMON = ft_isprint.c \
 			 ft_isinarray.c \
@@ -87,7 +90,8 @@ SRCSCOMMON = ft_isprint.c \
 			 ft_atoi.c \
 			 ft_strtrim.c
 
-SRCSEVENT = ft_event.c
+SRCSEVENT = ft_event.c \
+			ft_event_item.c
 
 SRCSEXECUTOR = ft_executor.c
 
@@ -127,7 +131,8 @@ SRCSBUILDINS = ft_buildins.c \
 
 SRCSHISTORY = ft_history.c \
 			  ft_history_init.c \
-			  ft_history_other.c
+			  ft_history_other.c \
+			  ft_history_push.c
 
 SRCSREGEX = ft_reg_create.c \
 			ft_reg_isinarray.c \
@@ -141,6 +146,8 @@ SRCSREGEX = ft_reg_create.c \
 			ft_regmatch_replace.c \
 			ft_regmatch_sub.c \
 			ft_match_any.c
+
+SRCSDEBUG = ft_debug.c
 
 SRCS = main.c
 
@@ -159,6 +166,7 @@ OBJSBASEENV = $(SRCSENV:.c=.o)
 OBJSBASEBUILDINS = $(SRCSBUILDINS:.c=.o)
 OBJSBASEHISTORY = $(SRCSHISTORY:.c=.o)
 OBJSBASEREGEX = $(SRCSREGEX:.c=.o)
+OBJSBASEDEBUG = $(SRCSDEBUG:.c=.o)
 OBJSBASE = $(SRCS:.c=.o)
 
 OBJS_COMMON = $(addprefix $(OBJDIRCOMMON)/, $(OBJSBASECOMMON))
@@ -176,6 +184,7 @@ OBJS_ENV = $(addprefix $(OBJDIRENV)/, $(OBJSBASEENV))
 OBJS_BUILDINS = $(addprefix $(OBJDIRBUILDINS)/, $(OBJSBASEBUILDINS))
 OBJS_HISTORY = $(addprefix $(OBJDIRHISTORY)/, $(OBJSBASEHISTORY))
 OBJS_REGEX = $(addprefix $(OBJDIRREGEX)/, $(OBJSBASEREGEX))
+OBJS_DEBUG = $(addprefix $(OBJDIRDEBUG)/, $(OBJSBASEDEBUG))
 OBJS = $(addprefix $(OBJDIR)/, $(OBJSBASE))
 
 NAME = 42sh
@@ -185,7 +194,7 @@ all: $(NAME)
 $(NAME): $(OBJS_COMMON) $(OBJS_EVENT) $(OBJS_EXECUTOR) $(OBJS_LEXER) \
 	$(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS_SECURITY) \
 	$(OBJS) $(OBJS_DISPLAY) $(OBJS_STOCKER) $(OBJS_ENV) $(OBJS_BUILDINS) \
-	$(OBJS_OPERATION) $(OBJS_HISTORY) $(OBJS_REGEX)
+	$(OBJS_OPERATION) $(OBJS_HISTORY) $(OBJS_REGEX) $(OBJS_DEBUG)
 	$(CC) -o $(NAME) $^ $(LDFLAGS)
 
 $(OBJDIRCOMMON)/%.o: $(SRCDIRCOMMON)/%.c
@@ -268,6 +277,10 @@ $(OBJDIRREGEX)/%.o: $(SRCDIRREGEX)/%.c
 
 $(OBJDIRREGEX)/%.o: $(INCLUDEDIRREGEX)/ft_regex.h
 
+$(OBJDIRDEBUG)/%.o: $(SRCDIRDEBUG)/%.c
+	mkdir -p $(OBJDIRDEBUG)
+	$(CC) -o $@ -c $< $(CFLAGS)
+
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
 	$(CC) -o $@ -c $< $(CFLAGS)
@@ -277,7 +290,7 @@ clean:
 	rm -f $(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS)
 	rm -f $(OBJS_SECURITY) $(OBJS_DISPLAY) $(OBJS_STOCKER) $(OBJS_ENV)
 	rm -f $(OBJS_BUILDINS) $(OBJS_OPERATION) $(OBJS_HISTORY)
-	rm -f $(OBJS_REGEX)
+	rm -f $(OBJS_REGEX) $(OBJS_DEBUG)
 
 fclean: clean
 	rm -f $(NAME)

@@ -62,9 +62,14 @@ t_operation	 	*p_parser_parse(char *str)
 		y += i + 1;
 	}
 	if (!last)
+	{
 		last = begin;
+		begin->str = ft_strdup(str);
+	}
 	else
+	{
 		last->next = ft_init_operation();
-	last->next->str = ft_strdup(str + y);
+		last->next->str = ft_strdup(str + y);
+	}
 	return (begin);
 }

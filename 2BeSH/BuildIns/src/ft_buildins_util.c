@@ -20,12 +20,12 @@ void		p_buildins_init_builds(t_buildins *bi)
 {
 	t_buildin	*cur;
 
-	cur = p_buildins_new(NULL, "cd", p_buildins_cd);
+	cur = p_buildins_new(NULL, "cd ", p_buildins_cd);
 	bi->m_begin = cur;
-	cur = p_buildins_new(cur, "echo", p_buildins_echo);
-	cur = p_buildins_new(cur, "env", p_buildins_env);
-	cur = p_buildins_new(cur, "exit", p_buildins_exit);
-	cur = p_buildins_new(cur, "setenv", p_buildins_setenv);
-	cur = p_buildins_new(cur, "unsetenv", p_buildins_unsetenv);
+	cur = p_buildins_new(cur, "echo ", p_buildins_echo);
+	cur = p_buildins_new(cur, "env ", p_buildins_env);
+	cur = p_buildins_new(cur, "exit ", p_buildins_exit);
+	cur = p_buildins_new(cur, "setenv ", p_buildins_setenv);
+	cur = p_buildins_new(cur, "unsetenv ", p_buildins_unsetenv);
 }
 
