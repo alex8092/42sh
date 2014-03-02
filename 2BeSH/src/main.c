@@ -6,6 +6,7 @@
 #include "ft_buildins.h"
 #include "ft_display.h"
 #include "ft_resolver.h"
+#include "ft_debug.h"
 #include <stdio.h>
 
 int		main(int ac, char **av)
@@ -52,6 +53,7 @@ int		main(int ac, char **av)
 
 	security_singleton()->activeRaw(true);
 	lexer_singleton()->onComplete(parser_singleton()->start)->start();
+	debug_write("test");
 	(void)ac;
 	(void)av;
 	security_singleton()->activeRaw(false);
