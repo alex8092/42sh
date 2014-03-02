@@ -18,6 +18,20 @@ static t_lex	*ft_create_lex(t_lex *parent, char *str, t_lex_op op)
 	return (item);
 }
 
+static void		ft_manage_word(char *str, size_t *len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < *len)
+	{
+		if (ft_isinarray(str[i], "&;|><") && i > 0 && str[i - 1] != '\\')
+			break ;
+		++i;
+	}
+	*len = i;
+}
+
 t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 {
 	static t_lex_reg	*begin = NULL;
@@ -35,10 +49,15 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 /*		debug(5, "compare match : { \\\"", *str, "\\\" } <=> pattern { \\\"", cur->pattern, "\\\" }\n");*/
 		if ((res = ft_regmatch(*str, cur->pattern, &len)) == *str)
 		{
-			printf("\tlen : %ld\n", len);
-			debug(1, "\t[MATCH]\n");
-			*str += len;
-			return (ft_create_lex(parent, ft_strsub((*str) - len, 0, len), cur->op));
+			if (cur->op == LEX_OP_WORD)
+				ft_manage_word(*str, &len);
+			if (len != 0)
+			{
+				printf("\tlen : %ld\n", len);
+				debug(1, "\t[MATCH]\n");
+				*str += len;
+				return (ft_create_lex(parent, ft_strsub((*str) - len, 0, len), cur->op));
+			}
 		}
 		cur = cur->next;
 	}
