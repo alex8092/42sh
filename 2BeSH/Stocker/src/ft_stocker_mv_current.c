@@ -1,7 +1,5 @@
 #include "ft_stocker_private.h"
 
-#include <stdio.h>
-
 t_stocker	*p_stocker_current_prev(void)
 {
 	t_lst_stocker		*cursor;

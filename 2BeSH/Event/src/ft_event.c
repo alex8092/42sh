@@ -5,8 +5,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <stdio.h>
-
 static t_event	*doEvent(char *c)
 {
 	t_event_item	*cur;

@@ -3,8 +3,6 @@
 #include "common.h"
 #include <unistd.h>
 
-#include <stdio.h>
-
 t_event_item	*p_event_add_item(t_event_item *p, int key, void (*f)(void))
 {
 	t_event_item	*item;
