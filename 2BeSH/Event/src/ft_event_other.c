@@ -10,9 +10,18 @@ t_event		*p_event_read(char *c)
 
 	if (ft_isprint(c[0]) || c[0] == '\n')
 	{
-		display_singleton()->putchar(c[0]);
-		if (c[0] != '\n')
-			stocker_singleton()->push((char)c[0]);
+		while (c[0])
+		{
+			display_singleton()->putchar(c[0]);
+			if (c[0] != '\n')
+				stocker_singleton()->push((char)c[0]);
+			else
+				break ;
+			c[0] = c[1];
+			c[1] = c[2];
+			c[2] = c[3];
+			c[3] = 0;
+		}
 	}
 	else
 	{
@@ -27,6 +36,10 @@ t_event		*p_event_read(char *c)
 			}
 			cur = cur->next;
 		}
+		c[0] = 0;
+		c[1] = 0;
+		c[2] = 0;
+		c[3] = 0;
 	}
 	return (event_singleton());
 }
