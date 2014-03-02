@@ -30,16 +30,16 @@ void			p_event_init(t_event *event)
 	item = p_event_add_item(NULL, calc, ft_ev_key_up);
 	event->m_begin = item;
 	calc = (27 << 24) | (91 << 16) | (68 << 8);
-	item = p_event_add_item(item, calc, (void*)stocker_singleton()->mv_prev());
+	item = p_event_add_item(item, calc, (void *)stocker_singleton()->mv_prev);
 	calc = (27 << 24) | (91 << 16) | (67 << 8);
-	item = p_event_add_item(item, calc, (void*)stocker_singleton()->mv_next());
+	item = p_event_add_item(item, calc, (void *)stocker_singleton()->mv_next);
 	calc = (27 << 24) | (91 << 16) | (52 << 8) | 126;
-	item = p_event_add_item(item, calc, (void*)stocker_singleton()->mv_back());
+	item = p_event_add_item(item, calc, (void *)stocker_singleton()->mv_back);
 	calc = (27 << 14) | (91 << 16) | (49 << 8) | 126;
-	item = p_event_add_item(item, calc, (void*)stocker_singleton()->mv_front());
+	item = p_event_add_item(item, calc, (void *) stocker_singleton()->mv_front);
 	calc = (27 << 24) | (91 << 16) | (51 << 8) | 126;
-	item = p_event_add_item(item, calc, (void*)stocker_singleton()->rm_cur());
+	item = p_event_add_item(item, calc, (void *) stocker_singleton()->rm_cur);
 	calc = 127;
-	item = p_event_add_item(item, calc, (void*)stocker_singleton()->rm_prev());
+	item = p_event_add_item(item, calc, (void *) stocker_singleton()->rm_prev);
 }
 

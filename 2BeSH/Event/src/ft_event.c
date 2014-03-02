@@ -8,6 +8,7 @@
 static t_event	*doEvent(char *c)
 {
 	t_event_item	*cur;
+	int				comp;
 
 	if (ft_isprint(c[0]) || c[0] == '\n')
 	{
@@ -20,7 +21,8 @@ static t_event	*doEvent(char *c)
 		cur = event_singleton()->m_begin;
 		while (cur)
 		{
-			if ((int)c == cur->key)
+			comp = (c[0] << 24) | (c[1] << 16) | (c[2] << 8) | c[3];
+			if (comp == cur->key)
 			{
 				cur->function();
 				break ;

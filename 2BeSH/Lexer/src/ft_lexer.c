@@ -13,6 +13,9 @@ static t_lexer		*lexer_start(void)
 	{
 		write(1, "[#] : ", 6);
 		c[0] = 0;
+		c[1] = 0;
+		c[2] = 0;
+		c[3] = 0;
 		while (c[0] != '\n' && (ret = read(0, &c, 4)) > 0)
 		{
 			event_singleton()->doEvent(c);

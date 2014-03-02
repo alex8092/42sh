@@ -71,6 +71,7 @@ t_stocker		*p_stocker_remove_current_lst(void)
 		}
 		free(current);
 		stocker->m_length--;
+		stocker->m_current = tmp;
 	}
 	return (stocker);
 }
