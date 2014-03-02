@@ -11,7 +11,7 @@ struct	s_lst_history
 	t_lst_history		*next;
 };
 
-int				p_history_size(void);
+int			p_history_size(void);
 
 void		p_history_init_attributes(t_history *history);
 void		p_history_init_methods(t_history *history);

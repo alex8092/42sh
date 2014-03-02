@@ -1,6 +1,5 @@
 #include "ft_stocker_private.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 t_stocker		*p_stocker_remove_back_lst(void)
 {
