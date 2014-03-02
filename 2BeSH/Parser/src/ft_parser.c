@@ -9,23 +9,8 @@
 
 #include <stdlib.h>
 
-static void	parser_start()
+static void	parser_start(t_lex *begin)
 {
-	t_lex	*tmp;
-	t_lex	*tmp2;
-	t_lex	*begin;
-	t_pars	*test;
-
-
-	tmp = ft_memalloc(sizeof(t_lex));
-	begin = tmp ;
-	tmp->op = 7;
-	tmp = ft_memalloc(sizeof(t_lex));
-	begin->next = tmp;
-	tmp->op = 5;
-	tmp2 = ft_memalloc(sizeof(t_lex));
-	tmp->next = tmp2;
-	tmp2->op = 9;
 	test = parser_singleton()->parse(begin);
 
 	printf("op test = : %d\n", test->op->op);
