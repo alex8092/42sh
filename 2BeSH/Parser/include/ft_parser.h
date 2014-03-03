@@ -17,7 +17,7 @@ struct 		s_pars
 
 struct		s_parser
 {
-	void			(*start)(t_lex *begin);
+	void		(*start)(t_lex *begin);
 	t_pars		*(*parse)(t_lex*);
 };
 

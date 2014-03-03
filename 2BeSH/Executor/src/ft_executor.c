@@ -3,10 +3,12 @@
 #include "ft_buildins.h"
 #include "ft_debug.h"
 #include <unistd.h>
+#include <stdio.h>
 
-static void	executor_start(t_operation *ops)
+static void	executor_start(t_pars *tree)
 {
-	t_operation	*cur;
+	(void)tree;
+	/*t_operation	*cur;
 	const t_buildins	*bi = buildins_singleton();
 
 	cur = ops;
@@ -16,7 +18,7 @@ static void	executor_start(t_operation *ops)
 		if (bi->is_buildin(cur->str))
 			bi->exec(cur->str, NULL);
 		cur = cur->next;
-	}
+	}*/
 }
 
 static void	executor_init(t_executor *exec)

@@ -45,16 +45,16 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 	debug(1, "\n\t[COMPARE]");
 	while (cur)
 	{
-/*		printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);
-		debug(5, "compare match : { \\\"", *str, "\\\" } <=> pattern { \\\"", cur->pattern, "\\\" }\n");*/
+		printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);
+		/*debug(5, "compare match : { \\\"", *str, "\\\" } <=> pattern { \\\"", cur->pattern, "\\\" }\n");*/
 		if ((res = ft_regmatch(*str, cur->pattern, &len)) == *str)
 		{
 			if (cur->op == LEX_OP_WORD)
 				ft_manage_word(*str, &len);
 			if (len != 0)
 			{
-				/*printf("\tlen : %ld\n", len);
-				debug(1, "\t[MATCH]\n");*/
+				printf("\tlen : %ld\n", len);
+				/*debug(1, "\t[MATCH]\n");*/
 				*str += len;
 				return (ft_create_lex(parent, ft_strsub((*str) - len, 0, len), cur->op));
 			}
@@ -66,7 +66,7 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 	return (ft_create_lex(parent, ft_strsub((*str) - 1, 0, 1), LEX_UNKNOW));
 }
 
-void			ft_lexer_lex_str(char *str)
+t_lex			*ft_lexer_lex_str(char *str)
 {
 	t_lex		*begin;
 	t_lex		*end;
@@ -89,6 +89,12 @@ void			ft_lexer_lex_str(char *str)
 		else
 			++tmp;
 	}
-	lexer_singleton()->m_event_complete(begin);
+	end = begin;
+	while (end)
+	{
+		printf("part str[%s]\n", end->str);
+		end = end->next;
+	}
+	return (begin);
 }
 

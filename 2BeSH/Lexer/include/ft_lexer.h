@@ -14,14 +14,16 @@ enum	e_lex_op
 		LEX_OP_WORD = 1,
 		LEX_OP_STR = 2,
 		LEX_UNKNOW = 3,
+		LEX_STAR = 4,
 		LEX_OP_REDIRECT_OUT = 10,
 		LEX_OP_APPEND_OUT = 11,
 		LEX_OP_REDIRECT_IN = 12,
+		LEX_OP_SUBCOMMAND = 21,
 		LEX_OP_PIPE = 100,
 		LEX_OP_AND = 110,
 		LEX_OP_OR = 111,
 		LEX_OP_SEPARATOR = 121,
-		LEX_OP_BACK = 122
+		LEX_OP_BACK = 121,
 };
 
 struct			s_lex
@@ -39,6 +41,7 @@ struct	s_lexer
 	t_lexer		*(*onComplete)(void (*)(t_lex *));
 };
 
+t_lex	*ft_lexer_lex_str(char *str);
 t_lexer	*lexer_singleton(void);
 
 #endif

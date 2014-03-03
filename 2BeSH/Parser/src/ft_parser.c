@@ -1,17 +1,17 @@
 #include "ft_parser_private.h"
 #include "ft_stocker.h"
 #include "ft_resolver.h"
-
-
 #include "ft_lexer.h"
 #include "common.h"
 #include <stdio.h>
-
 #include <stdlib.h>
 
 static void	parser_start(t_lex *begin)
 {
-	parser_singleton()->parse(begin);
+	t_pars	*tree;
+	
+	tree = parser_singleton()->parse(begin);
+	resolver_singleton()->start(tree);
 	return ;
 }
 
