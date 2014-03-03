@@ -3,6 +3,7 @@
 #include "ft_executor.h"
 #include "ft_debug.h"
 #include <stdio.h>
+#include "ft_parser.h"
 
 static void	parse_tree(t_pars *tree)
 {
