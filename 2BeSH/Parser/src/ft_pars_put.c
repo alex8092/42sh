@@ -1,6 +1,6 @@
 #include "ft_parser_private.h"
 
-static t_pars	*put_children(t_pars *lst , t_lex *op, p_child child)
+static t_pars	*put_children(t_pars *lst, t_lex *op, p_child child)
 {
 	t_lex		*tmp;
 

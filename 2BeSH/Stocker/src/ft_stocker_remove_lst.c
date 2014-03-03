@@ -28,7 +28,7 @@ t_stocker		*p_stocker_remove_prev_lst(void)
 
 	stocker = stocker_singleton();
 	current = stocker->m_current;
-	if (stocker->m_pos)
+	if (current->prev)
 	{
 		tmp = current->prev;
 		if (tmp->prev)
@@ -38,12 +38,12 @@ t_stocker		*p_stocker_remove_prev_lst(void)
 		}
 		else
 		{
-			tmp->prev = 0;
-			stocker->m_start = tmp;
+			current->prev = 0;
+			stocker->m_start = current;
 		}
-		free(tmp);
 		stocker->m_length--;
 		stocker->m_pos--;
+		free(tmp);
 	}
 	return (stocker);
 }
@@ -63,6 +63,7 @@ t_stocker		*p_stocker_remove_current_lst(void)
 		{
 			current->prev->next = tmp;
 			tmp->prev = current->prev;
+			stocker->m_pos--;
 		}
 		else
 		{
@@ -81,7 +82,9 @@ t_stocker		*p_stocker_clean_lst(void)
 	t_lst_stocker	*cursor;
 	t_lst_stocker	*tmp;
 	t_stocker		*stocker;
+	int				i;
 
+	i = 0;
 	stocker = stocker_singleton();
 	if (stocker->m_length > 0)
 	{
@@ -91,8 +94,9 @@ t_stocker		*p_stocker_clean_lst(void)
 			tmp = cursor->next;
 			free(cursor);
 			cursor = tmp;
+			i++;
 		}
-		tmp->prev = 0;
+		cursor->prev = 0;
 		stocker->m_length = 0;
 		stocker->m_pos = 0;
 		stocker->m_start = tmp;

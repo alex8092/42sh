@@ -12,7 +12,7 @@
 
 int		main(int ac, char **av)
 {
-	//* TEST TRIVIERE START 
+	/* TEST TRIVIERE START 
 	printf("--------- TEST TRIVIERE START ---------\n");
 
 
