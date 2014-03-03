@@ -6,7 +6,7 @@
 /*   By: amerle <amerle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 09:51:06 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/02 18:02:11 by amerle           ###   ########.fr       */
+/*   Updated: 2014/03/03 15:27:26 by amerle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void		ft_reg_parse(t_reg *reg)
 			ft_reg_parse_rep(reg);
 		else if (reg->s_reg[reg->pos_reg] == '.')
 			ft_reg_parse_any(reg);
-		else if (reg->s_reg[reg->pos_reg] == '*')
+		else if (reg->s_reg[reg->pos_reg] == '*' && reg->s_reg[reg->pos_reg - 1] != '\\')
 			ft_reg_parse_star(reg);
 		else if (reg->s_reg[reg->pos_reg] == '^')
 			ft_reg_parse_begend(reg, true);

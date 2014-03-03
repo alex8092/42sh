@@ -4,29 +4,33 @@
 #include "ft_debug.h"
 #include <stdio.h>
 
-static void	resolver_start(t_operation *ops)
+static void	parse_tree(t_pars *tree)
+{
+	t_lex	*cur;
+
+	if (tree)
+	{
+		parse_tree(tree->left);
+		cur = tree->op;
+		printf("Command : {{");
+		while (cur)
+		{
+			printf(" %s", cur->str);
+			cur = cur->next;
+		}
+		printf(" }}\n");
+		parse_tree(tree->right);
+	}
+}
+
+static void	resolver_start(t_pars *tree)
 {
 	static t_resolver	*rv = NULL;
-	t_operation			*cur;
-	/*char				**tmp;*/
 
 	if (!rv)
 		rv = resolver_singleton();
-	cur = ops;
-	while (cur)
-	{
-		debug(3, "resolv op : ", cur->str, "\n");
-		/*tmp = ft_strsplit(cur->str, '"', true);
-		while (tmp && *tmp)
-		{
-			debug_write(*tmp);
-			printf("resolv op[part] : %s\n", *tmp);
-			++tmp;
-		}*/
-		cur = cur->next;
-	}
-	exec_singleton()->start(ops);
-	(void)ops;
+	parse_tree(tree);
+	exec_singleton()->start(tree);
 }
 
 static void	resolver_init(t_resolver *rv)

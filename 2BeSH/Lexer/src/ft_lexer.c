@@ -9,6 +9,7 @@ static t_lexer		*lexer_start(void)
 {
 	ssize_t			ret;
 	char			c[4] = { 0, 0, 0, 0 };
+	t_lex			*begin;
 
 	while (42)
 	{
@@ -20,7 +21,9 @@ static t_lexer		*lexer_start(void)
 				event_singleton()->read(c);
 				if (c[0] == '\n')
 				{
-					ft_lexer_lex_str(stocker_singleton()->to_string());
+					begin = ft_lexer_lex_str(stocker_singleton()->to_string());
+					if (begin)
+						lexer_singleton()->m_event_complete(begin);
 					stocker_singleton()->clean();
 					if (c[1] != '\n')
 					{
