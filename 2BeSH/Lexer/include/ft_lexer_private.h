@@ -10,7 +10,6 @@ struct					s_lex_reg
 	t_lex_reg			*next;
 };
 
-t_lex	*ft_lexer_lex_str(char *str);
 void	p_lexer_template_init(t_lexer *lexer);
 
 #endif
