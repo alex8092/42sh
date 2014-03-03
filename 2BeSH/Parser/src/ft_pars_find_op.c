@@ -2,8 +2,8 @@
 
 t_lex		*p_find_op(t_lex *begin)
 {
-	t_lex	*cur;
-	t_lex	*op;
+	t_lex				*cur;
+	t_lex				*op;
 	unsigned int		nb;
 
 	cur = begin;
