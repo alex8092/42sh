@@ -3,29 +3,15 @@
 #include "ft_executor.h"
 #include "ft_debug.h"
 #include <stdio.h>
+#include "ft_parser.h"
 
-static void	resolver_start(t_operation *ops)
+static void	resolver_start(t_pars *ops)
 {
 	static t_resolver	*rv = NULL;
-	t_operation			*cur;
 	/*char				**tmp;*/
 
 	if (!rv)
 		rv = resolver_singleton();
-	cur = ops;
-	while (cur)
-	{
-		debug(3, "resolv op : ", cur->str, "\n");
-		/*tmp = ft_strsplit(cur->str, '"', true);
-		while (tmp && *tmp)
-		{
-			debug_write(*tmp);
-			printf("resolv op[part] : %s\n", *tmp);
-			++tmp;
-		}*/
-		cur = cur->next;
-	}
-	exec_singleton()->start(ops);
 	(void)ops;
 }
 
