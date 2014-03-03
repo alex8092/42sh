@@ -12,8 +12,7 @@ char	**ft_strsplit(char *str, char separator, t_bool escape)
 	while (str[index])
 	{
 		if (str[index] == separator
-			 && ((escape && index > 0 && str[index - 1] != '\\')
-			  || !escape))
+			&& ((escape && index > 0 && str[index - 1] != '\\') || !escape))
 		{
 			tab = ft_tabstradd(tab, ft_strndup(str, index));
 			str += index + 1;
