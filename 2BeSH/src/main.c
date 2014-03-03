@@ -7,13 +7,13 @@
 #include "ft_display.h"
 #include "ft_resolver.h"
 #include "ft_debug.h"
+
 #include <stdio.h>
 
 int		main(int ac, char **av)
 {
-	/* TEST TRIVIERE START 
+	//* TEST TRIVIERE START 
 	printf("--------- TEST TRIVIERE START ---------\n");
-
 
 
 	printf("---------  TEST TRIVIERE END  ---------\n\n");
