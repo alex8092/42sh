@@ -12,8 +12,8 @@ void		p_event_init_attributes(t_event *event);
 void		p_event_init_methodes(t_event *event);
 void		p_event_init_mapping_key(t_event *event);
 
-t_event		*p_event_dell_prev(void);
-t_event		*p_event_dell_cur(void);
+t_event		*p_event_map_rm_prev(void);
+t_event		*p_event_map_rm_cur(void);
 t_event		*p_event_map_front(void);
 t_event		*p_event_map_back(void);
 t_event		*p_event_map_next(void);

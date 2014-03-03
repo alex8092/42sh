@@ -96,7 +96,7 @@ SRCSCOMMON = ft_isprint.c \
 SRCSEVENT = ft_event.c \
 			ft_event_init.c \
 			ft_event_map_mv.c \
-			ft_event_map_dell.c \
+			ft_event_map_rm.c \
 			ft_event_map_key.c \
 			ft_event_other.c \
 			ft_event_item.c
@@ -126,6 +126,8 @@ SRCSDISPLAY = ft_display.c \
 			  ft_display_terms.c \
 			  ft_display_write.c \
 			  ft_display_other.c \
+			  ft_display_mv.c \
+			  ft_display_rm.c \
 
 SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_lst.c \

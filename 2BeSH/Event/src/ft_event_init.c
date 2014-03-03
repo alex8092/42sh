@@ -15,8 +15,8 @@ void		p_event_init_methodes(t_event *event)
 	event->map_next = p_event_map_next;
 	event->map_back = p_event_map_back;
 	event->map_front = p_event_map_front;
-	event->dell_cur = p_event_dell_cur;
-	event->dell_prev = p_event_dell_prev;
+	event->rm_cur = p_event_map_rm_cur;
+	event->rm_prev = p_event_map_rm_prev;
 }
 
 void		p_event_init_mapping_key(t_event *event)
@@ -36,8 +36,8 @@ void		p_event_init_mapping_key(t_event *event)
 		calc = (27 << 24) | (91 << 16) | (72 << 8) | 0;
 		item = p_event_add_item(item, calc, (void *)event->map_front);
 		calc = (27 << 24) | (91 << 16) | (51 << 8) | 126;
-		item = p_event_add_item(item, calc, (void *)event->dell_cur);
+		item = p_event_add_item(item, calc, (void *)event->rm_cur);
 		calc = (127 << 24) | (0 << 16) | (0 << 8) | 0;
-		item = p_event_add_item(item, calc, (void *)event->dell_prev);
+		item = p_event_add_item(item, calc, (void *)event->rm_prev);
 	}
 }

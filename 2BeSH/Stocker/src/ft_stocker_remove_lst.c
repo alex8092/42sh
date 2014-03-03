@@ -1,6 +1,8 @@
 #include "ft_stocker_private.h"
 #include <stdlib.h>
 
+#include <stdio.h>
+
 t_stocker		*p_stocker_remove_back_lst(void)
 {
 	t_stocker		*stocker;
@@ -44,6 +46,7 @@ t_stocker		*p_stocker_remove_prev_lst(void)
 		free(tmp);
 		stocker->m_length--;
 		stocker->m_pos--;
+		printf("[<- %d] ", stocker->m_length);
 	}
 	return (stocker);
 }
@@ -71,6 +74,7 @@ t_stocker		*p_stocker_remove_current_lst(void)
 		}
 		free(current);
 		stocker->m_length--;
+		stocker->m_pos--;
 		stocker->m_current = tmp;
 	}
 	return (stocker);
@@ -81,7 +85,9 @@ t_stocker		*p_stocker_clean_lst(void)
 	t_lst_stocker	*cursor;
 	t_lst_stocker	*tmp;
 	t_stocker		*stocker;
+	int				i;
 
+	i = 0;
 	stocker = stocker_singleton();
 	if (stocker->m_length > 0)
 	{
@@ -91,8 +97,10 @@ t_stocker		*p_stocker_clean_lst(void)
 			tmp = cursor->next;
 			free(cursor);
 			cursor = tmp;
+			i++;
 		}
-		tmp->prev = 0;
+		printf("[PREV]Clean : %d | ", i);
+		cursor->prev = 0;
 		stocker->m_length = 0;
 		stocker->m_pos = 0;
 		stocker->m_start = tmp;
