@@ -47,7 +47,7 @@ t_pars			*p_parser_parse(t_lex *lst)
 	parseur = NULL;
 	parseur = p_put_op(parseur , lst);
 	parseur = p_put_child(parseur);
-	printf("[#] ");
+	printf("[#] : ");
 	puttree(parseur);
 	printf("\n");
 	return (parseur);
