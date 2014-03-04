@@ -5,32 +5,42 @@
 #include <stdio.h>
 #include "ft_parser.h"
 
-static void	parse_tree(t_pars *tree)
+static void	parse_tree(t_operation **begin, t_operation **end, t_pars *tree)
 {
-	t_lex	*cur;
+	t_lex		*cur;
 
 	if (tree)
 	{
-		parse_tree(tree->left);
+		parse_tree(begin, end, tree->left);
 		cur = tree->op;
-		printf("Command : {{");
-		while (cur)
+		if (cur && cur->op < 100)
 		{
-			printf(" %s", cur->str);
-			cur = cur->next;
+			*end = ft_new_operation(*end, cur);
+			if (!(*begin))
+				*begin = *end;
+			printf("Command : {{");
+			while (cur)
+			{
+				printf(" %s", cur->str);
+				cur = cur->next;
+			}
+			printf(" }}\n");
 		}
-		printf(" }}\n");
-		parse_tree(tree->right);
+		parse_tree(begin, end, tree->right);
 	}
 }
 
 static void	resolver_start(t_pars *tree)
 {
 	static t_resolver	*rv = NULL;
+	t_operation			*begin;
+	t_operation			*end;
 
+	begin = NULL;
+	end = NULL;
 	if (!rv)
 		rv = resolver_singleton();
-	parse_tree(tree);
+	parse_tree(&begin, &end, tree);
 	exec_singleton()->start(tree);
 }
 
