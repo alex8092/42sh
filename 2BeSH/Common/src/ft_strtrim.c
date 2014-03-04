@@ -6,7 +6,7 @@
 /*   By: amerle <amerle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 17:41:28 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/01 23:27:23 by amerle           ###   ########.fr       */
+/*   Updated: 2014/03/03 21:29:41 by thrivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static size_t	ft_strtrim_count_end(char const *s, size_t len)
 	return (count);
 }
 
-char	*ft_strtrim(char const *s)
+char			*ft_strtrim(char const *s)
 {
 	char	*str;
 	int		len;

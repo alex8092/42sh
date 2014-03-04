@@ -1,5 +1,6 @@
 #include "ft_lexer_private.h"
 #include "ft_stocker.h"
+#include "ft_display.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -13,7 +14,7 @@ static t_lexer		*lexer_start(void)
 
 	while (42)
 	{
-		write(1, "[#] : ", 6);
+		display_singleton()->prompt();
 		while (c[0] != '\n' && (ret = read(0, &c, 4)) > 0)
 		{
 			while (c[0])
@@ -27,7 +28,7 @@ static t_lexer		*lexer_start(void)
 					stocker_singleton()->clean();
 					if (c[1] != '\n')
 					{
-						write(1, "[#] : ", 6);
+						display_singleton()->prompt();
 						c[0] = c[1];
 						c[1] = c[2];
 						c[2] = c[3];

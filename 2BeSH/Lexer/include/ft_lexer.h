@@ -11,6 +11,7 @@ typedef struct s_lex_reg	t_lex_reg;
 
 enum	e_lex_op
 {
+		LEX_OP_NO = 0,
 		LEX_OP_WORD = 1,
 		LEX_OP_STR = 2,
 		LEX_UNKNOW = 3,

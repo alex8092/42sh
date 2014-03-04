@@ -24,6 +24,7 @@ INCLUDEDIRHISTORY = History/include
 INCLUDEDIRREGEX = Regex/include
 INCLUDEDIRDEBUG = Debugger/include
 INCLUDEDIRDEV = Development/include
+INCLUDEDIRPROMPT = Prompt/include
 INCLUDEDIR = include
 
 SRCDIRCOMMON = Common/src
@@ -43,6 +44,7 @@ SRCDIRHISTORY = History/src
 SRCDIRREGEX = Regex/src
 SRCDIRDEBUG = Debugger/src
 SRCDIRDEV = Development/src
+SRCDIRPROMPT = Prompt/src
 SRCDIR = src
 
 OBJDIRCOMMON = Common/obj
@@ -62,6 +64,7 @@ OBJDIRHISTORY = History/obj
 OBJDIRREGEX = Regex/obj
 OBJDIRDEBUG = Debugger/obj
 OBJDIRDEV = Development/obj
+OBJDIRPROMPT = Prompt/obj
 OBJDIR = obj
 
 CFLAGS += -I$(INCLUDEDIRCOMMON) -I$(INCLUDEDIREVENT) -I$(INCLUDEDIREXECUTOR)
@@ -70,6 +73,12 @@ CFLAGS += -I$(INCLUDEDIRVALIDATOR) -I$(INCLUDEDIRSECURITY) -I$(INCLUDEDIR)
 CFLAGS += -I$(INCLUDEDIRDISPLAY) -I$(INCLUDEDIRSTOCKER) -I$(INCLUDEDIRHISTORY)
 CFLAGS += -I$(INCLUDEDIRBUILDINS) -I$(INCLUDEDIROPERATION) -I$(INCLUDEDIRENV)
 CFLAGS += -I$(INCLUDEDIRREGEX) -I$(INCLUDEDIRDEBUG) -I$(INCLUDEDIRDEV)
+CFLAGS += -I$(INCLUDEDIRPROMPT)
+
+SRCSPROMPT = ft_prompt.c \
+			ft_prompt_init.c \
+			ft_prompt_size.c \
+			ft_prompt_string.c
 
 SRCSCOMMON = ft_isprint.c \
 			 ft_isinarray.c \
@@ -96,7 +105,7 @@ SRCSCOMMON = ft_isprint.c \
 SRCSEVENT = ft_event.c \
 			ft_event_init.c \
 			ft_event_map_mv.c \
-			ft_event_map_dell.c \
+			ft_event_map_rm.c \
 			ft_event_map_key.c \
 			ft_event_other.c \
 			ft_event_item.c
@@ -115,7 +124,8 @@ SRCSPARSER = ft_parser.c \
 			 ft_pars_find_op.c \
 			 ft_pars_put.c
 
-SRCSRESOLVER = ft_resolver.c
+SRCSRESOLVER = ft_resolver.c \
+			   ft_resolv_redirects.c
 
 SRCSVALIDATOR = ft_validator.c
 
@@ -126,6 +136,8 @@ SRCSDISPLAY = ft_display.c \
 			  ft_display_terms.c \
 			  ft_display_write.c \
 			  ft_display_other.c \
+			  ft_display_mv.c \
+			  ft_display_rm.c \
 
 SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_lst.c \
@@ -170,6 +182,7 @@ SRCSDEBUG = ft_debug.c
 
 SRCS = main.c
 
+OBJSBASEPROMPT = $(SRCSPROMPT:.c=.o)
 OBJSBASECOMMON = $(SRCSCOMMON:.c=.o)
 OBJSBASEEVENT = $(SRCSEVENT:.c=.o)
 OBJSBASEEXECUTOR = $(SRCSEXECUTOR:.c=.o)
@@ -189,6 +202,7 @@ OBJSBASEDEBUG = $(SRCSDEBUG:.c=.o)
 OBJSBASEDEV = $(SRCSDEV:.c=.o)
 OBJSBASE = $(SRCS:.c=.o)
 
+OBJS_PROMPT = $(addprefix $(OBJDIRPROMPT)/, $(OBJSBASEPROMPT))
 OBJS_COMMON = $(addprefix $(OBJDIRCOMMON)/, $(OBJSBASECOMMON))
 OBJS_EVENT = $(addprefix $(OBJDIREVENT)/, $(OBJSBASEEVENT))
 OBJS_EXECUTOR = $(addprefix $(OBJDIREXECUTOR)/, $(OBJSBASEEXECUTOR))
@@ -216,8 +230,12 @@ $(NAME): $(OBJS_COMMON) $(OBJS_EVENT) $(OBJS_EXECUTOR) $(OBJS_LEXER) \
 	$(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS_SECURITY) \
 	$(OBJS) $(OBJS_DISPLAY) $(OBJS_STOCKER) $(OBJS_ENV) $(OBJS_BUILDINS) \
 	$(OBJS_OPERATION) $(OBJS_HISTORY) $(OBJS_REGEX) $(OBJS_DEBUG) \
-	$(OBJS_DEV)
+	$(OBJS_DEV) $(OBJS_PROMPT)
 	$(CC) -o $(NAME) $^ $(LDFLAGS)
+
+$(OBJDIRPROMPT)/%.o: $(SRCDIRPROMPT)/%.c
+	mkdir -p $(OBJDIRPROMPT)
+	$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRCOMMON)/%.o: $(SRCDIRCOMMON)/%.c
 	mkdir -p $(OBJDIRCOMMON)
@@ -317,7 +335,7 @@ clean:
 	rm -f $(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS)
 	rm -f $(OBJS_SECURITY) $(OBJS_DISPLAY) $(OBJS_STOCKER) $(OBJS_ENV)
 	rm -f $(OBJS_BUILDINS) $(OBJS_OPERATION) $(OBJS_HISTORY)
-	rm -f $(OBJS_REGEX) $(OBJS_DEBUG) $(OBJS_DEV)
+	rm -f $(OBJS_REGEX) $(OBJS_DEBUG) $(OBJS_DEV) $(OBJS_PROMPT)
 
 fclean: clean
 	rm -f $(NAME)
