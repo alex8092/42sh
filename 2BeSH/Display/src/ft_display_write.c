@@ -1,4 +1,5 @@
 #include "ft_display_private.h"
+#include "ft_prompt.h"
 
 t_display		*p_display_putchar(char c)
 {
@@ -12,9 +13,6 @@ t_display		*p_display_putchar(char c)
 
 t_display		*p_display_write_prompt(void)
 {
-	/*
-	 * write(1, prompt_singleton()->to_string(), prompt_singleton()->size());
-	 **/
-	write(1, "[#] : ", 6);
+	write(1, prompt_singleton()->to_string(), prompt_singleton()->size());
 	return (display_singleton());
 }
