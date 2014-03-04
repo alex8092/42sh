@@ -12,5 +12,6 @@ struct		s_resolver
 };
 
 t_resolver	*resolver_singleton(void);
+void		ft_resolv_redirects(t_operation *op, t_lex **begin);
 
 #endif

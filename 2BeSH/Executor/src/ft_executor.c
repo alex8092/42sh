@@ -5,20 +5,19 @@
 #include <unistd.h>
 #include <stdio.h>
 
-static void	executor_start(t_pars *tree)
+static void	executor_start(t_operation *op)
 {
-	(void)tree;
-	/*t_operation	*cur;
+	t_operation	*cur;
 	const t_buildins	*bi = buildins_singleton();
 
-	cur = ops;
+	cur = op;
 	while (cur)
 	{
-		debug(3, "exec op : ", cur->str, "\n");
-		if (bi->is_buildin(cur->str))
-			bi->exec(cur->str, NULL);
+		debug(3, "exec op : ", cur->lex->str, "\n");
+		if (bi->is_buildin(cur->lex->str))
+			bi->exec(cur->lex->str, NULL);
 		cur = cur->next;
-	}*/
+	}
 }
 
 static void	executor_init(t_executor *exec)

@@ -4,17 +4,26 @@
 #include "ft_debug.h"
 #include <stdio.h>
 #include "ft_parser.h"
+#include "ft_lexer.h"
 
 static void	parse_tree(t_operation **begin, t_operation **end, t_pars *tree)
 {
 	t_lex		*cur;
+	t_lex_op		cur_op;
 
+	cur_op = LEX_OP_NO;
 	if (tree)
 	{
 		parse_tree(begin, end, tree->left);
 		cur = tree->op;
 		if (cur && cur->op < 100)
 		{
+			if (cur_op != LEX_OP_PIPE && *begin)
+			{
+				ft_resolv_redirects(*begin, &(*begin)->lex);
+				exec_singleton()->start(*begin);
+				*begin = NULL;
+			}
 			*end = ft_new_operation(*end, cur);
 			if (!(*begin))
 				*begin = *end;
@@ -26,6 +35,8 @@ static void	parse_tree(t_operation **begin, t_operation **end, t_pars *tree)
 			}
 			printf(" }}\n");
 		}
+		else
+			cur_op = cur->op;
 		parse_tree(begin, end, tree->right);
 	}
 }
@@ -41,7 +52,8 @@ static void	resolver_start(t_pars *tree)
 	if (!rv)
 		rv = resolver_singleton();
 	parse_tree(&begin, &end, tree);
-	exec_singleton()->start(tree);
+	ft_resolv_redirects(end, &end->lex);
+	exec_singleton()->start(end);
 }
 
 static void	resolver_init(t_resolver *rv)

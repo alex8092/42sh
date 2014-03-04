@@ -10,6 +10,8 @@ t_operation		*ft_new_operation(t_operation *parent, t_lex *lex)
 	if (new == NULL)
 		exit (1);
 	new->lex = lex;
+	new->fd_out = -1;
+	new->fd_in = -1;
 	if (parent)
 		parent->next = new;
 	return (new);
