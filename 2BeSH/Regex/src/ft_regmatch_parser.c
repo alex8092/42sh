@@ -6,7 +6,7 @@
 /*   By: amerle <amerle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 09:51:06 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/03 15:27:26 by amerle           ###   ########.fr       */
+/*   Updated: 2014/03/03 18:03:42 by amerle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,14 @@ static void	ft_reg_parse_brack(t_reg *reg)
 	++reg->pos_reg;
 }
 
-static void	ft_reg_parse_base(t_reg *reg)
+void		ft_reg_parse_base(t_reg *reg)
 {
 	t_op_base	*base;
 
 	base = (t_op_base *)ft_reg_create_op(REGOP_BASE, reg);
 	base->find = reg->s_reg[reg->pos_reg];
 	++reg->pos_reg;
+	reg->escape = false;
 }
 
 static void	ft_reg_parse_rep(t_reg *reg)
@@ -93,26 +94,28 @@ void		ft_reg_parse(t_reg *reg)
 {
 	while (reg->s_reg[reg->pos_reg])
 	{
-		if (reg->s_reg[reg->pos_reg] == '[')
+		if (reg->s_reg[reg->pos_reg] == '[' && !reg->escape)
 			ft_reg_parse_brack(reg);
-		else if (reg->s_reg[reg->pos_reg] == '{')
+		else if (reg->s_reg[reg->pos_reg] == '{' && !reg->escape)
 			ft_reg_parse_rep(reg);
-		else if (reg->s_reg[reg->pos_reg] == '.')
+		else if (reg->s_reg[reg->pos_reg] == '.' && !reg->escape)
 			ft_reg_parse_any(reg);
-		else if (reg->s_reg[reg->pos_reg] == '*' && reg->s_reg[reg->pos_reg - 1] != '\\')
+		else if (reg->s_reg[reg->pos_reg] == '*' && !reg->escape)
 			ft_reg_parse_star(reg);
-		else if (reg->s_reg[reg->pos_reg] == '^')
+		else if (reg->s_reg[reg->pos_reg] == '^' && !reg->escape)
 			ft_reg_parse_begend(reg, true);
-		else if (reg->s_reg[reg->pos_reg] == '$')
+		else if (reg->s_reg[reg->pos_reg] == '$' && !reg->escape)
 			ft_reg_parse_begend(reg, false);
-		else if (reg->s_reg[reg->pos_reg] == '?')
+		else if (reg->s_reg[reg->pos_reg] == '?' && !reg->escape)
 			ft_reg_parse_quest(reg);
-		else if (reg->s_reg[reg->pos_reg] == '+')
+		else if (reg->s_reg[reg->pos_reg] == '+' && !reg->escape)
 			ft_reg_parse_plus(reg);
-		else if (reg->s_reg[reg->pos_reg] == '(')
+		else if (reg->s_reg[reg->pos_reg] == '(' && !reg->escape)
 			ft_reg_parse_sub(reg);
-		else if (reg->s_reg[reg->pos_reg] == ')')
+		else if (reg->s_reg[reg->pos_reg] == ')' && !reg->escape)
 			ft_reg_parse_sub_end(reg);
+		else if (reg->s_reg[reg->pos_reg] == '\\' && !reg->escape)
+			ft_reg_parse_slash(reg);
 		else
 			ft_reg_parse_base(reg);
 	}

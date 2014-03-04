@@ -6,7 +6,7 @@
 /*   By: amerle <amerle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 09:41:05 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/01 23:14:34 by amerle           ###   ########.fr       */
+/*   Updated: 2014/03/03 17:38:23 by amerle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ typedef struct	s_regex
 	t_bool		use_sub;
 	t_bool		match;
 	char		*p_match;
+	t_bool		escape;
 }				t_reg;
 
 t_regop	*ft_reg_create_op(char type, t_reg *reg);
@@ -130,6 +131,8 @@ t_bool	ft_match_op(t_regop *op, t_reg *reg);
 t_bool	ft_match_begend(t_op_begend *op, t_reg *reg);
 t_bool	ft_match_sub(t_op_sub *sub, t_reg *reg);
 void	ft_reg_parse_sub_end(t_reg *reg);
+void	ft_reg_parse_slash(t_reg *reg);
+void	ft_reg_parse_base(t_reg *reg);
 
 void	ft_reg_matcher(t_reg *reg);
 
