@@ -15,6 +15,7 @@ static void	parse_tree(t_operation **begin, t_operation **end, t_pars *tree)
 		cur = tree->op;
 		if (cur && cur->op < 100)
 		{
+			*begin = NULL;
 			*end = ft_new_operation(*end, cur);
 			if (!(*begin))
 				*begin = *end;
@@ -41,7 +42,7 @@ static void	resolver_start(t_pars *tree)
 	if (!rv)
 		rv = resolver_singleton();
 	parse_tree(&begin, &end, tree);
-	exec_singleton()->start(tree);
+	exec_singleton()->start(begin);
 }
 
 static void	resolver_init(t_resolver *rv)
