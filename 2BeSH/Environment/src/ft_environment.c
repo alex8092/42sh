@@ -5,7 +5,7 @@
 
 extern char	**environ;
 
-static char	*env_get(char *name)
+static char		*env_get(char *name)
 {
 	int			index;
 	const t_env	*env = env_singleton();
@@ -15,7 +15,7 @@ static char	*env_get(char *name)
 	while (env->m_env[index])
 	{
 		if (!ft_strncmp(name, env->m_env[index], len_str)
-			 && env->m_env[index][len_str] == '=')
+			&& env->m_env[index][len_str] == '=')
 			return (env->m_env[index] + len_str + 1);
 		++index;
 	}
@@ -27,8 +27,8 @@ static t_env	*env_set(char *name, char *value)
 	t_env		*env;
 	int			index;
 	const int	len_str = ft_strlen(name);
-	char	*tmp;
-	
+	char		*tmp;
+
 	tmp = ft_strjoin(name, "=");
 	env = env_singleton();
 	index = 0;
@@ -54,7 +54,7 @@ static size_t	env_size(void)
 	return (ft_tabstrlen(env_singleton()->m_env));
 }
 
-static void	env_init(t_env *env)
+static void		env_init(t_env *env)
 {
 	const int	tab_len = ft_tabstrlen(environ);
 	int			index;

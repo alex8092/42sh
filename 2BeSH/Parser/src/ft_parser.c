@@ -9,7 +9,7 @@
 static void	parser_start(t_lex *begin)
 {
 	t_pars	*tree;
-	
+
 	tree = parser_singleton()->parse(begin);
 	resolver_singleton()->start(tree);
 	return ;
