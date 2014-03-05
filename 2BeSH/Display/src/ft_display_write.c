@@ -17,16 +17,11 @@ t_display		*p_display_putchar(char c)
 
 t_display		*p_display_putstr(char *str)
 {
-	t_display	*display;
-	int			i;
+	static t_display	*display = NULL;
 
-	display = display_singleton();
-	i = 0;
-	while (str[i])
-	{
-		display->putchar(str[i]);
-		i++;
-	}
+	if (!display)
+		display = display_singleton();
+	write(display->m_fd, str, ft_strlen(str));
 	return (display);
 }
 
