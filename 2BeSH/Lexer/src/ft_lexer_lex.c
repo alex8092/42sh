@@ -40,7 +40,7 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 	if (!begin)
 		begin = lexer_singleton()->m_reg_begin;
 	cur = begin;
-	debug(1, "\n\t[COMPARE]");
+	/*debug(1, "\n\t[COMPARE]");*/
 	while (cur)
 	{
 /*		printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);*/

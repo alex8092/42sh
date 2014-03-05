@@ -14,6 +14,7 @@ struct	s_operation
 	char			*s_fd_in;
 	int				fd_out;
 	int				fd_in;
+	char			*exec_file;
 	t_bool			append_out;
 	t_operation		*next;
 };

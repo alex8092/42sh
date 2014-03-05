@@ -3,8 +3,10 @@
 #include "ft_buildins.h"
 #include "ft_debug.h"
 #include "ft_validator.h"
+#include "ft_environment.h"
 #include <unistd.h>
 #include <stdio.h>
+#include <sys/wait.h>
 
 static void	executor_start(t_operation *op)
 {
@@ -12,8 +14,20 @@ static void	executor_start(t_operation *op)
 	const t_buildins	*bi = buildins_singleton();
 	t_lex		*lex;
 	char		**tab;
+	pid_t		son;
+	int			status;
+	int			pipes[2 * ft_size_pipes(op)];
+	int			i;
 
 	cur = op;
+	i = 0;
+	while (i < ft_size_pipes(op))
+	{
+		pipe(pipes + i * 2);
+		++i;
+	}
+	printf("size : %d\n", ft_size_pipes(op));
+	i = 0;
 	while (cur)
 	{
 		lex = cur->lex;
@@ -24,13 +38,34 @@ static void	executor_start(t_operation *op)
 			tab = ft_tabstradd(tab, lex->str);
 			lex = lex->next;
 		}
-		debug(3, "exec op : ", cur->lex->str, "\n");
+		/*debug(3, "exec op : ", cur->lex->str, "\n");*/
 		if (bi->is_buildin(cur->lex->str))
 			bi->exec(cur->lex->str, tab);
-		else
-			validator_singleton()->is_valid(op);
+		else if (validator_singleton()->is_valid(cur))
+		{
+			son = fork();
+			if (son == 0)
+			{
+				if (cur->next)
+				{
+					dup2(pipes[i + 1], 1);
+				}
+				if (i != 0)
+				{
+					dup2(pipes[i - 2], 0);
+				}
+				execve(cur->exec_file, tab, env_singleton()->m_env);
+			}
+			else if (son != -1)
+			{
+				close(pipes[i + 1]);
+			}
+		}
+		i += 2;
 		cur = cur->next;
+		(void)pipes;
 	}
+	waitpid(son, &status, 0);
 }
 
 static void	executor_init(t_executor *exec)

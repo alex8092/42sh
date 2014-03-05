@@ -110,7 +110,8 @@ SRCSEVENT = ft_event.c \
 			ft_event_other.c \
 			ft_event_item.c
 
-SRCSEXECUTOR = ft_executor.c
+SRCSEXECUTOR = ft_executor.c \
+			   ft_exec_pipes.c
 
 SRCSOPERATION = ft_operation.c
 

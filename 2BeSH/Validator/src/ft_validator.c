@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static char		*concat_path(char *path, t_operation *op)
+static t_bool	concat_path(char *path, t_operation *op)
 {
 	char	*tmp;
 
@@ -15,12 +15,16 @@ static char		*concat_path(char *path, t_operation *op)
 	}
 	else
 		tmp = path;
-	printf("path : %s\n", path);
 	path = ft_strjoin(tmp, op->lex->str);
 	free(tmp);
-	printf("path : %s\n", path);
-	free(path);
-	return (NULL);
+	if (access(path, F_OK) != -1 && access(path, X_OK) != -1)
+	{
+		op->exec_file = path;
+		return (true);
+	}
+	else
+		free(path);
+	return (false);
 }
 
 static t_bool	is_valid(t_operation *op)
@@ -35,11 +39,15 @@ static t_bool	is_valid(t_operation *op)
 		last = str;
 		while ((index = ft_findfirstof(last, ":")) != -1)
 		{
-			concat_path(ft_strndup(last, index), op);
+			if (concat_path(ft_strndup(last, index), op))
+				return (true);
 			last = last + index + 1;
 		}
 		if ((index = str + ft_strlen(str) - last) > 0)
-			concat_path(ft_strndup(last, index), op);
+		{
+			if (concat_path(ft_strndup(last, index), op))
+				return (true);
+		}
 	}
 	return (true);
 }
