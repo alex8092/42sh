@@ -9,8 +9,6 @@ static t_lex	*ft_create_lex(t_lex *parent, char *str, t_lex_op op)
 	t_lex	*item;
 
 	item = (t_lex *)ft_memalloc(sizeof(t_lex));
-	if (!item)
-		_exit(1);
 	item->str = str;
 	item->op = op;
 	if (parent)

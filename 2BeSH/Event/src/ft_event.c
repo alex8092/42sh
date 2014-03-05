@@ -1,7 +1,6 @@
 #include "ft_event.h"
 #include "ft_display.h"
 #include "ft_stocker.h"
-#include "ft_security.h"
 #include "ft_event_private.h"
 #include "common.h"
 #include <stdlib.h>
@@ -21,8 +20,6 @@ t_event		*event_singleton(void)
 	if (!singleton)
 	{
 		singleton = (t_event*)ft_memalloc(sizeof(t_event));
-		if (!singleton)
-			security_singleton()->critical("malloc");
 		event_init(singleton);
 	}
 	return (singleton);

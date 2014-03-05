@@ -1,7 +1,6 @@
 #include "ft_development.h"
 #include "common.h"
 #include "ft_lexer.h"
-#include "ft_security.h"
 
 static char		*dev_start(char *base)
 {
@@ -22,8 +21,6 @@ t_development	*dev_singleton()
 	if (!singleton)
 	{
 		singleton = (t_development*)ft_memalloc(sizeof(t_development));
-		if (!singleton)
-			security_singleton()->critical("malloc");
 		ft_dev_init(singleton);
 	}
 	return (singleton);

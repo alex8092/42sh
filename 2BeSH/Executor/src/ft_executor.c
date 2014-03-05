@@ -1,5 +1,4 @@
 #include "ft_executor.h"
-#include "ft_security.h"
 #include "common.h"
 #include "ft_buildins.h"
 #include "ft_debug.h"
@@ -33,8 +32,6 @@ t_executor	*exec_singleton(void)
 	if (!singleton)
 	{
 		singleton = (t_executor*)ft_memalloc(sizeof(t_executor));
-		if (!singleton)
-			security_singleton()->critical("malloc");
 		executor_init(singleton);
 	}
 	return (singleton);

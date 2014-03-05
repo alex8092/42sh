@@ -61,9 +61,7 @@ t_lexer				*lexer_singleton(void)
 
 	if (!singleton)
 	{
-		singleton = (t_lexer*)malloc(sizeof(t_lexer));
-		if (!singleton)
-			exit(1);
+		singleton = (t_lexer*)ft_memalloc(sizeof(t_lexer));
 		lexer_init(singleton);
 	}
 	return (singleton);
