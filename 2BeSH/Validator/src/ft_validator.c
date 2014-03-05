@@ -1,9 +1,22 @@
 #include "ft_validator.h"
 #include "common.h"
+#include "ft_environment.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-static void	validator_init(t_validator *val)
+static t_bool	is_valid(t_operation *op)
 {
+	char	*str;
+
+	str = env_singleton()->get("PATH");
+	printf("path : %s\n", str);
+	(void)op;
+	return (true);
+}
+
+static void		validator_init(t_validator *val)
+{
+	val->
 	(void)val;
 }
 
