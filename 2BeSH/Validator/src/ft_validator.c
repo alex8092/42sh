@@ -16,7 +16,7 @@ static t_bool	is_valid(t_operation *op)
 
 static void		validator_init(t_validator *val)
 {
-	val->
+	val->is_valid = is_valid;
 	(void)val;
 }
 
