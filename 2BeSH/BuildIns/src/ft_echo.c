@@ -46,7 +46,7 @@ void			p_buildins_echo(char **tab)
 		flag = 1;
 		i++;
 	}
-	if (!ft_strcmp(tab[i], "-"))
+	if (tab[i] && !ft_strcmp(tab[i], "-"))
 		i++;
 	ft_put_echo(tab, i);
 	if (!flag)
