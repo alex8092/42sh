@@ -24,9 +24,12 @@ t_env	*env_unset(char *name, size_t size)
 	{
 		if (name == (env->m_env[i] + (size + 1)))
 			i++;
-		newtab[size_tab] = ft_strdup(env->m_env[i]);
-		i++;
-		size_tab++;
+		if (env->m_env[i])
+		{
+			newtab[size_tab] = ft_strdup(env->m_env[i]);
+			i++;
+			size_tab++;
+		}
 	}
 	newtab[size_tab] = '\0';
 	free(env->m_env);
