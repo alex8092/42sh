@@ -54,8 +54,8 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 /*				printf("\tlen : %ld\n", len);*/
 				/*debug(1, "\t[MATCH]\n");*/
 				*str += len;
-		/*		if (cur->op == LEX_OP_STR)
-					return (ft_create_lex(parent, ft_strsub((*str) - len - 1, 0, len - 1), cur->op));*/
+				if (cur->op == LEX_OP_STR)
+					return (ft_create_lex(parent, ft_strsub((*str) - len + 1, 0, len - 2), cur->op));
 				return (ft_create_lex(parent, ft_strsub((*str) - len, 0, len), cur->op));
 			}
 		}
