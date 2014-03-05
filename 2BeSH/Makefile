@@ -153,7 +153,8 @@ SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_mv_current.c \
 			  ft_stocker_infos.c \
 
-SRCSENV = ft_environment.c
+SRCSENV = ft_environment.c \
+		  ft_unsetenv.c
 
 SRCSBUILDINS = ft_buildins.c \
 			   ft_cd.c \

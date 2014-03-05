@@ -18,6 +18,8 @@ struct	s_stocker
 
 	int					(*size)(void);
 
+	char				(*char_current)(void);
+
 	char				*(*to_string)(void);
 
 	t_bool				(*is_end)(void);

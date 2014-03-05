@@ -70,6 +70,7 @@ static void		env_init(t_env *env)
 	env->get = env_get;
 	env->size = env_size;
 	env->set = env_set;
+	env->unset = env_unset;
 }
 
 t_env		*env_singleton(void)
