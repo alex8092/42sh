@@ -14,9 +14,7 @@ t_stocker			*stocker_singleton(void)
 
 	if (!singleton)
 	{
-		singleton = (t_stocker*)malloc(sizeof(t_stocker));
-		if (!singleton)
-			exit(1);
+		singleton = (t_stocker*)ft_memalloc(sizeof(t_stocker));
 		stocker_init(singleton);
 	}
 	return (singleton);

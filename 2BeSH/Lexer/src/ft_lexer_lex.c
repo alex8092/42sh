@@ -9,8 +9,6 @@ static t_lex	*ft_create_lex(t_lex *parent, char *str, t_lex_op op)
 	t_lex	*item;
 
 	item = (t_lex *)ft_memalloc(sizeof(t_lex));
-	if (!item)
-		_exit(1);
 	item->str = str;
 	item->op = op;
 	if (parent)
@@ -45,7 +43,7 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 	debug(1, "\n\t[COMPARE]");
 	while (cur)
 	{
-		printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);
+/*		printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);*/
 		/*debug(5, "compare match : { \\\"", *str, "\\\" } <=> pattern { \\\"", cur->pattern, "\\\" }\n");*/
 		if ((res = ft_regmatch(*str, cur->pattern, &len)) == *str)
 		{
@@ -53,7 +51,7 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 				ft_manage_word(*str, &len);
 			if (len != 0)
 			{
-				printf("\tlen : %ld\n", len);
+/*				printf("\tlen : %ld\n", len);*/
 				/*debug(1, "\t[MATCH]\n");*/
 				*str += len;
 				return (ft_create_lex(parent, ft_strsub((*str) - len, 0, len), cur->op));
@@ -92,7 +90,7 @@ t_lex			*ft_lexer_lex_str(char *str)
 	end = begin;
 	while (end)
 	{
-		printf("part str[%s]\n", end->str);
+/*		printf("part str[%s]\n", end->str);*/
 		end = end->next;
 	}
 	return (begin);

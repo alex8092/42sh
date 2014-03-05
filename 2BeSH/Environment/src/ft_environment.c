@@ -78,9 +78,7 @@ t_env		*env_singleton(void)
 
 	if (!env)
 	{
-		env = (t_env *)malloc(sizeof(t_env));
-		if (!env)
-			exit(1);
+		env = (t_env *)ft_memalloc(sizeof(t_env));
 		env_init(env);
 	}
 	return (env);

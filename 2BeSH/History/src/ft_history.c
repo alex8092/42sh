@@ -14,9 +14,7 @@ t_history			*history_singleton(void)
 
 	if (!singleton)
 	{
-		singleton = (t_history*)malloc(sizeof(t_history));
-		if (!singleton)
-			exit(1);
+		singleton = (t_history*)ft_memalloc(sizeof(t_history));
 		history_init(singleton);
 	}
 	return (singleton);

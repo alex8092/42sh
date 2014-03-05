@@ -1,4 +1,5 @@
 #include "ft_resolver.h"
+#include "ft_security.h"
 #include "common.h"
 #include "ft_executor.h"
 #include "ft_debug.h"
@@ -69,7 +70,7 @@ t_resolver	*resolver_singleton()
 	{
 		singleton = (t_resolver*)ft_memalloc(sizeof(t_resolver));
 		if (!singleton)
-			_exit(1);
+			security_singleton()->critical("malloc");
 		resolver_init(singleton);
 	}
 	return (singleton);

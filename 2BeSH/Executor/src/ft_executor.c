@@ -39,8 +39,6 @@ t_executor	*exec_singleton(void)
 	if (!singleton)
 	{
 		singleton = (t_executor*)ft_memalloc(sizeof(t_executor));
-		if (!singleton)
-			_exit(1);
 		executor_init(singleton);
 	}
 	return (singleton);

@@ -27,8 +27,6 @@ t_validator	*validator_singleton(void)
 	if (!singleton)
 	{
 		singleton = (t_validator *)ft_memalloc(sizeof(t_validator));
-		if (!singleton)
-			exit(1);
 		validator_init(singleton);
 	}
 	return (singleton);
