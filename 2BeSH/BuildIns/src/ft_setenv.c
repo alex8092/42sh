@@ -3,6 +3,6 @@
 
 void	p_buildins_setenv(char **argv)
 {
-	printf("setenv exec");
+	printf("setenv exec\n");
 	(void)argv;
 }
