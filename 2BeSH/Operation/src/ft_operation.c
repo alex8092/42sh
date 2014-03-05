@@ -11,6 +11,8 @@ t_operation		*ft_new_operation(t_operation *parent, t_lex *lex)
 	if (new == NULL)
 		security_singleton()->critical("malloc");
 	new->lex = lex;
+	new->fd_out = -1;
+	new->fd_in = -1;
 	if (parent)
 		parent->next = new;
 	return (new);

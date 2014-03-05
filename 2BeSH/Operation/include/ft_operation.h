@@ -10,6 +10,11 @@ typedef enum e_op	t_op;
 struct	s_operation
 {
 	t_lex			*lex;
+	char			*s_fd_out;
+	char			*s_fd_in;
+	int				fd_out;
+	int				fd_in;
+	t_bool			append_out;
 	t_operation		*next;
 };
 

@@ -124,7 +124,8 @@ SRCSPARSER = ft_parser.c \
 			 ft_pars_find_op.c \
 			 ft_pars_put.c
 
-SRCSRESOLVER = ft_resolver.c
+SRCSRESOLVER = ft_resolver.c \
+			   ft_resolv_redirects.c
 
 SRCSVALIDATOR = ft_validator.c
 
