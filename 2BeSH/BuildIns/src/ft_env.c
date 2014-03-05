@@ -21,7 +21,7 @@ static t_bool	ft_check_flag(char *str)
 	return (false);
 }
 
-static void 	ft_put_env_error(char *str)
+static void		ft_put_env_error(char *str)
 {
 	write(2, "env: ", 5);
 	write(2, str, ft_strlen(str));

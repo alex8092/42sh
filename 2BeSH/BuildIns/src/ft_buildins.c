@@ -7,7 +7,6 @@ static t_buildin	*buildins_get(char *name)
 	t_buildin	*cur;
 
 	cur = buildins_singleton()->m_begin;
-
 	while (cur)
 	{
 		if (!ft_strcmp(cur->name, name))
@@ -17,7 +16,7 @@ static t_buildin	*buildins_get(char *name)
 	return (NULL);
 }
 
-static t_bool	buildins_isbuildins(char *name)
+static t_bool		buildins_isbuildins(char *name)
 {
 	t_buildin	*find;
 
@@ -30,7 +29,7 @@ static t_bool	buildins_isbuildins(char *name)
 	return (false);
 }
 
-static int		buildins_exec(char *name, char **argv)
+static int			buildins_exec(char *name, char **argv)
 {
 	const t_buildin	*buildin = buildins_get(name);
 
@@ -38,14 +37,14 @@ static int		buildins_exec(char *name, char **argv)
 	return (0);
 }
 
-static void		buildins_init(t_buildins *bi)
+static void			buildins_init(t_buildins *bi)
 {
 	bi->is_buildin = buildins_isbuildins;
 	bi->exec = buildins_exec;
 	p_buildins_init_builds(bi);
 }
 
-t_buildins		*buildins_singleton(void)
+t_buildins			*buildins_singleton(void)
 {
 	static t_buildins	*singleton = NULL;
 
