@@ -1,5 +1,6 @@
 #include "ft_buildins_private.h"
 #include "common.h"
+#include "ft_display.h"
 
 static t_bool	ft_echo_flag(char *str)
 {
@@ -26,9 +27,9 @@ static void		ft_put_echo(char **tab, int i)
 {
 	while (tab[i])
 	{
-		write(1, tab[i], ft_strlen(tab[i]));
+		display_singleton()->putstr(tab[i]);
 		if (tab[i + 1])
-			write(1, " ", 1);
+			display_singleton()->putstr(" ");
 		i++;
 	}
 }
@@ -49,5 +50,5 @@ void			p_buildins_echo(char **tab)
 		i++;
 	ft_put_echo(tab, i);
 	if (!flag)
-		write(1, "\n", 1);
+		display_singleton()->putstr("\n");
 }

@@ -1,7 +1,7 @@
 #include "ft_buildins_private.h"
 #include "ft_environment.h"
 #include "common.h"
-
+#include "ft_display.h"
 
 static t_bool	ft_check_flag(char *str)
 {
@@ -23,9 +23,9 @@ static t_bool	ft_check_flag(char *str)
 
 static void 	ft_put_env_error(char *str)
 {
-	write(1, "env: ", 5);
-	write(1, str, ft_strlen(str));
-	write(1, " bad argument\n", 15);
+	write(2, "env: ", 5);
+	write(2, str, ft_strlen(str));
+	write(2, " bad argument\n", 15);
 }
 
 void			p_buildins_env(char **arg)
@@ -48,10 +48,10 @@ void			p_buildins_env(char **arg)
 	else
 	{
 		while (env->m_env[i])
-			{
-				write(1, env->m_env[i], ft_strlen(env->m_env[i]));
-				write(1, "\n", 1);
+		{
+			display_singleton()->putstr(env->m_env[i]);
+			display_singleton()->putstr("\n");
 				++i;
-			}
+		}
 	}
 }
