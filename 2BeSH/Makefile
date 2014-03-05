@@ -108,7 +108,8 @@ SRCSEVENT = ft_event.c \
 			ft_event_map_rm.c \
 			ft_event_map_key.c \
 			ft_event_other.c \
-			ft_event_item.c
+			ft_event_item.c \
+			ft_event_terms.c \
 
 SRCSEXECUTOR = ft_executor.c
 
@@ -136,11 +137,11 @@ SRCSSECURITY = ft_security.c \
 
 SRCSDISPLAY = ft_display.c \
 			  ft_display_init.c \
-			  ft_display_terms.c \
 			  ft_display_write.c \
 			  ft_display_other.c \
 			  ft_display_mv.c \
 			  ft_display_rm.c \
+			  ft_display_terms.c \
 
 SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_lst.c \
@@ -148,7 +149,8 @@ SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_other.c \
 			  ft_stocker_init.c \
 			  ft_stocker_remove_lst.c \
-			  ft_stocker_mv_current.c
+			  ft_stocker_mv_current.c \
+			  ft_stocker_infos.c \
 
 SRCSENV = ft_environment.c
 

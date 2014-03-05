@@ -28,4 +28,6 @@ void		p_stocker_init_methods(t_stocker*stocker)
 	stocker->mv_back = p_stocker_current_back;
 	stocker->size = p_stocker_size;
 	stocker->to_string = p_stocker_to_string;
+	stocker->is_end = p_stocker_is_end;
+	stocker->is_first = p_stocker_is_first;
 }

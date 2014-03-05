@@ -4,14 +4,21 @@
 
 t_event		*p_event_map_prev(void)
 {
-	stocker_singleton()->mv_prev();
-	display_singleton()->mv_prev();
+	if (!stocker_singleton()->is_first())
+	{
+		display_singleton()->mv_prev();
+		stocker_singleton()->mv_prev();
+	}
 	return (event_singleton());
 }
 
 t_event		*p_event_map_next(void)
 {
-	stocker_singleton()->mv_next();
+	if (!stocker_singleton()->is_end())
+	{
+		display_singleton()->mv_next();
+		stocker_singleton()->mv_next();
+	}
 	return (event_singleton());
 }
 

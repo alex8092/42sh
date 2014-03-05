@@ -8,11 +8,17 @@ typedef struct s_display	t_display;
 struct	s_display
 {
 	int				m_fd;
+
 	char			m_buffer[2048];
 
-	t_display		*(*set_fd)(int fd);
-	t_display		*(*init_terms)(t_bool active);
-	t_display		*(*putchar)(char c);
+	t_bool			m_active;
+
+	t_bool			(*is_active)(void);
+
+	t_display		*(*set_active)(t_bool);
+	t_display		*(*set_fd)(int);
+	t_display		*(*putchar)(char);
+	t_display		*(*puts)(char *);
 	t_display		*(*prompt)(void);
 	t_display		*(*mv_prev)(void);
 	t_display		*(*mv_next)(void);

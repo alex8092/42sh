@@ -20,6 +20,9 @@ struct	s_stocker
 
 	char				*(*to_string)(void);
 
+	t_bool				(*is_end)(void);
+	t_bool				(*is_first)(void);
+
 	t_stocker			*(*push_back)(char c);
 	t_stocker			*(*push_front)(char c);
 	t_stocker			*(*rm_back)(void);

@@ -7,7 +7,6 @@ typedef struct s_security	t_security;
 
 struct	s_security
 {
-
 	void		(*critical)(char *error);
 
 	t_security	*(*activeRaw)(t_bool);

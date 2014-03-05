@@ -1,6 +1,7 @@
 #include "ft_lexer.h"
 #include "ft_parser.h"
 #include "ft_security.h"
+#include "ft_display.h"
 
 #include <stdio.h>
 
