@@ -18,6 +18,7 @@ struct	s_display
 	t_display		*(*set_active)(t_bool);
 	t_display		*(*set_fd)(int);
 	t_display		*(*putchar)(char);
+	t_display		*(*putstr)(char *);
 	t_display		*(*puts)(char *);
 	t_display		*(*prompt)(void);
 	t_display		*(*mv_prev)(void);

@@ -21,4 +21,5 @@ void		p_display_init_methodes(t_display *display)
 	display->set_active = p_display_set_active;
 	display->is_active = p_display_is_active;
 	display->puts = p_display_termcaps_puts;
+	display->putstr = p_display_putstr;
 }

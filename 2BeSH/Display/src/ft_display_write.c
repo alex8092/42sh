@@ -7,12 +7,27 @@
 
 t_display		*p_display_putchar(char c)
 {
-	static t_display	*dis = NULL;
+	static t_display	*display = NULL;
 
-	if (!dis)
-		dis = display_singleton();
-	write(dis->m_fd, &c, 1);
-	return (dis);
+	if (!display)
+		display = display_singleton();
+	write(display->m_fd, &c, 1);
+	return (display);
+}
+
+t_display		*p_display_putstr(char *str)
+{
+	t_display	*display;
+	int			i;
+
+	display = display_singleton();
+	i = 0;
+	while (str[i])
+	{
+		display->putchar(str[i]);
+		i++;
+	}
+	return (display);
 }
 
 t_display		*p_display_write_prompt(void)

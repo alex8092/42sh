@@ -10,6 +10,7 @@ void			p_display_init_methodes(t_display *display);
 t_bool			p_display_is_active(void);
 
 t_display		*p_display_putchar(char);
+t_display		*p_display_putstr(char *);
 t_display		*p_display_set_fd(int);
 t_display		*p_display_write_prompt(void);
 t_display		*p_display_mv_cursor_prev(void);
