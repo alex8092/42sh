@@ -11,19 +11,22 @@ static void	executor_start(t_operation *op)
 	t_operation	*cur;
 	const t_buildins	*bi = buildins_singleton();
 	t_lex		*lex;
+	char		**tab;
 
 	cur = op;
 	while (cur)
 	{
 		lex = cur->lex;
+		tab = NULL;
 		while (lex)
 		{
 			printf("exec part[%s]\n", lex->str);
+			tab = ft_tabstradd(tab, lex->str);
 			lex = lex->next;
 		}
 		debug(3, "exec op : ", cur->lex->str, "\n");
 		if (bi->is_buildin(cur->lex->str))
-			bi->exec(cur->lex->str, NULL);
+			bi->exec(cur->lex->str, tab);
 		else
 			validator_singleton()->is_valid(op);
 		cur = cur->next;

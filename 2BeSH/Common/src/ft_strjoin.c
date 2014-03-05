@@ -21,9 +21,10 @@ char	*ft_strjoin(const char *str, const char *str2)
 	i = 0;
 	while (str2[i])
 	{
-		res[j] = str[i];
+		res[j] = str2[i];
 		++i;
 		++j;
 	}
+	res[j] = 0;
 	return (res);
 }
