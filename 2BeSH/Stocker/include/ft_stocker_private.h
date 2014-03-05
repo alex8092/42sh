@@ -29,6 +29,8 @@ t_stocker		*p_stocker_current_next(void);
 t_stocker		*p_stocker_current_front(void);
 t_stocker		*p_stocker_current_back(void);
 
+char			p_stocker_get_current_char(void);
+
 char			*p_stocker_to_string(void);
 
 int				p_stocker_size(void);

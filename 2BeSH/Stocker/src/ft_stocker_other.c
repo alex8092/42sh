@@ -25,3 +25,8 @@ char			*p_stocker_to_string(void)
 	}
 	return (str);
 }
+
+char			p_stocker_get_current_char(void)
+{
+	return (stocker_singleton()->m_current->c);
+}

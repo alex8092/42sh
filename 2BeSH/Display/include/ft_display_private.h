@@ -15,8 +15,6 @@ t_display		*p_display_set_fd(int);
 t_display		*p_display_write_prompt(void);
 t_display		*p_display_mv_cursor_prev(void);
 t_display		*p_display_mv_cursor_next(void);
-t_display		*p_display_mv_cursor_front(void);
-t_display		*p_display_mv_cursor_back(void);
 t_display		*p_display_rm_cursor(void);
 t_display		*p_display_rm_previous_cursor(void);
 t_display		*p_display_set_active(t_bool);

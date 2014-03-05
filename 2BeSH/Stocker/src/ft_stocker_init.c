@@ -30,4 +30,5 @@ void		p_stocker_init_methods(t_stocker*stocker)
 	stocker->to_string = p_stocker_to_string;
 	stocker->is_end = p_stocker_is_end;
 	stocker->is_first = p_stocker_is_first;
+	stocker->char_current = p_stocker_get_current_char;
 }
