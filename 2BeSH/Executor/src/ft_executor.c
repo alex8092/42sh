@@ -9,10 +9,17 @@ static void	executor_start(t_operation *op)
 {
 	t_operation	*cur;
 	const t_buildins	*bi = buildins_singleton();
+	t_lex		*lex;
 
 	cur = op;
 	while (cur)
 	{
+		lex = cur->lex;
+		while (lex)
+		{
+			printf("exec part[%s]\n", lex->str);
+			lex = lex->next;
+		}
 		debug(3, "exec op : ", cur->lex->str, "\n");
 		if (bi->is_buildin(cur->lex->str))
 			bi->exec(cur->lex->str, NULL);
