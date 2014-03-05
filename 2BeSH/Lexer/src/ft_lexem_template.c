@@ -22,7 +22,7 @@ void			p_lexer_template_init(t_lexer *lexer)
 	t = ft_new_lti(t, "[123]?>>", LEX_OP_APPEND_OUT);
 	t = ft_new_lti(t, "[123]?>", LEX_OP_REDIRECT_OUT);
 	t = ft_new_lti(t, "<", LEX_OP_REDIRECT_IN);
-	t = ft_new_lti(t, "\".{0,}[^\\]\'", LEX_OP_STR);
+	t = ft_new_lti(t, "\".{0,}[^\\]\"", LEX_OP_STR);
 	t = ft_new_lti(t, "'.{0,}[^\\]'", LEX_OP_STR);
 	t = ft_new_lti(t, "`.{0,}[^\\]`", LEX_OP_SUBCOMMAND);
 	t = ft_new_lti(t, "&&", LEX_OP_AND);
