@@ -20,8 +20,6 @@ t_event		*event_singleton(void)
 	if (!singleton)
 	{
 		singleton = (t_event*)ft_memalloc(sizeof(t_event));
-		if (!singleton)
-			exit(1);
 		event_init(singleton);
 	}
 	return (singleton);

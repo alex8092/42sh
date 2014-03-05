@@ -11,5 +11,7 @@ struct		s_executor
 };
 
 t_executor	*exec_singleton(void);
+int			ft_size_pipes(t_operation *op);
+void		ft_exec_pipes(t_operation *op, int size_pipes);
 
 #endif

@@ -14,9 +14,7 @@ t_display			*display_singleton(void)
 
 	if (!singleton)
 	{
-		singleton = (t_display*)malloc(sizeof(t_display));
-		if (!singleton)
-			exit(1);
+		singleton = (t_display*)ft_memalloc(sizeof(t_display));
 		display_init(singleton);
 	}
 	return (singleton);

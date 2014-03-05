@@ -1,7 +1,5 @@
 #include "ft_event_private.h"
-#include "ft_stocker.h"
-#include "ft_environment.h"
-#include <unistd.h>
+#include "ft_display.h"
 
 void		p_event_init_attributes(t_event *event)
 {
@@ -17,6 +15,7 @@ void		p_event_init_methodes(t_event *event)
 	event->map_front = p_event_map_front;
 	event->rm_cur = p_event_map_rm_cur;
 	event->rm_prev = p_event_map_rm_prev;
+	event->init_terms = p_event_init_terms;
 }
 
 void		p_event_init_mapping_key(t_event *event)
@@ -24,7 +23,8 @@ void		p_event_init_mapping_key(t_event *event)
 	t_event_item	*item;
 	int				calc;
 
-	if (env_singleton()->get("TERM"))
+	event->init_terms();
+	if (display_singleton()->is_active())
 	{
 		calc = (27 << 24) | (91 << 16) | (68 << 8);
 		item = p_event_add_item(NULL, calc, (void *)event->map_prev);

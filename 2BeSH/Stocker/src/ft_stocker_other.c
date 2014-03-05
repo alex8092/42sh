@@ -15,7 +15,7 @@ char			*p_stocker_to_string(void)
 
 	i = 0;
 	stocker = stocker_singleton();
-	str = (char*)malloc(sizeof(char) * (stocker->m_length + 1));
+	str = (char*)ft_memalloc(sizeof(char) * (stocker->m_length + 1));
 	cursor = stocker->m_start;
 	while (cursor)
 	{
@@ -24,4 +24,9 @@ char			*p_stocker_to_string(void)
 		i++;
 	}
 	return (str);
+}
+
+char			p_stocker_get_current_char(void)
+{
+	return (stocker_singleton()->m_current->c);
 }

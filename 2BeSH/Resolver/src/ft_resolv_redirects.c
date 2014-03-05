@@ -29,5 +29,7 @@ void	ft_resolv_redirects(t_operation *op, t_lex **begin)
 			last->next = cur->next->next;
 			cur = last->next;
 		}
+		else
+			cur = cur->next;
 	}
 }

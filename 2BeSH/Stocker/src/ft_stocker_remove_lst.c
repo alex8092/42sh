@@ -28,7 +28,7 @@ t_stocker		*p_stocker_remove_prev_lst(void)
 
 	stocker = stocker_singleton();
 	current = stocker->m_current;
-	if (current->prev)
+	if (!stocker->is_first())
 	{
 		tmp = current->prev;
 		if (tmp->prev)
@@ -56,14 +56,13 @@ t_stocker		*p_stocker_remove_current_lst(void)
 
 	stocker = stocker_singleton();
 	current = stocker->m_current;
-	if (stocker->m_pos != stocker->m_length)
+	if (stocker->m_pos < stocker->m_length)
 	{
 		tmp = current->next;
 		if (current->prev)
 		{
 			current->prev->next = tmp;
 			tmp->prev = current->prev;
-			stocker->m_pos--;
 		}
 		else
 		{

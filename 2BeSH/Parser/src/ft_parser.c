@@ -28,8 +28,6 @@ t_parser	*parser_singleton(void)
 	if (!singleton)
 	{
 		singleton = (t_parser*)malloc(sizeof(t_parser));
-		if (!singleton)
-			exit(1);
 		parser_init(singleton);
 	}
 	return (singleton);

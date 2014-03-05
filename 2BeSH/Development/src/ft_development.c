@@ -21,8 +21,6 @@ t_development	*dev_singleton()
 	if (!singleton)
 	{
 		singleton = (t_development*)ft_memalloc(sizeof(t_development));
-		if (!singleton)
-			_exit(1);
 		ft_dev_init(singleton);
 	}
 	return (singleton);

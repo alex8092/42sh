@@ -7,7 +7,7 @@ t_stocker	*p_stocker_current_prev(void)
 
 	stocker = stocker_singleton();
 	cursor = stocker->m_current;
-	if (stocker->m_pos)
+	if (!stocker->is_first())
 	{
 		if (cursor && cursor->prev)
 			cursor = cursor->prev;
@@ -24,7 +24,7 @@ t_stocker	*p_stocker_current_next(void)
 
 	stocker = stocker_singleton();
 	cursor = stocker->m_current;
-	if (stocker->m_pos != stocker->m_length)
+	if (!stocker->is_end())
 	{
 		if (cursor && cursor->next)
 			cursor = cursor->next;

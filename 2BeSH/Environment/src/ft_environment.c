@@ -70,6 +70,7 @@ static void		env_init(t_env *env)
 	env->get = env_get;
 	env->size = env_size;
 	env->set = env_set;
+	env->unset = env_unset;
 }
 
 t_env		*env_singleton(void)
@@ -78,9 +79,7 @@ t_env		*env_singleton(void)
 
 	if (!env)
 	{
-		env = (t_env *)malloc(sizeof(t_env));
-		if (!env)
-			exit(1);
+		env = (t_env *)ft_memalloc(sizeof(t_env));
 		env_init(env);
 	}
 	return (env);
