@@ -2,6 +2,7 @@
 #include "ft_stocker.h"
 #include "ft_resolver.h"
 #include "ft_lexer.h"
+#include "ft_security.h"
 #include "common.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,7 +30,7 @@ t_parser	*parser_singleton(void)
 	{
 		singleton = (t_parser*)malloc(sizeof(t_parser));
 		if (!singleton)
-			exit(1);
+			security_singleton()->critical("malloc");
 		parser_init(singleton);
 	}
 	return (singleton);

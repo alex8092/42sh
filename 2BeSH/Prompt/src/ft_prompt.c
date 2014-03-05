@@ -1,4 +1,5 @@
 #include "ft_prompt_private.h"
+#include "ft_security.h"
 #include <stdlib.h>
 
 static void		prompt_init(t_prompt *prompt)
@@ -15,7 +16,7 @@ t_prompt	*prompt_singleton(void)
 	{
 		singleton = (t_prompt*)malloc(sizeof(t_prompt));
 		if (!singleton)
-			exit(1);
+			security_singleton()->critical("malloc");
 		prompt_init(singleton);
 	}
 	return (singleton);

@@ -1,4 +1,5 @@
 #include "ft_environment.h"
+#include "ft_security.h"
 #include "common.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -80,7 +81,7 @@ t_env		*env_singleton(void)
 	{
 		env = (t_env *)malloc(sizeof(t_env));
 		if (!env)
-			exit(1);
+			security_singleton()->critical("malloc");
 		env_init(env);
 	}
 	return (env);

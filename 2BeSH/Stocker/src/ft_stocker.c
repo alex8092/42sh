@@ -1,4 +1,5 @@
 #include "ft_stocker_private.h"
+#include "ft_security.h"
 #include <stdlib.h>
 
 static void			stocker_init(t_stocker *stocker)
@@ -16,7 +17,7 @@ t_stocker			*stocker_singleton(void)
 	{
 		singleton = (t_stocker*)malloc(sizeof(t_stocker));
 		if (!singleton)
-			exit(1);
+			security_singleton()->critical("malloc");
 		stocker_init(singleton);
 	}
 	return (singleton);

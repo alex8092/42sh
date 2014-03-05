@@ -1,4 +1,5 @@
 #include "ft_stocker_private.h"
+#include "ft_security.h"
 #include <stdlib.h>
 
 int				p_stocker_size(void)
@@ -16,6 +17,8 @@ char			*p_stocker_to_string(void)
 	i = 0;
 	stocker = stocker_singleton();
 	str = (char*)malloc(sizeof(char) * (stocker->m_length + 1));
+	if (!str)
+		security_singleton()->critical("malloc");
 	cursor = stocker->m_start;
 	while (cursor)
 	{

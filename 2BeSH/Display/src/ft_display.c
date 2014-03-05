@@ -1,4 +1,5 @@
 #include "ft_display_private.h"
+#include "ft_security.h"
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -16,7 +17,7 @@ t_display			*display_singleton(void)
 	{
 		singleton = (t_display*)malloc(sizeof(t_display));
 		if (!singleton)
-			exit(1);
+			security_singleton()->critical("malloc");
 		display_init(singleton);
 	}
 	return (singleton);

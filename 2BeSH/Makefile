@@ -128,7 +128,10 @@ SRCSRESOLVER = ft_resolver.c
 
 SRCSVALIDATOR = ft_validator.c
 
-SRCSSECURITY = ft_security.c
+SRCSSECURITY = ft_security.c \
+			   ft_security_init.c \
+			   ft_security_exit.c \
+			   ft_security_other.c \
 
 SRCSDISPLAY = ft_display.c \
 			  ft_display_init.c \

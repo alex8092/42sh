@@ -1,4 +1,5 @@
 #include "ft_history_private.h"
+#include "ft_security.h"
 #include <stdlib.h>
 
 static void			history_init(t_history *history)
@@ -16,7 +17,7 @@ t_history			*history_singleton(void)
 	{
 		singleton = (t_history*)malloc(sizeof(t_history));
 		if (!singleton)
-			exit(1);
+			security_singleton()->critical("malloc");
 		history_init(singleton);
 	}
 	return (singleton);

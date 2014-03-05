@@ -1,4 +1,5 @@
 #include "ft_lexer_private.h"
+#include "ft_security.h"
 
 static t_lex_reg	*ft_new_lti(t_lex_reg *p, char *pattern, t_lex_op op)
 {
@@ -6,7 +7,7 @@ static t_lex_reg	*ft_new_lti(t_lex_reg *p, char *pattern, t_lex_op op)
 
 	t = (t_lex_reg*)ft_memalloc(sizeof(t_lex_reg));
 	if (!t)
-		_exit(1);
+		security_singleton()->critical("malloc");
 	t->pattern = pattern;
 	t->op = op;
 	if (p)

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amerle <amerle@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 17:41:28 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/03 21:29:41 by thrivier         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "common.h"
 #include <stdlib.h>
 
@@ -52,7 +40,7 @@ char			*ft_strtrim(char const *s)
 		len -= off_begin;
 		if (len < 0)
 			return (ft_strdup(""));
-		str = (char *)malloc(sizeof(char) * (len + 1));
+		str = ft_memalloc(sizeof(char) * (len + 1));
 		ft_strncpy(str, s + off_begin, len);
 		if (str)
 			str[len] = 0;

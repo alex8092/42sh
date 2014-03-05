@@ -1,4 +1,5 @@
 #include "ft_validator.h"
+#include "ft_security.h"
 #include "common.h"
 #include <stdlib.h>
 
@@ -15,7 +16,7 @@ t_validator	*validator_singleton(void)
 	{
 		singleton = (t_validator *)ft_memalloc(sizeof(t_validator));
 		if (!singleton)
-			exit(1);
+			security_singleton()->critical("malloc");
 		validator_init(singleton);
 	}
 	return (singleton);
