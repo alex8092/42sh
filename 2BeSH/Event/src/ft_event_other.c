@@ -9,6 +9,7 @@ static void		p_event_read_for_print(char *c)
 	{
 		display_singleton()->puts("im");
 		display_singleton()->putchar(c[0]);
+		display_singleton()->puts("ei");
 		if (c[0] != '\n')
 			stocker_singleton()->push((char)c[0]);
 		else
