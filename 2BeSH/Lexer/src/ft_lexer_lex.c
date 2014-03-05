@@ -43,7 +43,7 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 	/*debug(1, "\n\t[COMPARE]");*/
 	while (cur)
 	{
-/*		printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);*/
+		printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);
 		/*debug(5, "compare match : { \\\"", *str, "\\\" } <=> pattern { \\\"", cur->pattern, "\\\" }\n");*/
 		if ((res = ft_regmatch(*str, cur->pattern, &len)) == *str)
 		{
@@ -54,6 +54,8 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 /*				printf("\tlen : %ld\n", len);*/
 				/*debug(1, "\t[MATCH]\n");*/
 				*str += len;
+		/*		if (cur->op == LEX_OP_STR)
+					return (ft_create_lex(parent, ft_strsub((*str) - len - 1, 0, len - 1), cur->op));*/
 				return (ft_create_lex(parent, ft_strsub((*str) - len, 0, len), cur->op));
 			}
 		}

@@ -1,5 +1,6 @@
 #include "ft_regex.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static void	ft_reg_parse_brack(t_reg *reg)
 {

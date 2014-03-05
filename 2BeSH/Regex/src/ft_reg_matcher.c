@@ -1,4 +1,5 @@
 #include "ft_regex.h"
+#include <stdio.h>
 
 static t_bool	ft_match_brack(t_op_brack *op, t_reg *reg);
 static t_bool	ft_match_base(t_op_base *op, t_reg *reg);
@@ -20,13 +21,17 @@ t_bool	ft_match_op(t_regop *op, t_reg *reg)
 	else if (op->type == REGOP_SUB)
 		return (ft_match_sub((t_op_sub *)op, reg));
 	else
+	{
+		printf("fake\n");
 		return (false);
+	}
 }
 
 static t_bool	ft_match_brack(t_op_brack *op, t_reg *reg)
 {
 	t_bool	res;
 
+	printf("match brack : %c - %s {%zu}\n", reg->s_base[reg->pos], op->s_brack, reg->pos_reg);
 	if (op->s_brack[0] != '^')
 		res = ft_reg_isinarray(reg->s_base[reg->pos], op->s_brack);
 	else
