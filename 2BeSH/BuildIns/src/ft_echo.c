@@ -39,17 +39,15 @@ void			p_buildins_echo(char **tab)
 	int		i;
 
 	i = 1;
-	if (tab[i] && !ft_echo_flag(tab[i]))
-		flag = 0;
-	else
+	flag = 0;
+	while (ft_echo_flag(tab[i]))
 	{
 		flag = 1;
-		while (ft_echo_flag(tab[i]))
-			i++;
+		i++;
 	}
-	if (ft_strcmp(tab[i], "-"))
+	if (!ft_strcmp(tab[i], "-"))
 		i++;
 	ft_put_echo(tab, i);
 	if (!flag)
-		write(1, "'\n'", 1);
+		write(1, "\n", 1);
 }
