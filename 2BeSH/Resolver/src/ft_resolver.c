@@ -7,38 +7,29 @@
 #include "ft_parser.h"
 #include "ft_lexer.h"
 
-static void	parse_tree(t_operation **begin, t_operation **end, t_pars *tree)
+static void	parse_tree(t_resop **b, t_resop **e, t_pars *t, t_lex_op cur_op)
 {
 	t_lex		*cur;
-	t_lex_op		cur_op;
 
-	cur_op = LEX_OP_NO;
-	if (tree)
+	if (t)
 	{
-		parse_tree(begin, end, tree->left);
-		cur = tree->op;
+		parse_tree(b, e, t->left, cur_op);
+		cur = t->op;
 		if (cur && cur->op < 100)
 		{
-			if (cur_op != LEX_OP_PIPE && *begin)
+			if (cur_op != LEX_OP_PIPE && *b)
 			{
-				ft_resolv_redirects(*begin, &(*begin)->lex);
-				exec_singleton()->start(*begin);
-				*begin = NULL;
+				ft_resolv_redirects(*b, &(*b)->lex);
+				exec_singleton()->start(*b);
+				*b = NULL;
 			}
-			*end = ft_new_operation(*end, cur);
-			if (!(*begin))
-				*begin = *end;
-			printf("Command : {{");
-			while (cur)
-			{
-				printf(" %s", cur->str);
-				cur = cur->next;
-			}
-			printf(" }}\n");
+			*e = ft_new_operation(*e, cur);
+			if (!(*b))
+				*b = *e;
 		}
 		else
 			cur_op = cur->op;
-		parse_tree(begin, end, tree->right);
+		parse_tree(b, e, t->right, cur_op);
 	}
 }
 
@@ -52,9 +43,9 @@ static void	resolver_start(t_pars *tree)
 	end = NULL;
 	if (!rv)
 		rv = resolver_singleton();
-	parse_tree(&begin, &end, tree);
-	ft_resolv_redirects(end, &end->lex);
-	exec_singleton()->start(end);
+	parse_tree(&begin, &end, tree, LEX_OP_NO);
+	ft_resolv_redirects(begin, &begin->lex);
+	exec_singleton()->start(begin);
 }
 
 static void	resolver_init(t_resolver *rv)
