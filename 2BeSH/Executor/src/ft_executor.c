@@ -2,6 +2,7 @@
 #include "common.h"
 #include "ft_buildins.h"
 #include "ft_debug.h"
+#include "ft_validator.h"
 #include <unistd.h>
 #include <stdio.h>
 
@@ -23,6 +24,8 @@ static void	executor_start(t_operation *op)
 		debug(3, "exec op : ", cur->lex->str, "\n");
 		if (bi->is_buildin(cur->lex->str))
 			bi->exec(cur->lex->str, NULL);
+		else
+			validator_singleton()->is_valid(op);
 		cur = cur->next;
 	}
 }
