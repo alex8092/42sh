@@ -11,15 +11,11 @@ static void	parse_tree(t_resop **b, t_resop **e, t_pars *t, t_lex_op cur_op)
 {
 	t_lex		*cur;
 
+	printf("JE SUIS PEUT ETRE TROP FATIGUER MAIS ESSAIE LE ; IL FAIT SEGFAULT JE SAIS PAS POURQUOI ");
+
+
 	if (t)
 	{
-		if (cur_op != LEX_OP_PIPE && *b)
-		{
-			ft_resolv_redirects(*b, &(*b)->lex);
-			exec_singleton()->start(*b);
-			*b = NULL;
-			*e = NULL;
-		}
 		parse_tree(b, e, t->left, cur_op);
 		cur = t->op;
 		if (cur && cur->op < 100)
@@ -37,7 +33,15 @@ static void	parse_tree(t_resop **b, t_resop **e, t_pars *t, t_lex_op cur_op)
 		}
 		else
 			cur_op = cur->op;
-		parse_tree(b, e, t->right, cur_op);
+		if ((cur_op / 11) == 11 )
+		{
+			if (cur_op == 110 /*&&  exec_singleton()->getresult()*/)
+				parse_tree(b, e, t->right, cur_op);
+			else if (cur_op == 111 /* && !exec_singleton()->getresult()*/)
+				parse_tree(b, e, t->right, cur_op);
+		}
+		else
+			parse_tree(b, e, t->right, cur_op);
 	}
 }
 
