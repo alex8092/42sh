@@ -18,10 +18,12 @@ static void	executor_start(t_operation *op)
 	int			status;
 	int			pipes[2 * ft_size_pipes(op)];
 	int			i;
+	int			size;
 
 	cur = op;
 	i = 0;
-	while (i < ft_size_pipes(op))
+	size = ft_size_pipes(op);
+	while (size > 1 && i < size)
 	{
 		pipe(pipes + i * 2);
 		++i;
@@ -58,7 +60,8 @@ static void	executor_start(t_operation *op)
 			}
 			else if (son != -1)
 			{
-				close(pipes[i + 1]);
+				if (cur->next)
+					close(pipes[i + 1]);
 			}
 		}
 		i += 2;

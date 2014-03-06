@@ -13,6 +13,13 @@ static void	parse_tree(t_resop **b, t_resop **e, t_pars *t, t_lex_op cur_op)
 
 	if (t)
 	{
+		if (cur_op != LEX_OP_PIPE && *b)
+		{
+			ft_resolv_redirects(*b, &(*b)->lex);
+			exec_singleton()->start(*b);
+			*b = NULL;
+			*e = NULL;
+		}
 		parse_tree(b, e, t->left, cur_op);
 		cur = t->op;
 		if (cur && cur->op < 100)

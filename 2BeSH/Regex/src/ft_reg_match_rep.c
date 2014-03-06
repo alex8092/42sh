@@ -8,26 +8,26 @@ t_bool	ft_reg_match_ismatchnext(t_regop *current, t_reg *reg, int s_pos)
 	res = false;
 	while ((current = current->next) && reg->pos < reg->len_b)
 	{
-		printf("in\n");
+/*		printf("in\n");*/
 		if (!(res = ft_match_op(current, reg)))
 		{
-			printf("after brack\n");
+			/*printf("after brack\n");*/
 			if (!current->skip_false)
 			{
-				printf("current skip\n");
+				/*printf("current skip\n");*/
 				reg->pos = s_pos;
 				break ;
 			}
 			else
 			{
-				printf("else skip\n");
+				/*printf("else skip\n");*/
 				res = true;
 			}
 		}
 	}
 	if (res && s_pos != -1)
 	{
-		printf("reset\n");
+		/*printf("reset\n");*/
 		reg->pos = s_pos;
 	}
 	return (res);
@@ -41,7 +41,7 @@ t_bool	ft_match_rep(t_op_rep *op, t_reg *reg)
 
 	res = true;
 	i = 1;
-	printf("in func\n");
+	/*printf("in func\n");*/
 	while (i < op->min_rep && res && (i++))
 		res = ft_match_op(op->rep, reg);
 	if ((i == op->min_rep && res) || (op->min_rep == 0))

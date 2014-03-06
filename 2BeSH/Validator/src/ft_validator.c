@@ -49,7 +49,7 @@ static t_bool	is_valid(t_operation *op)
 				return (true);
 		}
 	}
-	return (true);
+	return (false);
 }
 
 static void		validator_init(t_validator *val)

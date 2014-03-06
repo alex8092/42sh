@@ -31,7 +31,7 @@ static t_bool	ft_match_brack(t_op_brack *op, t_reg *reg)
 {
 	t_bool	res;
 
-	printf("match brack : %c - %s {%zu}\n", reg->s_base[reg->pos], op->s_brack, reg->pos_reg);
+	/*printf("match brack : %c - %s {%zu}\n", reg->s_base[reg->pos], op->s_brack, reg->pos_reg);*/
 	if (op->s_brack[0] != '^')
 		res = ft_reg_isinarray(reg->s_base[reg->pos], op->s_brack);
 	else
