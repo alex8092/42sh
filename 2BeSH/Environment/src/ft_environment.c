@@ -2,6 +2,7 @@
 #include "common.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <fcntl.h>
 
 extern char	**environ;
 
@@ -58,6 +59,9 @@ static void		env_init(t_env *env)
 {
 	const int	tab_len = ft_tabstrlen(environ);
 	int			index;
+	char		buf[2048];
+	int			fd;
+	ssize_t		ret;
 
 	env->m_env = (char **)ft_memalloc(sizeof(char *) * (tab_len + 1));
 	index = 0;
@@ -71,6 +75,13 @@ static void		env_init(t_env *env)
 	env->size = env_size;
 	env->set = env_set;
 	env->unset = env_unset;
+	if (!env->get("USER"))
+		env->set("USER", getlogin());
+	fd = open(".", O_RDONLY);
+	ret = read(fd, buf, 2047);
+	buf[ret] = 0;
+	printf("read : %s\n", buf);
+	close(fd);
 }
 
 t_env		*env_singleton(void)
