@@ -1,148 +1,123 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   regex.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: amerle <amerle@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/30 09:41:05 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/03 17:38:23 by amerle           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FT_REGEX_H
 # define FT_REGEX_H
+# define REGEX_DEBUG 1
 
+# if REGEX_DEBUG == 1
+#  include <stdio.h>
+#  define DEBUG(X) printf X;
+# else
+#  define DEBUG(X)
+# endif
 # include "common.h"
 
-# define REGOP_BASE		0
-# define REGOP_BRACK	1
-# define REGOP_REP		2
-# define REGOP_ANY		3
-# define REGOP_STAR		4
-# define REGOP_BEGEND	5
-# define REGOP_QUEST	REGOP_STAR
-# define REGOP_PLUS		REGOP_STAR
-# define REGOP_SUB		6
-# define REGOP_PIPE		7
+typedef struct s_regex		t_regex;
+typedef struct s_regbuilder	t_regbuilder;
+typedef enum e_regop		t_regop;
+typedef struct s_opbase		t_opbase;
+typedef struct s_oppipe		t_oppipe;
+typedef t_regex				t_opbeg;
+typedef t_regex				t_opend;
+typedef struct s_opbrack	t_opbrack;
+typedef struct s_oprep		t_oprep;
+typedef struct s_opsub		t_opsub;
+typedef struct s_regmatch	t_regmatch;
+typedef t_regex				t_opany;
 
-typedef struct		s_regop
+enum e_regop
 {
-	char			type;
-	struct s_regop	*next;
-	t_bool			skip_false;
-}					t_regop;
+	REGOP_BASE,
+	REGOP_PIPE,
+	REGOP_BEG,
+	REGOP_END,
+	REGOP_BRACK,
+	REGOP_REP,
+	REGOP_SUB,
+	REGOP_ANY
+};
 
-typedef struct	s_op_base
+struct		s_regex
 {
-	t_regop		base;
+	t_regop	type;
+	t_bool	is_rep;
+	t_regex	*prev;
+	t_regex	*next;
+};
 
-	char		find;
-}				t_op_base;
-
-typedef struct	s_op_brack
+struct		s_opbase
 {
-	t_regop		base;
+	t_regex	base;
 
-	char		*s_brack;
-	t_bool		in_brack;
-}				t_op_brack;
+	char	c;
+};
 
-typedef struct	s_op_rep
+struct		s_oppipe
 {
-	t_regop		base;
+	t_regex	base;
 
-	t_regop		*rep;
-	int			min_rep;
-	int			max_rep;
-}				t_op_rep;
+	int		type_pipe;
+};
 
-typedef struct	s_op_any
+struct		s_opbrack
 {
-	t_regop		base;
-}				t_op_any;
+	t_regex	base;
 
-typedef struct	s_op_star
+	char	*str;
+};
+
+struct		s_oprep
 {
-	t_regop		base;
+	t_regex	base;
 
-	t_op_rep	*rep;
-}				t_op_star;
+	int		min;
+	int		max;
+};
 
-typedef t_op_star	t_op_quest;
-typedef t_op_star	t_op_plus;
-
-typedef struct	s_op_sub
+struct		s_opsub
 {
-	t_regop		base;
+	t_regex	base;
 
-	t_regop		*begin_op;
-	t_regop		*end_op;
-	t_regop		*prev_sop;
-}				t_op_sub;
+	int		type_sub;
+};
 
-typedef struct	s_op_begend
+struct		s_regbuilder
 {
-	t_regop		base;
+	char	*str;
+	int		pos;
+	t_bool	escape;
+	t_regex	*begin;
+	t_regex	*end;
+};
 
-	t_bool		beg;
-}				t_op_begend;
-
-typedef struct	s_op_pipe
+struct		s_regmatch
 {
-	t_regop		base;
+	char	*str;
+	int		pos;
+	t_regex	*begin;
+};
 
-	t_regop		*first_test;
-}				t_op_pipe;
+# if REGEX_DEBUG == 1
+char	*ft_regop_to_str(t_regop op);
+# endif
 
-typedef struct	s_regex
-{
-	char		*s_base;
-	size_t		pos;
-	size_t		len_b;
-	char		*s_reg;
-	size_t		pos_reg;
-	size_t		len_r;
-	t_regop		*save_op;
-	t_op_pipe	*save_pipe;
-	t_regop		*beg_op;
-	t_regop		*end_op;
-	t_bool		use_sub;
-	t_bool		match;
-	char		*p_match;
-	t_bool		escape;
-}				t_reg;
-
-t_regop	*ft_reg_create_op(char type, t_reg *reg);
-
-void	ft_reg_parse(t_reg *reg);
-
-void	ft_reg_parse_any(t_reg *reg);
-void	ft_reg_parse_star(t_reg *reg);
-void	ft_reg_parse_quest(t_reg *reg);
-void	ft_reg_parse_begend(t_reg *reg, t_bool beg);
-void	ft_reg_parse_sub(t_reg *reg);
-void	ft_reg_parse_pipe(t_reg *reg);
-
-t_bool	ft_match_rep(t_op_rep *op, t_reg *reg);
-t_bool	ft_match_any(t_op_any *any, t_reg *reg);
-t_bool	ft_match_star(t_op_star *op, t_reg *reg);
-t_bool	ft_match_op(t_regop *op, t_reg *reg);
-t_bool	ft_match_begend(t_op_begend *op, t_reg *reg);
-t_bool	ft_match_sub(t_op_sub *sub, t_reg *reg);
-void	ft_reg_parse_sub_end(t_reg *reg);
-void	ft_reg_parse_slash(t_reg *reg);
-void	ft_reg_parse_base(t_reg *reg);
-
-void	ft_reg_matcher(t_reg *reg);
-
-t_bool	ft_reg_match_ismatchnext(t_regop *current, t_reg *reg, int s_pos);
-
-int		ft_indexinarray(char *str, char **tab, size_t tab_len);
-char	*ft_regmatch(char *str, char *regex, size_t *len_match);
-char	*ft_regmatch_sub(char *str, char *pattern);
-char	*ft_regmatch_replace(char *str, char *pattern, char *repl);
-char	*ft_regmatch_replace_all(char *str, char *pattern, char *repl);
-t_bool	ft_reg_isinarray(char c, char *array);
+t_regex		*ft_new_reg(t_regex *parent, t_regop type, int size);
+t_opbase	*ft_create_opbase(t_regbuilder *rb);
+t_oppipe	*ft_create_oppipe(t_regbuilder *rb);
+t_opbrack	*ft_create_opbrack(t_regbuilder *rb);
+t_oprep		*ft_create_oprep(t_regbuilder *rb);
+t_opbeg		*ft_create_opbeg(t_regbuilder *rb);
+t_opend		*ft_create_opend(t_regbuilder *rb);
+t_opsub		*ft_create_opsub(t_regbuilder *rb);
+t_opany		*ft_create_opany(t_regbuilder *rb);
+t_regex		*ft_regex(char *str);
+void		ft_regex_parse(t_regbuilder *rb);
+char		*ft_regmatch(char *str, t_regex *reg, size_t *len_match);
+int			ft_matcher(t_regmatch *rm, int pos, t_regex *cur);
+int			ft_match(t_regmatch *rm, int pos, t_regex *cur);
+int			ft_match_dispatch(t_regmatch *rm, int pos, t_regex *cur);
+int			ft_match_base(t_regmatch *rm, int pos, t_regex *cur);
+int			ft_match_brack(t_regmatch *rm, int pos, t_regex *cur);
+int			ft_match_rep(t_regmatch *rm, int pos, t_regex *cur);
+int			ft_match_any(t_regmatch *rm, int pos, t_regex *cur);
+int			ft_match_sub(t_regmatch *rm, int pos, t_regex *cur);
 
 #endif
