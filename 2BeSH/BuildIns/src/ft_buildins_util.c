@@ -27,5 +27,6 @@ void		p_buildins_init_builds(t_buildins *bi)
 	cur = p_buildins_new(cur, "exit", p_buildins_exit);
 	cur = p_buildins_new(cur, "setenv", p_buildins_setenv);
 	cur = p_buildins_new(cur, "unsetenv", p_buildins_unsetenv);
+	cur = p_buildins_new(cur, "test_amerle", p_buildins_test_amerle);
 }
 

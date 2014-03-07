@@ -111,6 +111,8 @@ t_opany		*ft_create_opany(t_regbuilder *rb);
 t_regex		*ft_regex(char *str);
 void		ft_regex_parse(t_regbuilder *rb);
 char		*ft_regmatch(char *str, t_regex *reg, size_t *len_match);
+char		*ft_regmatch_replace(char *str, t_regex *reg, char *repl);
+char		*ft_regmatch_replace_all(char *str, t_regex *reg, char *repl);
 int			ft_matcher(t_regmatch *rm, int pos, t_regex *cur);
 int			ft_match(t_regmatch *rm, int pos, t_regex *cur);
 int			ft_match_dispatch(t_regmatch *rm, int pos, t_regex *cur);

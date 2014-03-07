@@ -109,7 +109,7 @@ SRCSEVENT = ft_event.c \
 			ft_event_map_key.c \
 			ft_event_other.c \
 			ft_event_item.c \
-			ft_event_terms.c \
+			ft_event_terms.c
 
 SRCSEXECUTOR = ft_executor.c \
 			   ft_exec_pipes.c
@@ -127,14 +127,15 @@ SRCSPARSER = ft_parser.c \
 			 ft_pars_put.c
 
 SRCSRESOLVER = ft_resolver.c \
-			   ft_resolv_redirects.c
+			   ft_resolv_redirects.c \
+			   ft_resolv_path.c
 
 SRCSVALIDATOR = ft_validator.c
 
 SRCSSECURITY = ft_security.c \
 			   ft_security_init.c \
 			   ft_security_exit.c \
-			   ft_security_other.c \
+			   ft_security_other.c
 
 SRCSDISPLAY = ft_display.c \
 			  ft_display_init.c \
@@ -142,7 +143,7 @@ SRCSDISPLAY = ft_display.c \
 			  ft_display_other.c \
 			  ft_display_mv.c \
 			  ft_display_rm.c \
-			  ft_display_terms_size.c \
+			  ft_display_terms_size.c
 
 SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_lst.c \
@@ -151,7 +152,7 @@ SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_init.c \
 			  ft_stocker_remove_lst.c \
 			  ft_stocker_mv_current.c \
-			  ft_stocker_infos.c \
+			  ft_stocker_infos.c
 
 SRCSENV = ft_environment.c \
 		  ft_unsetenv.c
@@ -163,7 +164,8 @@ SRCSBUILDINS = ft_buildins.c \
 			   ft_env.c \
 			   ft_exit.c \
 			   ft_setenv.c \
-			   ft_unsetenv.c
+			   ft_unsetenv.c \
+			   ft_test_amerle.c
 
 SRCSHISTORY = ft_history.c \
 			  ft_history_init.c \
@@ -187,7 +189,8 @@ SRCSREGEX = ft_create_opany.c \
 			ft_matcher.c \
 			ft_regex.c \
 			ft_regex_parse.c \
-			ft_regmatch.c
+			ft_regmatch.c \
+			ft_regmatch_replace.c
 
 SRCSDEV = ft_development.c
 
