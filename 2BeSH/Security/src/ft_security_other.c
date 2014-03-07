@@ -20,5 +20,7 @@ t_security	*p_security_active_raw(t_bool active)
 			tcsetattr(0, TCSANOW, &old);
 		is_active = active;
 	}
+	else if (is_active == active && active)
+		tcsetattr(0, TCSANOW, &new);
 	return (security_singleton());
 }

@@ -4,6 +4,7 @@
 #include "ft_debug.h"
 #include "ft_validator.h"
 #include "ft_environment.h"
+#include "ft_security.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/wait.h>
@@ -69,6 +70,7 @@ static void	executor_start(t_operation *op)
 		(void)pipes;
 	}
 	waitpid(son, &status, 0);
+	security_singleton()->activeRaw(true);
 }
 
 static void	executor_init(t_executor *exec)

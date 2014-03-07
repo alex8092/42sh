@@ -41,8 +41,8 @@ static char *ft_find_pwd(char *ptr_env, char *chemin, int i)
 		pwd = ft_strdup(ptr_env);
 	else
 		pwd = ft_strdup("");
-	tab = ft_strsplit((chemin), '/', false);
-	while (tab[i] && *tab[i])
+	tab = ft_strsplit(chemin, '/', false);
+	while (tab && tab[i])
 	{
 		if (!ft_strcmp(tab[i], ".."))
 			ft_remplace_pwd(&pwd, NULL);

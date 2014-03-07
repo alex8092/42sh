@@ -21,7 +21,7 @@ char	**ft_strsplit(char *str, char separator, t_bool escape)
 		++index;
 	}
 	tab = (index != 0) ? ft_tabstradd(tab, ft_strndup(str, index)) : tab;
-	ft_tabstradd(tab, NULL);
+	tab = ft_tabstradd(tab, NULL);
 	return (tab);
 }
 
