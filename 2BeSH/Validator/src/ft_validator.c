@@ -27,12 +27,21 @@ static t_bool	concat_path(char *path, t_operation *op)
 	return (false);
 }
 
+static t_bool	is_abs_ok(t_operation *op)
+{
+	if (access(op->lex->str, F_OK) != -1 && access(op->lex->str, X_OK) != -1)
+		return (true);
+	return (false);
+}
+
 static t_bool	is_valid(t_operation *op)
 {
 	char	*str;
 	char	*last;
 	int		index;
 
+	if (op->lex->str[0] == '.' || op->lex->str[0] == '/')
+		return (is_abs_ok(op));
 	str = env_singleton()->get("PATH");
 	if (str)
 	{
