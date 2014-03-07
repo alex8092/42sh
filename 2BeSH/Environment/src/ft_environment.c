@@ -59,9 +59,6 @@ static void		env_init(t_env *env)
 {
 	const int	tab_len = ft_tabstrlen(environ);
 	int			index;
-	char		buf[2048];
-	int			fd;
-	ssize_t		ret;
 
 	env->m_env = (char **)ft_memalloc(sizeof(char *) * (tab_len + 1));
 	index = 0;
@@ -77,11 +74,12 @@ static void		env_init(t_env *env)
 	env->unset = env_unset;
 	if (!env->get("USER"))
 		env->set("USER", getlogin());
-	fd = open(".", O_RDONLY);
-	ret = read(fd, buf, 2047);
-	buf[ret] = 0;
-	printf("read : %s\n", buf);
-	close(fd);
+	if (!env->get("PWD"))
+		env->set("PWD", getcwd(NULL, 0));
+	if (!env->get("OLDPWD"))
+		env->set("OLDPWD", getcwd(NULL, 0));
+	if (!env->get("PATH"))
+		p_env_retrieve_path();
 }
 
 t_env		*env_singleton(void)

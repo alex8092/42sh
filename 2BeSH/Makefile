@@ -155,7 +155,8 @@ SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_infos.c
 
 SRCSENV = ft_environment.c \
-		  ft_unsetenv.c
+		  ft_unsetenv.c \
+		  ft_retrieve_path.c
 
 SRCSBUILDINS = ft_buildins.c \
 			   ft_cd.c \

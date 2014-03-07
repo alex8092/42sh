@@ -16,5 +16,6 @@ struct		s_env
 
 t_env	*env_singleton(void);
 t_env	*env_unset(char *name, size_t size);
+void	p_env_retrieve_path(void);
 
 #endif
