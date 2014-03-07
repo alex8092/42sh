@@ -1,6 +1,6 @@
 #ifndef FT_REGEX_H
 # define FT_REGEX_H
-# define REGEX_DEBUG 1
+# define REGEX_DEBUG 0
 
 # if REGEX_DEBUG == 1
 #  include <stdio.h>
