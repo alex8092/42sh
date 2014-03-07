@@ -3,7 +3,7 @@
 
 void	p_prompt_init_attributes(t_prompt *prompt)
 {
-	prompt->m_prompt = ft_strdup("\33[38;5;214m[#] : \33[00m");
+	prompt->m_prompt = ft_strdup(".: 2BeShell :. ~> ");
 	prompt->m_size = ft_strlen(prompt->m_prompt);
 }
 
