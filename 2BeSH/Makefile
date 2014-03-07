@@ -142,7 +142,7 @@ SRCSDISPLAY = ft_display.c \
 			  ft_display_other.c \
 			  ft_display_mv.c \
 			  ft_display_rm.c \
-			  ft_display_terms.c \
+			  ft_display_terms_size.c \
 
 SRCSSTOCKER = ft_stocker.c \
 			  ft_stocker_lst.c \

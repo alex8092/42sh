@@ -5,6 +5,7 @@ static void	secu_init(t_security *security)
 {
 	p_security_init_attributes(security);
 	p_security_init_methodes(security);
+	p_security_init_signal();
 }
 
 t_security	*security_singleton(void)

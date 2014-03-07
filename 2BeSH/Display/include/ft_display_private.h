@@ -4,8 +4,12 @@
 # include "ft_display.h"
 # include "common.h"
 
+int				p_display_width(void);
+int				p_display_height(void);
+
 void			p_display_init_attributes(t_display *display);
 void			p_display_init_methodes(t_display *display);
+void			p_display_resize(int);
 
 t_bool			p_display_is_active(void);
 

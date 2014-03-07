@@ -13,6 +13,11 @@ struct	s_display
 
 	t_bool			m_active;
 
+	void			(*resize)(int);
+
+	int				(*height)(void);
+	int				(*width)(void);
+
 	t_bool			(*is_active)(void);
 
 	t_display		*(*set_active)(t_bool);
