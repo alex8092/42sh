@@ -5,7 +5,7 @@
 
 struct					s_lex_reg
 {
-	char				*pattern;
+	t_regex				*pattern;
 	t_lex_op			op;
 	t_lex_reg			*next;
 };

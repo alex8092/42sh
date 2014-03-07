@@ -170,18 +170,24 @@ SRCSHISTORY = ft_history.c \
 			  ft_history_other.c \
 			  ft_history_push.c
 
-SRCSREGEX = ft_reg_create.c \
-			ft_reg_isinarray.c \
-			ft_reg_match_begend.c \
-			ft_reg_match_pipe.c \
-			ft_reg_match_rep.c \
-			ft_reg_match_sub.c \
-			ft_reg_matcher.c \
-			ft_regmatch.c \
-			ft_regmatch_parser.c \
-			ft_regmatch_replace.c \
-			ft_regmatch_sub.c \
-			ft_match_any.c
+SRCSREGEX = ft_create_opany.c \
+			ft_create_opbase.c \
+			ft_create_opbegend.c \
+			ft_create_opbrack.c \
+			ft_create_oppipe.c \
+			ft_create_oprep.c \
+			ft_create_opsub.c \
+			ft_create_regex.c \
+			ft_debug.c \
+			ft_match_any.c \
+			ft_match_base.c \
+			ft_match_brack.c \
+			ft_match_rep.c \
+			ft_match_sub.c \
+			ft_matcher.c \
+			ft_regex.c \
+			ft_regex_parse.c \
+			ft_regmatch.c
 
 SRCSDEV = ft_development.c
 

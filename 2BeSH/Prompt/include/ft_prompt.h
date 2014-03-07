@@ -5,6 +5,10 @@ typedef struct s_prompt	t_prompt;
 
 struct			s_prompt
 {
+	char	*m_prompt;
+
+	int		m_size;
+
 	char	*(*to_string)(void);
 	int		(*size)(void);
 };

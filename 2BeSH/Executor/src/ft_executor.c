@@ -28,7 +28,7 @@ static void	executor_start(t_operation *op)
 		pipe(pipes + i * 2);
 		++i;
 	}
-	printf("size : %d\n", ft_size_pipes(op));
+/*	printf("size : %d\n", ft_size_pipes(op));*/
 	i = 0;
 	while (cur)
 	{
@@ -36,7 +36,7 @@ static void	executor_start(t_operation *op)
 		tab = NULL;
 		while (lex)
 		{
-			printf("exec part[%s]\n", lex->str);
+			/*printf("exec part[%s]\n", lex->str);*/
 			tab = ft_tabstradd(tab, lex->str);
 			lex = lex->next;
 		}

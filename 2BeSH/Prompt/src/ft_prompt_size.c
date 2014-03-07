@@ -2,5 +2,5 @@
 
 int		p_prompt_size(void)
 {
-	return (6);
+	return (prompt_singleton()->m_size);
 }

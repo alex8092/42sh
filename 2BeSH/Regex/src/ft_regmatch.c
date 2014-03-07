@@ -1,20 +1,17 @@
 #include "ft_regex.h"
 
-char	*ft_regmatch(char *str, char *regex, size_t *len_match)
+char	*ft_regmatch(char *str, t_regex *regex, size_t *len_match)
 {
-	t_reg	reg;
+	t_regmatch	rm;
+	int			size;
 
-	if (str && regex)
+	rm.str = str;
+	rm.pos = 0;
+	rm.begin = regex;
+	if ((size = ft_matcher(&rm, rm.pos, rm.begin)))
 	{
-		ft_bzero((void *)&reg, sizeof(t_reg));
-		reg.s_base = str;
-		reg.len_b = ft_strlen(str) + 1;
-		reg.s_reg = regex;
-		reg.len_r = ft_strlen(regex);
-		ft_reg_parse(&reg);
-		ft_reg_matcher(&reg);
-		(*len_match) = (reg.match) ? (reg.s_base + reg.pos) - reg.p_match : 0;
-		return ((reg.match) ? reg.p_match : 0);
+		*len_match = size;
+		return (str + rm.pos);
 	}
-	return (0);
+	return (NULL);
 }

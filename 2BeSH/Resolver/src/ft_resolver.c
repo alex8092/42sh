@@ -37,7 +37,17 @@ static void	parse_tree(t_resop **b, t_resop **e, t_pars *t, t_lex_op cur_op)
 		}
 		else
 			cur_op = cur->op;
-		parse_tree(b, e, t->right, cur_op);
+//		parse_tree(b, e, t->right, cur_op);
+		
+		if ((cur_op / 11) == 11 )
+		{
+			if (cur_op == 110 /*&& exec_singleton()->getresult()*/)
+				parse_tree(b, e, t->right, cur_op);
+			else if (cur_op == 111 /* && !exec_singleton()->getresult()*/)
+				parse_tree(b, e, t->right, cur_op);
+		}
+		else
+			parse_tree(b, e, t->right, cur_op);
 	}
 }
 
@@ -52,8 +62,11 @@ static void	resolver_start(t_pars *tree)
 	if (!rv)
 		rv = resolver_singleton();
 	parse_tree(&begin, &end, tree, LEX_OP_NO);
-	ft_resolv_redirects(begin, &begin->lex);
-	exec_singleton()->start(begin);
+	if (begin)
+	{
+		ft_resolv_redirects(begin, &begin->lex);
+		exec_singleton()->start(begin);
+	}
 }
 
 static void	resolver_init(t_resolver *rv)

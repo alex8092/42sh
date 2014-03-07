@@ -3,8 +3,5 @@
 
 char	*p_prompt_string(void)
 {
-	char	*prompt;
-
-	prompt = ft_strdup("[[38;5;214m[#] : ");
-	return (prompt);
+	return (prompt_singleton()->m_prompt);
 }

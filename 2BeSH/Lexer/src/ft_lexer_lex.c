@@ -43,7 +43,7 @@ t_lex			*ft_lexer_get_lex(t_lex *parent, char **str)
 	/*debug(1, "\n\t[COMPARE]");*/
 	while (cur)
 	{
-		printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);
+		/*printf("compare match : { \"%s\" } <=> pattern { \"%s\" }\n", *str, cur->pattern);*/
 		/*debug(5, "compare match : { \\\"", *str, "\\\" } <=> pattern { \\\"", cur->pattern, "\\\" }\n");*/
 		if ((res = ft_regmatch(*str, cur->pattern, &len)) == *str)
 		{
