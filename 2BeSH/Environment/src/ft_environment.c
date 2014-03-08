@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-extern char	**environ;
+extern char		**environ;
 
 static char		*env_get(char *name)
 {
@@ -75,11 +75,14 @@ static void		env_init(t_env *env)
 	if (!env->get("USER"))
 		env->set("USER", getlogin());
 	if (!env->get("PWD"))
+	{
 		env->set("PWD", getcwd(NULL, 0));
-	if (!env->get("OLDPWD"))
 		env->set("OLDPWD", getcwd(NULL, 0));
+	}
 	if (!env->get("PATH"))
 		p_env_retrieve_path();
+	if (!env->get("TERM"))
+		env->set("TERM", "xterm");
 }
 
 t_env		*env_singleton(void)

@@ -33,6 +33,10 @@ int	ft_match_dispatch(t_regmatch *rm, int pos, t_regex *cur)
 		return (ft_match_any(rm, pos, cur));
 	else if (cur->type == REGOP_SUB)
 		return (ft_match_sub(rm, pos, cur));
+	else if (cur->type == REGOP_BEG)
+		return (ft_match_beg(rm, pos, cur));
+	else if (cur->type == REGOP_END)
+		return (ft_match_end(rm, pos, cur));
 	return (0);
 }
 
@@ -52,8 +56,9 @@ int	ft_match(t_regmatch *rm, int pos, t_regex *cur)
 		DEBUG(("\tft_match size : %d\n", size));
 		if (!size && !(cur->type == REGOP_REP && ((t_oprep*)cur)->min == 0))
 			return (0);
+		if (cur->type != REGOP_BEG && cur->type != REGOP_END)
+			postmp += size;
 		ft_match_next(&cur);
-		postmp += size;
 	}
 	return (postmp - pos);
 }

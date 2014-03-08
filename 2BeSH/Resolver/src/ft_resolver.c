@@ -72,6 +72,7 @@ static void	resolver_start(t_pars *tree)
 static void	resolver_init(t_resolver *rv)
 {
 	rv->start = resolver_start;
+	rv->resolv_path = ft_resolv_path;
 }
 
 t_resolver	*resolver_singleton()

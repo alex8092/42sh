@@ -27,9 +27,9 @@ static void 	p_event_read_for_key(char *c)
 	int				comp;
 
 	cur = event_singleton()->m_begin;
+	comp = (c[0] << 24) | (c[1] << 16) | (c[2] << 8) | c[3];
 	while (cur)
 	{
-		comp = (c[0] << 24) | (c[1] << 16) | (c[2] << 8) | c[3];
 		if (comp == cur->key)
 		{
 			cur->function();

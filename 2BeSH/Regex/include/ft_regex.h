@@ -121,5 +121,7 @@ int			ft_match_brack(t_regmatch *rm, int pos, t_regex *cur);
 int			ft_match_rep(t_regmatch *rm, int pos, t_regex *cur);
 int			ft_match_any(t_regmatch *rm, int pos, t_regex *cur);
 int			ft_match_sub(t_regmatch *rm, int pos, t_regex *cur);
+int			ft_match_beg(t_regmatch *rm, int pos, t_regex *cur);
+int			ft_match_end(t_regmatch *rm, int pos, t_regex *cur);
 
 #endif

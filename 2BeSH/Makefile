@@ -112,7 +112,9 @@ SRCSEVENT = ft_event.c \
 			ft_event_terms.c
 
 SRCSEXECUTOR = ft_executor.c \
-			   ft_exec_pipes.c
+			   ft_exec_pipes.c \
+			   ft_get_current_job.c \
+			   ft_wait_job.c
 
 SRCSOPERATION = ft_operation.c
 
@@ -187,11 +189,12 @@ SRCSREGEX = ft_create_opany.c \
 			ft_match_brack.c \
 			ft_match_rep.c \
 			ft_match_sub.c \
+			ft_match_begend.c \
 			ft_matcher.c \
 			ft_regex.c \
 			ft_regex_parse.c \
 			ft_regmatch.c \
-			ft_regmatch_replace.c
+			ft_regmatch_replace.c \
 
 SRCSDEV = ft_development.c
 

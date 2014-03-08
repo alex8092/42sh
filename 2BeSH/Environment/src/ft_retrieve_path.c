@@ -44,7 +44,12 @@ static void	path_sub(char **res, char *path, int level)
 			path_add(res, concat_all(path, "/", item->d_name));
 		else if (level < 3 && ft_strcmp(item->d_name, ".")
 				&& ft_strcmp(item->d_name, ".."))
-			path_sub(res, concat_all(path, "/", item->d_name), level + 1);
+		{
+			if (path[1] != 0)
+				path_sub(res, concat_all(path, "/", item->d_name), level + 1);
+			else
+				path_sub(res, ft_strjoin(path, item->d_name), level + 1);
+		}
 	}
 	free(path);
 	closedir(d);

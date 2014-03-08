@@ -11,7 +11,7 @@ typedef t_operation	t_resop;
 struct		s_resolver
 {
 	void	(*start)(t_pars *ops);
-	char	(*resolv_path)(char *);
+	char	*(*resolv_path)(char *);
 };
 
 t_resolver	*resolver_singleton(void);

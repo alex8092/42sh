@@ -16,7 +16,6 @@ static void	executor_start(t_operation *op)
 	t_lex		*lex;
 	char		**tab;
 	pid_t		son;
-	int			status;
 	int			pipes[2 * ft_size_pipes(op)];
 	int			i;
 	int			size;
@@ -29,7 +28,6 @@ static void	executor_start(t_operation *op)
 		pipe(pipes + i * 2);
 		++i;
 	}
-/*	printf("size : %d\n", ft_size_pipes(op));*/
 	i = 0;
 	while (cur)
 	{
@@ -37,11 +35,9 @@ static void	executor_start(t_operation *op)
 		tab = NULL;
 		while (lex)
 		{
-			/*printf("exec part[%s]\n", lex->str);*/
 			tab = ft_tabstradd(tab, lex->str);
 			lex = lex->next;
 		}
-		/*debug(3, "exec op : ", cur->lex->str, "\n");*/
 		if (bi->is_buildin(cur->lex->str))
 			bi->exec(cur->lex->str, tab);
 		else if (validator_singleton()->is_valid(cur))
@@ -57,7 +53,8 @@ static void	executor_start(t_operation *op)
 				{
 					dup2(pipes[i - 2], 0);
 				}
-				execve(cur->exec_file, tab, env_singleton()->m_env);
+				if (execve(cur->exec_file, tab, env_singleton()->m_env) == -1)
+					_exit(-1);
 			}
 			else if (son != -1)
 			{
@@ -69,13 +66,17 @@ static void	executor_start(t_operation *op)
 		cur = cur->next;
 		(void)pipes;
 	}
-	waitpid(son, &status, 0);
+	exec_singleton()->m_current = son;
+	exec_singleton()->wait_current_job();
 	security_singleton()->activeRaw(true);
 }
 
 static void	executor_init(t_executor *exec)
 {
+	exec->m_current = 0;
 	exec->start = executor_start;
+	exec->get_current_job = p_exec_get_current_job;
+	exec->wait_current_job = p_exec_wait_current_job;
 }
 
 t_executor	*exec_singleton(void)
