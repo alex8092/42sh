@@ -1,7 +1,7 @@
 #include "ft_environment.h"
 #include "common.h"
-#include <stdio.h>
 #include <dirent.h>
+#include <stdlib.h>
 
 static char	*concat_all(char *str, char *str2, char *str3)
 {
@@ -14,21 +14,36 @@ static char	*concat_all(char *str, char *str2, char *str3)
 	return (res2);
 }
 
+static void	path_add(char **res, char *str)
+{
+	char	*tmp;
+
+	tmp = *res;
+	if (*res)
+	{
+		*res = concat_all(*res, ":", str);
+		free(str);
+	}
+	else
+		*res = str;
+	if (tmp)
+		free(tmp);
+}
+
 static void	path_sub(char **res, char *path, int level)
 {
 	DIR				*d;
 	struct dirent	*item;
 
-	d = opendir("/");
-	if (!d)
+	if (!(d = opendir(path)))
 		return ;
 	while ((item = readdir(d)))
 	{
 		if (!ft_strcmp(item->d_name, "bin")
 			|| !ft_strcmp(item->d_name, "sbin"))
-		{
-		}
-		else if (level < 3)
+			path_add(res, concat_all(path, "/", item->d_name));
+		else if (level < 3 && ft_strcmp(item->d_name, ".")
+				&& ft_strcmp(item->d_name, ".."))
 			path_sub(res, concat_all(path, "/", item->d_name), level + 1);
 	}
 	free(path);
@@ -41,5 +56,7 @@ void	p_env_retrieve_path(void)
 
 	res = NULL;
 	path_sub(&res, ft_strdup("/"), 0);
+	if (res)
+		env_singleton()->set("PATH", res);
 }
 

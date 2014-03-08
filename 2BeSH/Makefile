@@ -248,114 +248,113 @@ $(NAME): $(OBJS_COMMON) $(OBJS_EVENT) $(OBJS_EXECUTOR) $(OBJS_LEXER) \
 	$(OBJS) $(OBJS_DISPLAY) $(OBJS_STOCKER) $(OBJS_ENV) $(OBJS_BUILDINS) \
 	$(OBJS_OPERATION) $(OBJS_HISTORY) $(OBJS_REGEX) $(OBJS_DEBUG) \
 	$(OBJS_DEV) $(OBJS_PROMPT)
-	$(CC) -o $(NAME) $^ $(LDFLAGS)
+	@$(CC) -o $(NAME) $^ $(LDFLAGS)
 
 $(OBJDIRPROMPT)/%.o: $(SRCDIRPROMPT)/%.c
-	mkdir -p $(OBJDIRPROMPT)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRPROMPT)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRCOMMON)/%.o: $(SRCDIRCOMMON)/%.c
-	mkdir -p $(OBJDIRCOMMON)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRCOMMON)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRCOMMON)/%.o: $(INCLUDEDIRCOMMON)/common.h
 
 $(OBJDIREVENT)/%.o: $(SRCDIREVENT)/%.c
-	mkdir -p $(OBJDIREVENT)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIREVENT)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIREXECUTOR)/%.o: $(SRCDIREXECUTOR)/%.c
-	mkdir -p $(OBJDIREXECUTOR)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIREXECUTOR)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRLEXER)/%.o: $(INCLUDEDIRLEXER)/ft_lexer.h
 
 $(OBJDIRLEXER)/%.o: $(SRCDIRLEXER)/%.c
-	mkdir -p $(OBJDIRLEXER)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRLEXER)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIROPERATION)/%.o: $(SRCDIROPERATION)/%.c
-	mkdir -p $(OBJDIROPERATION)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIROPERATION)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRPARSER)/%.o: $(INCLUDEDIRPARSER)/ft_parser.h
 
 $(OBJDIRPARSER)/%.o: $(SRCDIRPARSER)/%.c
-	mkdir -p $(OBJDIRPARSER)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRPARSER)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRRESOLVER)/%.o: $(SRCDIRRESOLVER)/%.c
-	mkdir -p $(OBJDIRRESOLVER)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRRESOLVER)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRVALIDATOR)/ft_validator.o: $(INCLUDEDIRVALIDATOR)/ft_validator.h
 
 $(OBJDIRVALIDATOR)/%.o: $(SRCDIRVALIDATOR)/%.c
-	mkdir -p $(OBJDIRVALIDATOR)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRVALIDATOR)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRSECURITY)/%.o: $(SRCDIRSECURITY)/%.c
-	mkdir -p $(OBJDIRSECURITY)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRSECURITY)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRDISPLAY)/%.o: $(INCLUDEDIRDISPLAY)/ft_display.h
 
 $(OBJDIRDISPLAY)/%.o: $(SRCDIRDISPLAY)/%.c
-	mkdir -p $(OBJDIRDISPLAY)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRDISPLAY)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRSTOCKER)/%.o: $(SRCDIRSTOCKER)/%.c
-	mkdir -p $(OBJDIRSTOCKER)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRSTOCKER)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRSTOCKER)/%.o: $(INCLUDEDIRSTOCKER)/ft_stocker.h
 
 $(OBJDIRENV)/%.o: $(SRCDIRENV)/%.c
-	mkdir -p $(OBJDIRENV)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRENV)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRENV)/%.o: $(INCLUDEDIRENV)/ft_environment.h
 
 $(OBJDIRBUILDINS)/%.o: $(SRCDIRBUILDINS)/%.c
-	mkdir -p $(OBJDIRBUILDINS)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRBUILDINS)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRBUILDINS)/%.o: $(INCLUDEDIRBUILDINS)/ft_buildins.h
 
 $(OBJDIRHISTORY)/%.o: $(SRCDIRHISTORY)/%.c
-	mkdir -p $(OBJDIRHISTORY)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRHISTORY)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRHISTORY)/%.o: $(INCLUDEDIRHISTORY)/ft_history.h
 
 $(OBJDIRREGEX)/%.o: $(SRCDIRREGEX)/%.c
-	mkdir -p $(OBJDIRREGEX)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRREGEX)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRREGEX)/%.o: $(INCLUDEDIRREGEX)/ft_regex.h
 
 $(OBJDIRDEBUG)/%.o: $(SRCDIRDEBUG)/%.c
-	mkdir -p $(OBJDIRDEBUG)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIRDEBUG)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIRDEV)/%.o: $(SRCDIRDEV)/%.c
-	mkdir -p $(OBJDIRDEV)
-	$(CC) -o $@ -c $< $(CFLAGS)
-
+	@mkdir -p $(OBJDIRDEV)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	mkdir -p $(OBJDIR)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	@mkdir -p $(OBJDIR)
+	@$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
-	rm -f $(OBJS_COMMON) $(OBJS_EVENT) $(OBJS_EXECUTOR) $(OBJS_LEXER)
-	rm -f $(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS)
-	rm -f $(OBJS_SECURITY) $(OBJS_DISPLAY) $(OBJS_STOCKER) $(OBJS_ENV)
-	rm -f $(OBJS_BUILDINS) $(OBJS_OPERATION) $(OBJS_HISTORY)
-	rm -f $(OBJS_REGEX) $(OBJS_DEBUG) $(OBJS_DEV) $(OBJS_PROMPT)
+	@rm -f $(OBJS_COMMON) $(OBJS_EVENT) $(OBJS_EXECUTOR) $(OBJS_LEXER)
+	@rm -f $(OBJS_PARSER) $(OBJS_RESOLVER) $(OBJS_VALIDATOR) $(OBJS)
+	@rm -f $(OBJS_SECURITY) $(OBJS_DISPLAY) $(OBJS_STOCKER) $(OBJS_ENV)
+	@rm -f $(OBJS_BUILDINS) $(OBJS_OPERATION) $(OBJS_HISTORY)
+	@rm -f $(OBJS_REGEX) $(OBJS_DEBUG) $(OBJS_DEV) $(OBJS_PROMPT)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
