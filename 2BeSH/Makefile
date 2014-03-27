@@ -6,7 +6,7 @@
 #    By: amerle <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/22 05:49:22 by amerle            #+#    #+#              #
-#    Updated: 2014/03/26 16:49:54 by amerle           ###   ########.fr        #
+#    Updated: 2014/03/27 22:24:00 by triviere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -415,7 +415,8 @@ security_h				=	$(OBJS_SECURITY) \
 							$(OBJDIRRESOLVER)/ft_resolver.o \
 							$(OBJDIR)/main.o \
 							$(OBJDIRJOB)/ft_job_controls.o \
-							$(OBJDIRJOB)/ft_job_util.o
+							$(OBJDIRJOB)/ft_job_util.o \
+							$(OBJDIRRESOLVER)/ft_resolv_parse.o
 security_private_h		=	$(OBJS_SECURITY)
 
 lexer_h					=	$(OBJS_LEXER) $(OBJS_PARSER) $(OBJS_DEV) \

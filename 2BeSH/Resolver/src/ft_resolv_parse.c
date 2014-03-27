@@ -6,12 +6,13 @@
 /*   By: amerle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 05:43:04 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/22 07:06:40 by triviere         ###   ########.fr       */
+/*   Updated: 2014/03/27 22:22:48 by triviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_resolver.h"
 #include "ft_executor.h"
+#include "ft_security.h"
 #include "ft_development.h"
 
 void			add_op(t_resop **b, t_resop **e, t_pars *t, t_lex_op cur_op)
@@ -41,6 +42,7 @@ static void		resolv_exec_bis(t_resop *b)
 		cur = cur->next;
 	}
 	exec_singleton()->start(b);
+	security_singleton()->active_raw(true);
 }
 
 void			resolv_exec(t_resop **b, t_resop **e, t_lex_op cur_op)
