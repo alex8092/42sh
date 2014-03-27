@@ -6,7 +6,7 @@
 /*   By: amerle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 05:38:32 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/26 10:35:48 by rivers           ###   ########.fr       */
+/*   Updated: 2014/03/27 21:40:27 by triviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strncpy(char *dest, const char *src, size_t n);
 char	*ft_strtrim(char const *s);
-
+char	*ft_itoa(int number);
 char	**ft_strsplit(char *str, char separator, t_bool escape);
 char	**ft_tabstradd(char **tab, char *str);
 

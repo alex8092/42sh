@@ -41,6 +41,8 @@ static void		ft_manage_word(char *str, size_t *len)
 
 static t_lex	*gogogo(t_lex **par, t_lex_reg *cur, char **str, size_t *len)
 {
+	size_t	i;
+
 	if (cur->op == LEX_OP_WORD)
 		ft_manage_word(*str, len);
 	if (*par && (*par)->op == LEX_OP_BACK && cur->op >= 100)
@@ -53,6 +55,15 @@ static t_lex	*gogogo(t_lex **par, t_lex_reg *cur, char **str, size_t *len)
 	}
 	else if (*par && (*par)->op == LEX_OP_BACK)
 		*par = ft_create_lex(*par, ft_strdup(";"), LEX_OP_SEPARATOR);
+	else if (*par && (*par)->op == LEX_OP_REDIRECT_OUT)
+	{
+		i = 0;
+		while (i++ < *len)
+		{
+			if ((*str)[i] == ' ')
+				*len = i;
+		}
+	}
 	return ((t_lex *)1);
 }
 

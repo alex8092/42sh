@@ -6,7 +6,7 @@
 /*   By: amerle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 05:43:14 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/22 05:43:14 by amerle           ###   ########.fr       */
+/*   Updated: 2014/03/27 20:01:25 by triviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <ft/common.h>
 # include "ft_operation.h"
+
+# define ASSIGN(X, Y) X = Y
 
 typedef struct s_validator	t_validator;
 

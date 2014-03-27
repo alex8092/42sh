@@ -36,7 +36,7 @@ static void	active_shell(void)
 		while (tcgetpgrp(0) != (sh_pid = getpgrp()))
 			kill(-sh_pid, SIGTTIN);
 		sh_pid = getpid();
-		if (setpgid(sh_pid, sh_pid) >= 0)
+		if (setpgid(sh_pid, getpgid(sh_pid)) >= 0)
 		{
 			tcsetpgrp(0, sh_pid);
 			job_singleton()->shell_pgid = sh_pid;

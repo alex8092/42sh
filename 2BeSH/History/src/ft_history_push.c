@@ -11,7 +11,9 @@
 /* ************************************************************************** */
 
 #include "ft_history_private.h"
+#include "ft_resolver.h"
 #include <stdlib.h>
+#include <fcntl.h>
 
 static t_lst_history	*p_history_create_el(char *cmd)
 {

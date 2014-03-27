@@ -6,7 +6,7 @@
 /*   By: triviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 05:38:34 by triviere          #+#    #+#             */
-/*   Updated: 2014/03/25 14:36:58 by triviere         ###   ########.fr       */
+/*   Updated: 2014/03/27 20:47:31 by triviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,25 @@ void		p_event_init_methodes(t_event *event)
 	event->end = p_event_end;
 }
 
+static void	p_event_map_silent_ctrls(t_event_item *item)
+{
+	item = p_event_add_item(item, CTRLW_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLX_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLF_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLU_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLD_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLA_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLE_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLR_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLT_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLP_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLH_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLK_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLB_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLN_KEY, (void *)p_event_map_silent);
+	item = p_event_add_item(item, CTRLTAB_KEY, (void *)p_event_map_silent);
+}
+
 void		p_event_init_mapping_key(t_event *event)
 {
 	t_event_item	*item;
@@ -60,7 +79,8 @@ void		p_event_init_mapping_key(t_event *event)
 		item = p_event_add_item(item, RM_CUR_KEY, (void *)event->rm_cur);
 		item = p_event_add_item(item, RM_PREV_KEY, (void *)event->rm_prev);
 		item = p_event_add_item(item, TAB_KEY, (void *)p_event_map_tab);
-		item = p_event_add_item(item, SILENT_KEY, (void *)p_event_map_silent);
 		item = p_event_add_item(item, CLEAN_KEY, (void *)p_event_map_clean);
+		item = p_event_add_item(item, SILENT_KEY, (void *)p_event_map_silent);
+		p_event_map_silent_ctrls(item);
 	}
 }

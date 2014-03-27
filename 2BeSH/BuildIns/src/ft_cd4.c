@@ -6,7 +6,7 @@
 /*   By: thrivier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 17:22:26 by thrivier          #+#    #+#             */
-/*   Updated: 2014/03/27 17:22:31 by thrivier         ###   ########.fr       */
+/*   Updated: 2014/03/27 19:00:19 by thrivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ char			*ft_cd_error(char **str, int i)
 		if (i == 0)
 			ft_putstr_fd(2, ".: cd :. : No file or Directory : ");
 		else if (i == 1)
-			ft_putstr_fd(2, ".: cd :. Symbolic link error ");
+			ft_putstr_fd(2, ".: cd :. Symbolic link error : ");
 		else if (i == 2)
-			ft_putstr_fd(2, ".: cd :. Not a directory ");
+			ft_putstr_fd(2, ".: cd :. Not a directory : ");
 		else if (i == 3)
 			ft_putstr_fd(2, ".: cd : Symbolic link : ");
+		else if (i == 4)
+			ft_putstr_fd(2, ".: cd :. Permission Denied : ");
 		ft_putstr_fd(2, *str);
 		ft_putchar_fd(2, '\n');
 	}

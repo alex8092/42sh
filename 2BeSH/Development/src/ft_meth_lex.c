@@ -6,7 +6,7 @@
 /*   By: amerle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 05:42:52 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/27 17:25:32 by thrivier         ###   ########.fr       */
+/*   Updated: 2014/03/27 20:35:03 by thrivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		ft_clear_lex(t_lex *begin)
 	if (begin)
 	{
 		tmp = begin->next;
-		while (begin)
+		while (tmp)
 		{
 			free(begin);
 			begin = tmp;

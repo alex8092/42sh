@@ -19,6 +19,8 @@
 # include <sys/types.h>
 
 # define IF_UNI(X,Y) if (X) Y
+# define ELSE_UNI_RET(X) else return X
+# define ASSIGN(X, Y) X = Y
 
 typedef struct s_executor	t_executor;
 

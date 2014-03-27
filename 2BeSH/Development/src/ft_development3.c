@@ -6,13 +6,15 @@
 /*   By: thrivier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 17:24:59 by thrivier          #+#    #+#             */
-/*   Updated: 2014/03/27 17:25:03 by thrivier         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:31:11 by thrivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_private_developement.h"
 #include "ft_environment.h"
 #include <stdlib.h>
+#include <ft_executor.h>
+#include <ft/common.h>
 
 t_lex				*ft_remplace_dollar(t_lex *begin)
 {

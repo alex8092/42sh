@@ -6,7 +6,7 @@
 /*   By: thrivier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 17:21:04 by thrivier          #+#    #+#             */
-/*   Updated: 2014/03/27 17:22:10 by thrivier         ###   ########.fr       */
+/*   Updated: 2014/03/27 19:41:54 by thrivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ char		*parcour_tab(char *s, char **str, t_flagger *flagger, int offset)
 			break ;
 		else if (ret == -1)
 			break ;
+		if (access(*str, R_OK))
+			return (ft_cd_error(str, 4));
 	}
 	ft_tabstrdel(tab);
 	return ((ret == -1) ? ft_cd_error(str, 0) : tmp);

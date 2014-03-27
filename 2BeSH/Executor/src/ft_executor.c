@@ -23,33 +23,33 @@
 #include <errno.h>
 #include <signal.h>
 
-static void	exec_cmd(t_operation *cur, int i, pid_t *son, int *pipes)
+static int	exec_cmd(t_operation *cur, int i, pid_t *son, int *pipes)
 {
-	t_lex	*lex;
+	t_lex	*l;
 	char	**tab;
 
-	lex = cur->lex;
+	l = NULL;
 	tab = NULL;
-	while (lex)
+	while (((!l) && (ASSIGN(l, cur->lex))) || ((l) && (ASSIGN(l, l->next))))
+		tab = ft_tabstradd(tab, ft_strdup(l->str));
+	if (!p_ex_build(cur, tab, i == 0 && !cur->next, son))
 	{
-		tab = ft_tabstradd(tab, ft_strdup(lex->str));
-		lex = lex->next;
-	}
-	if (!p_ex_build(cur, tab, i == 0 && !cur->next, son)
-		&& validator_singleton()->is_valid(cur))
-	{
-		security_singleton()->active_raw(false);
-		*son = fork();
-		if (*son == 0)
+		if (validator_singleton()->is_valid(cur))
 		{
-			ft_apply_dup(cur);
-			if (execve(cur->exec_file, tab, env_singleton()->m_env) == -1)
-				_exit(-1);
+			security_singleton()->active_raw(false);
+			if ((*son = fork()) == 0)
+			{
+				ft_apply_dup(cur);
+				if (execve(cur->exec_file, tab, env_singleton()->m_env) == -1)
+					_exit(-1);
+			}
 		}
+		ELSE_UNI_RET(0);
 	}
 	if (*son != -1 && cur->next)
 		close(pipes[i + 1]);
 	ft_tabstrdel(tab);
+	return (1);
 }
 
 static void	final_exec(t_operation *op, pid_t son)
@@ -99,7 +99,8 @@ static void	executor_start(t_operation *op)
 			exec_singleton()->m_status = 1;
 			return ;
 		}
-		exec_cmd(cur, i, &son, pipes);
+		if (!exec_cmd(cur, i, &son, pipes))
+			return ;
 		i += 2;
 		cur = cur->next;
 	}
@@ -109,7 +110,7 @@ static void	executor_start(t_operation *op)
 
 static void	executor_init(t_executor *exec)
 {
-	exec->m_current = 0;
+	exec->m_current = -1;
 	exec->start = executor_start;
 	exec->get_current_job = p_exec_get_current_job;
 	exec->wait_current_job = p_exec_wait_current_job;

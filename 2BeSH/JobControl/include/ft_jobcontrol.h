@@ -27,9 +27,9 @@ struct				s_job
 {
 	t_jobitem		*begin;
 	t_jobitem		*end;
+	pid_t			master;
 	pid_t			shell_pgid;
 	struct termios	shell_modes;
-	pid_t			master;
 	int				m_size;
 	t_bool			stop_master;
 	void			(*exit)(int status);

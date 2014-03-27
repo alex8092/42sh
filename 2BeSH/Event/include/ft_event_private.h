@@ -6,7 +6,7 @@
 /*   By: triviere <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 05:39:07 by triviere          #+#    #+#             */
-/*   Updated: 2014/03/25 18:59:46 by triviere         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:32:48 by triviere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,25 @@
 # define CLEAN_KEY (12 << 24) | (0 << 16) | (0 << 8) | 0
 
 # define SILENT_KEY (27 << 24) | (91 << 16) | (49 << 8) | 59
+
+# define CTRLA_KEY (1 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLW_KEY (23 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLX_KEY (24 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLF_KEY (6 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLU_KEY (21 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLD_KEY (4 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLE_KEY (5 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLR_KEY (18 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLT_KEY (20 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLP_KEY (16 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLG_KEY (7 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLH_KEY (8 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLJ_KEY (10 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLK_KEY (11 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLB_KEY (2 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLN_KEY (14 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLM_KEY (10 << 24) | (0 << 16) | (0 << 8) | 0
+# define CTRLTAB_KEY (27 << 24) | (91 << 16) | (90 << 8) | 0
 
 # ifdef __APPLE__
 #  define FRONT_KEY (27 << 24) | (91 << 16) | (72 << 8) | 0
