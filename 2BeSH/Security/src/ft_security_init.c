@@ -16,7 +16,6 @@
 #include "ft_executor.h"
 #include <sys/types.h>
 #include <signal.h>
-#include <stdio.h>
 
 static void	do_nothing(int sig)
 {

@@ -42,6 +42,8 @@ void			ft_actualisation(char *chemin);
 void			p_buildins_init_builds(t_buildins *bi);
 
 char			*find_pwd(char *str, t_flagger *flag, int offset);
+char			*ft_cd_error(char **str, int i);
+char			*ft_get_pwd(char *s);
 
 t_buildin		*p_buildins_new(t_buildin *p, char *name,
 int (*f)(char **argv));

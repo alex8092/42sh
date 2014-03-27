@@ -14,7 +14,6 @@
 #include "ft_buildins_private.h"
 #include <stdlib.h>
 #include <ft/flagger.h>
-#include <stdio.h>
 
 static int	find_str(char *s1, char *s2)
 {
@@ -105,5 +104,6 @@ void		ft_actualisation(char *chemin)
 	pwd = NULL;
 	pwd = ft_strdup(env_singleton()->get("PWD"));
 	env_singleton()->set("OLDPWD", pwd);
+	free(pwd);
 	env_singleton()->set("PWD", chemin);
 }

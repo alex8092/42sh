@@ -12,7 +12,6 @@
 
 #include "ft_validator.h"
 #include <fcntl.h>
-#include <stdio.h>
 #include <sys/stat.h>
 #include <stdlib.h>
 

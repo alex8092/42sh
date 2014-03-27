@@ -15,7 +15,6 @@
 #include "ft_environment.h"
 #include "ft_executor.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 static char		*ft_resolv_path_do(char *str, int begin, t_bool do_free)
 {

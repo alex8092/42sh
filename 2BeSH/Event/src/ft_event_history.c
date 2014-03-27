@@ -12,7 +12,6 @@
 
 #include "ft_event_private.h"
 #include "ft_history.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 t_event		*p_event_map_history_prev(void)

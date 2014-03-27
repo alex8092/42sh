@@ -13,7 +13,6 @@
 #include "ft_prompt_private.h"
 #include <ft/regex.h>
 #include "ft_environment.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 static int	count_offset(char *str)

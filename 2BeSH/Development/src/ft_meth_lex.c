@@ -6,14 +6,13 @@
 /*   By: amerle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 05:42:52 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/26 10:25:16 by rivers           ###   ########.fr       */
+/*   Updated: 2014/03/27 17:25:32 by thrivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_private_developement.h"
 #include <stdlib.h>
 #include "ft_environment.h"
-#include <stdio.h>
 
 void		ft_clear_lex(t_lex *begin)
 {
@@ -41,7 +40,6 @@ int			put_lex(t_lex **cur, t_lex **tmp2, t_lex *(fct(t_lex *cur)))
 	tmp = (*cur)->next;
 	(*cur)->next = NULL;
 	*cur = fct(*cur);
-
 	if (*cur)
 	{
 		(*tmp2)->next = *cur;

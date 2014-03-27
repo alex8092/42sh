@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_resolver.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 static void	ft_do_redir_out(t_lex *cur, t_operation *op, t_bool append)

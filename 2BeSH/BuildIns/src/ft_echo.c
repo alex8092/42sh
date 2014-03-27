@@ -18,7 +18,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <stdio.h>
 
 static void			print_special(char c)
 {
@@ -73,7 +72,6 @@ static t_flagger	*create_flagger(char *name)
 	char		*str;
 
 	str = resolver_singleton()->resolv_path("~/.2BeSH/conf/echo.conf");
-	printf("name : %s\n", str);
 	flagger = ft_flagger_create(str, name);
 	free(str);
 	return (flagger);

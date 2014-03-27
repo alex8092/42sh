@@ -6,7 +6,7 @@
 /*   By: amerle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/22 05:42:52 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/25 18:54:38 by thrivier         ###   ########.fr       */
+/*   Updated: 2014/03/27 17:26:19 by thrivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,6 @@ static t_dir	*ft_add_dir(t_dir *begin, char *str)
 		cur = cur->next;
 	}
 	return (begin);
-}
-
-t_dir			*ft_new_dir(char *str)
-{
-	t_dir	*dir;
-
-	dir = NULL;
-	dir = ft_memalloc(sizeof(t_dir));
-	if (!str)
-	{
-		dir->name = ft_strdup(env_singleton()->get("PWD"));
-		dir->delname = true;
-	}
-	else
-		dir->name = str;
-	dir->next = NULL;
-	return (dir);
 }
 
 static t_dir	*ft_find_dir(t_dir *dir, char *str)
@@ -130,7 +113,7 @@ static void		ft_find_match(t_dir **dir, char *str, t_lex **cur, t_lex **b)
 	}
 }
 
-t_lex	*ft_parse_stars(t_lex *begin)
+t_lex			*ft_parse_stars(t_lex *begin)
 {
 	t_dir	*dir;
 	t_lex	*cur;

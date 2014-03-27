@@ -13,10 +13,7 @@
 #include "ft_history_private.h"
 #include "ft_stocker.h"
 #include <ft/common.h>
-#include <stdio.h>
 #include <stdlib.h>
-
-#include <stdio.h>
 
 static char		**p_history_get_cur(int *pos, t_lst_history **cur, char **base)
 {

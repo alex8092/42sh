@@ -21,7 +21,6 @@ void				p_event_reprint_str(void)
 	int		pos;
 	int		save;
 
-	display_singleton()->save_cursor();
 	pos = stocker_singleton()->current_pos();
 	save = pos;
 	while (!stocker_singleton()->is_end())
@@ -33,10 +32,11 @@ void				p_event_reprint_str(void)
 	display_singleton()->putchar(' ');
 	while (pos != save)
 	{
+		display_singleton()->mv_prev();
 		stocker_singleton()->mv_prev();
 		--pos;
 	}
-	display_singleton()->restore_cursor();
+	display_singleton()->mv_prev();
 }
 
 t_event				*p_event_end(void)

@@ -12,7 +12,6 @@
 
 #include "ft_buildins.h"
 #include "ft_history_private.h"
-#include <stdio.h>
 
 static void	print(int *i, t_bool prev, int add)
 {

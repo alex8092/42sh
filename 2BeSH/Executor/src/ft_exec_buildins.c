@@ -12,7 +12,6 @@
 
 #include "ft_executor.h"
 #include "ft_buildins.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 static void	save2(int *save)

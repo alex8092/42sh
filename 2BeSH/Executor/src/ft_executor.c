@@ -21,7 +21,6 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 #include <errno.h>
-#include <stdio.h>
 #include <signal.h>
 
 static void	exec_cmd(t_operation *cur, int i, pid_t *son, int *pipes)

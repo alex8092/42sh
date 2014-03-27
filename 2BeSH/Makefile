@@ -184,6 +184,8 @@ SRCSBUILDINS			=	ft_buildins.c				\
 							ft_unsetenv.c				\
 							ft_test_amerle.c			\
 							ft_cd2.c					\
+							ft_cd3.c					\
+							ft_cd4.c					\
 							ft_fg.c						\
 							ft_bg.c						\
 							ft_jobs.c					\
@@ -198,6 +200,8 @@ SRCSHISTORY				=	ft_history.c				\
 							ft_history_mv.c
 
 SRCSDEV					=	ft_development.c			\
+							ft_development2.c			\
+							ft_development3.c			\
 							ft_private_developement.c	\
 							ft_fct_dir.c 				\
 							ft_meth_lex.c

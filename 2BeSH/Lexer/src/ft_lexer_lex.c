@@ -12,7 +12,6 @@
 
 #include "ft_lexer_private.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 static t_lex	*ft_create_lex(t_lex *parent, char *str, t_lex_op op)
 {

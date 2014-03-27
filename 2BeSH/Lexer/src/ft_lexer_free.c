@@ -12,7 +12,6 @@
 
 #include "ft_lexer_private.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 void	ft_lex_free_item(t_lex *item)
 {
