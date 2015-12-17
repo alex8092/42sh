@@ -6,7 +6,7 @@
 #    By: triviere <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/27 17:34:39 by triviere          #+#    #+#              #
-#    Updated: 2015/12/17 15:11:35 by amerle           ###   ########.fr        #
+#    Updated: 2015/12/17 15:33:27 by amerle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,4 +28,4 @@ fclean:
 	make fclean -C 2BeSH
 	rm -f $(NAME)
 
-.PHONY: clean fclean all re
+.PHONY: clean fclean all re $(NAME)
