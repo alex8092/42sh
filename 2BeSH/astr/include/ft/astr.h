@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <ft/common.h>
-# define DO_ZERO(X, Y) !(X = Y)
 
 typedef struct s_astr	t_astr;
 

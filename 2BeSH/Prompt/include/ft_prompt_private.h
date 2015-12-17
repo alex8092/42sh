@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef FT_PROMPT_PRIVATE_H
-# define	FT_PROMPT_PRIVATE_H
+# define FT_PROMPT_PRIVATE_H
 
 # include "ft_prompt.h"
 

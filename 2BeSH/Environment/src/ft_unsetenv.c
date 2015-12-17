@@ -37,7 +37,7 @@ t_env	*env_unset(char *name, size_t size)
 			st++;
 		}
 	}
-	newtab[st] = '\0';
+	newtab[st] = 0;
 	free(env->m_env);
 	env->m_env = newtab;
 	return (env);

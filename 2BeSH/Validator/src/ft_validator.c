@@ -65,19 +65,18 @@ static t_bool	is_valid(t_operation *op)
 
 	if (op->lex->str[0] == '.' || op->lex->str[0] == '/')
 		return (is_abs_ok(op));
-	if ((str = env_singleton()->get("PATH")) && (ASSIGN(last, str)))
+	if ((str = env_singleton()->get("PATH")))
 	{
+		last = str;
 		while ((index = ft_findfirstof(last, ":")) != -1)
 		{
 			if (concat_path(ft_strndup(last, index), op))
 				return (true);
 			last += index + 1;
 		}
-		if ((index = str + ft_strlen(str) - last) > 0)
-		{
-			if (concat_path(ft_strndup(last, index), op))
-				return (true);
-		}
+		if ((index = str + ft_strlen(str) - last) > 0 && \
+			concat_path(ft_strndup(last, index), op))
+			return (true);
 	}
 	ft_putstr_fd(2, "2BeSh : Command not found [");
 	ft_putstr_fd(2, op->lex->str);

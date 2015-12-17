@@ -15,8 +15,11 @@
 #include "ft_security.h"
 #include "ft_history.h"
 
-int		main(int ac, char **av)
+char			**g_environ;
+
+int				main(int ac, char **av, char **env)
 {
+	g_environ = env;
 	history_singleton()->load();
 	security_singleton()->active_raw(true);
 	lexer_singleton()->on_complete(parser_singleton()->start)->start();

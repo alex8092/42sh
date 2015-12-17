@@ -54,4 +54,3 @@ void	ft_tabstrdel(char **tab);
 t_bool	ft_getnextline(int fd, char **line);
 
 #endif
-

@@ -22,3 +22,13 @@ char			*ft_resolv_path_force(char *str, char *pwd, t_bool first)
 {
 	return (ft_resolv_bis(str, pwd, first));
 }
+
+t_bool			ft_rep_p_cond(t_bool cond, char **str, char *tmp)
+{
+	if (cond)
+	{
+		*str = ft_resolv_path_do(ft_strjoin(tmp, *str), 0, true);
+		return (true);
+	}
+	return (false);
+}

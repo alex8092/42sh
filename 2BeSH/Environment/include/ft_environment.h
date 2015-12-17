@@ -16,8 +16,6 @@
 # include <unistd.h>
 # include <ft/common.h>
 
-# define ENVIRON_HACKNORME	extern char	**environ
-
 typedef struct s_env	t_env;
 
 struct		s_env

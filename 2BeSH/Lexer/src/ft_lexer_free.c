@@ -13,6 +13,12 @@
 #include "ft_lexer_private.h"
 #include <stdlib.h>
 
+void	ft_lex_free_secure_item(t_lex **item)
+{
+	ft_lex_free_item(*item);
+	*item = 0;
+}
+
 void	ft_lex_free_item(t_lex *item)
 {
 	if (item)

@@ -117,6 +117,7 @@ SRCSEVENT				=	ft_event.c					\
 							ft_event_history.c
 
 SRCSEXECUTOR			=	ft_executor.c				\
+							ft_executor2.c				\
 							ft_exec_pipes.c				\
 							ft_get_current_job.c		\
 							ft_wait_job.c				\
@@ -259,7 +260,7 @@ GETNEXTLINEDIR			=	getnextline
 FLAGGERDIR				=	flagger
 REGEXDIR				=	regex
 
-NAME					=	42sh
+NAME					=	minishell
 
 SHELL_DIR				=	$(HOME)/.2BeSH
 

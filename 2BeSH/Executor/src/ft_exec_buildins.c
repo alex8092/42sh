@@ -21,6 +21,12 @@ static void	save2(int *save)
 	save[2] = dup(2);
 }
 
+static void	mydup(t_bool cond, int fd, int fd2)
+{
+	if (cond)
+		dup2(fd, fd2);
+}
+
 t_bool		p_ex_build(t_operation *cur, char **tab, t_bool first, pid_t *son)
 {
 	const t_buildins	*bi = buildins_singleton();
@@ -28,15 +34,16 @@ t_bool		p_ex_build(t_operation *cur, char **tab, t_bool first, pid_t *son)
 
 	if (bi->is_buildin(cur->lex->str))
 	{
-		IF_UNI((!first), (*son = fork()));
+		*son = (!first) ? fork() : *son;
 		if ((!first && *son == 0) || first)
 		{
 			save2(save);
-			IF_UNI((cur->fd_in != -1), (dup2(cur->fd_in, 0)));
-			IF_UNI((cur->fd_out != 1), (dup2(cur->fd_out, 1)));
-			IF_UNI((cur->fd_err != -1), (dup2(cur->fd_err, 2)));
+			mydup(cur->fd_in != -1, cur->fd_in, 0);
+			mydup(cur->fd_out != 1, cur->fd_out, 1);
+			mydup(cur->fd_err != -1, cur->fd_err, 2);
 			exec_singleton()->m_status = bi->exec(cur->lex->str, tab);
-			IF_UNI((!first), (exit(exec_singleton()->m_status)));
+			if (!first)
+				exit(exec_singleton()->m_status);
 		}
 		if (first)
 		{

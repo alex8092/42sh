@@ -1,5 +1,7 @@
 *.o
+*.dylib
 42sh
 **.*~
 debug.log
 debug
+minishell

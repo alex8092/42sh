@@ -30,21 +30,19 @@ static int	exec_cmd(t_operation *cur, int i, pid_t *son, int *pipes)
 
 	l = NULL;
 	tab = NULL;
-	while (((!l) && (ASSIGN(l, cur->lex))) || ((l) && (ASSIGN(l, l->next))))
+	while ((!l && ft_assi_lex(&l, cur->lex)) || (l && ft_assi_lex(&l, l->next)))
 		tab = ft_tabstradd(tab, ft_strdup(l->str));
 	if (!p_ex_build(cur, tab, i == 0 && !cur->next, son))
 	{
-		if (validator_singleton()->is_valid(cur))
+		if (!validator_singleton()->is_valid(cur))
+			return (0);
+		security_singleton()->active_raw(false);
+		if ((*son = fork()) == 0)
 		{
-			security_singleton()->active_raw(false);
-			if ((*son = fork()) == 0)
-			{
-				ft_apply_dup(cur);
-				if (execve(cur->exec_file, tab, env_singleton()->m_env) == -1)
-					_exit(-1);
-			}
+			ft_apply_dup(cur);
+			if (execve(cur->exec_file, tab, env_singleton()->m_env) == -1)
+				_exit(-1);
 		}
-		ELSE_UNI_RET(0);
 	}
 	if (*son != -1 && cur->next)
 		close(pipes[i + 1]);

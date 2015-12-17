@@ -28,7 +28,8 @@ int		p_buildins_unsetenv(char **argv)
 			name = env_singleton()->get(argv[i]);
 			if (name && ft_strcmp(argv[i], "PATH")
 				&& ft_strcmp(argv[i], "USER")
-				&& ft_strcmp(argv[i], "PWD") && ft_strcmp(argv[i], "OLDPWD"))
+				&& ft_strcmp(argv[i], "PWD") && ft_strcmp(argv[i], "OLDPWD")
+				&& ft_strcmp(argv[i], "HOME"))
 				env_singleton()->unset(name, size);
 			i++;
 		}

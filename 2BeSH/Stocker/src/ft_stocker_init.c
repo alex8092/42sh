@@ -24,7 +24,7 @@ void		p_stocker_init_attributes(t_stocker *stocker)
 	stocker->m_pos = 0;
 }
 
-void		p_stocker_init_methods(t_stocker*stocker)
+void		p_stocker_init_methods(t_stocker *stocker)
 {
 	stocker->push = p_stocker_after_current_push;
 	stocker->push_str = p_stocker_push_str;

@@ -16,7 +16,7 @@
 #include <sys/types.h>
 #include <pwd.h>
 
-ENVIRON_HACKNORME;
+extern char		**g_environ;
 
 static char		*env_get(char *name)
 {
@@ -69,14 +69,14 @@ static size_t	env_size(void)
 
 static void		env_init(t_env *env)
 {
-	const int		tab_len = ft_tabstrlen(environ);
+	const int		tab_len = ft_tabstrlen(g_environ);
 	int				index;
 
 	env->m_env = (char **)ft_memalloc(sizeof(char *) * (tab_len + 1));
 	index = 0;
 	while (index < tab_len)
 	{
-		env->m_env[index] = ft_strdup(environ[index]);
+		env->m_env[index] = ft_strdup(g_environ[index]);
 		++index;
 	}
 	env->m_env[index] = 0;

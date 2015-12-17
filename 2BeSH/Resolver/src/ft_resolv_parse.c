@@ -89,7 +89,8 @@ t_lex_op		parse_tr(t_resop **b, t_resop **e, t_pars *t, t_lex_op cur_op)
 			resolver_singleton()->m_last_op = cur_op;
 			do_pipe(b, e, t->left, cur_op);
 		}
-		ELSE_UNI((parse_tr_2(b, e, t, cur_op)));
+		else
+			parse_tr_2(b, e, t, cur_op);
 		if ((cur_op / 10) == (LEX_OP_PIPE / 10) && cur && cur->op < 100)
 			do_pipe(b, e, t, cur_op);
 		else if (cur && ((cur->tmpop = cur_op) || true))
@@ -99,10 +100,7 @@ t_lex_op		parse_tr(t_resop **b, t_resop **e, t_pars *t, t_lex_op cur_op)
 		}
 		parse_tr(b, e, t->right, cur_op);
 		if (t->op->op >= 100)
-		{
-			ft_lex_free_item(t->op);
-			t->op = NULL;
-		}
+			ft_lex_free_secure_item(&t->op);
 	}
 	return (cur_op);
 }

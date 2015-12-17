@@ -84,10 +84,10 @@ t_lex			*ft_lexer_get_lex(t_lex *par, char **str)
 				return (NULL);
 			if (l != 0 && (*str += (cur->op != 2) ? l : l + 1))
 			{
+				res = (*str) - l;
 				if (cur->op == LEX_OP_STR)
-					return (ft_create_lex(par, ft_strsub((*str) - l,
-					0, l - 2), cur->op));
-				return (NEW_LEX(par, ft_strsub((*str) - l, 0, l), cur->op));
+					return (NEW_LEX(par, ft_strsub(res, 0, l - 2), cur->op));
+				return (NEW_LEX(par, ft_strsub(res, 0, l), cur->op));
 			}
 		}
 		cur = cur->next;

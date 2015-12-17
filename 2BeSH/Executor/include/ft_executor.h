@@ -18,10 +18,6 @@
 # include <ft/common.h>
 # include <sys/types.h>
 
-# define IF_UNI(X,Y) if (X) Y
-# define ELSE_UNI_RET(X) else return X
-# define ASSIGN(X, Y) X = Y
-
 typedef struct s_executor	t_executor;
 
 struct		s_executor
@@ -44,5 +40,6 @@ pid_t		p_exec_get_current_job(void);
 void		p_exec_wait_current_job(void);
 int			p_exec_get_status(void);
 t_bool		p_ex_build(t_operation *cur, char **tab, t_bool first, pid_t *son);
+t_lex		*ft_assi_lex(t_lex **l, t_lex *l2);
 
 #endif

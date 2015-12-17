@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_validator.h                                     :+:      :+:    :+:   */
+/*   ft_executor2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amerle <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/22 05:43:14 by amerle            #+#    #+#             */
-/*   Updated: 2014/03/27 20:01:25 by triviere         ###   ########.fr       */
+/*   Created: 2015/12/17 14:53:20 by amerle            #+#    #+#             */
+/*   Updated: 2015/12/17 14:53:22 by amerle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_VALIDATOR_H
-# define FT_VALIDATOR_H
+#include "ft_executor.h"
 
-# include <ft/common.h>
-# include "ft_operation.h"
-
-typedef struct s_validator	t_validator;
-
-struct		s_validator
+t_lex	*ft_assi_lex(t_lex **l, t_lex *l2)
 {
-	t_bool	(*is_valid)(t_operation *);
-	t_bool	(*valid_redirects)(t_operation *);
-};
-
-t_validator	*validator_singleton(void);
-t_bool		p_valid_redirects(t_operation *op);
-
-#endif
+	*l = l2;
+	return (*l);
+}

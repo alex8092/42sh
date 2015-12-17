@@ -37,8 +37,9 @@ static t_lexer		*lexer_start(void)
 {
 	ssize_t			ret;
 	char			*str;
+	char			c[4];
 
-	VAR_C(c);
+	ft_bzero((void *)&c, sizeof(c));
 	while (42)
 	{
 		display_singleton()->prompt();

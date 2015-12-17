@@ -16,7 +16,6 @@
 # include <ft/common.h>
 # include <ft/regex.h>
 
-# define VAR_C(X)	char	X[] = { 0, 0, 0, 0 }
 # define NEW_LEX	ft_create_lex
 
 typedef struct s_lexer		t_lexer;
@@ -65,5 +64,6 @@ t_lex			*ft_lexer_lex_str(char *str);
 t_lexer			*lexer_singleton(void);
 void			ft_lex_free(t_lex *lex);
 void			ft_lex_free_item(t_lex *item);
+void			ft_lex_free_secure_item(t_lex **item);
 
 #endif

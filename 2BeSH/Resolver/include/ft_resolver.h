@@ -17,13 +17,6 @@
 # include "ft_parser.h"
 # include <ft/common.h>
 
-# define ELSE_UNI(X) else X
-# define HACKNORME_REGINIT(X, Y)	char	*X[6] = Y
-# define HACKNORME_REGS(X)		static t_regex	*X[6] = { 0 }
-# define REGEX "^~/","/[^/]{1,}/\\.\\./","/\\./","/\\.$","/\\.\\.$","/{2,}"
-# define ACCO(X) { X }
-# define IF_UNI_RET(X, Y) if (X) return (Y)
-
 typedef struct s_resolver	t_resolver;
 typedef t_operation	t_resop;
 
@@ -45,6 +38,7 @@ void		parse_tr_2(t_resop **b, t_resop **e, t_pars *t, t_lex_op cur_op);
 void		parse_tr_3(t_resop **b, t_resop **e, t_pars *t, t_lex *cur);
 void		add_op(t_resop **b, t_resop **e, t_pars *t, t_lex_op cur_op);
 char		*ft_resolv_bis(char *str, char *pwd, t_bool first);
+t_bool		ft_rep_p_cond(t_bool cond, char **str, char *tmp);
+char		*ft_resolv_path_do(char *str, int begin, t_bool do_free);
 
 #endif
-

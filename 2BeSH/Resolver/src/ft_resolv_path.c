@@ -16,7 +16,16 @@
 #include "ft_executor.h"
 #include <stdlib.h>
 
-static char		*ft_resolv_path_do(char *str, int begin, t_bool do_free)
+static char		*g_regex[] = {
+	"^~/",
+	"/[^/]{1,}/\\.\\./",
+	"/\\./",
+	"/\\.$",
+	"/\\.\\.$",
+	"/{2,}"
+};
+
+char			*ft_resolv_path_do(char *str, int begin, t_bool do_free)
 {
 	char	*res;
 
@@ -44,10 +53,10 @@ static char		*ft_resolv_path_do(char *str, int begin, t_bool do_free)
 
 static t_regex	*get_reg(int index)
 {
-	HACKNORME_REGINIT(reg_init, ACCO(REGEX));
-	HACKNORME_REGS(regs);
+	static t_regex	*regs[6] = { 0 };
+
 	if (!regs[index])
-		regs[index] = ft_regex(reg_init[index]);
+		regs[index] = ft_regex(g_regex[index]);
 	return (regs[index]);
 }
 
@@ -99,29 +108,29 @@ static char		*resolv_bis_3(char *str, char *tmp)
 
 char			*ft_resolv_bis(char *str, char *pwd, t_bool first)
 {
-	char	*tmp;
-	char	*home;
+	char	*tmp[2];
 
-	IF_UNI_RET((!str[0]), (ft_strdup("/")));
+	if (!str[0])
+		return (ft_strdup("/"));
 	if (!ft_strcmp(str, "~") || !ft_strcmp(str, "~/"))
 		return (ft_strdup(env_singleton()->get("HOME")));
 	if (str[0] != '/' && str[0] != '~')
 	{
-		tmp = ft_strjoin(pwd, "/");
-		IF_UNI((ft_strncmp(str, "./", 2)), (str = ft_strjoin(tmp, str)));
-		ELSE_UNI((str = ft_strjoin(tmp, str + 2)));
-		free(tmp);
+		tmp[0] = ft_strjoin(pwd, "/");
+		if (!ft_rep_p_cond(ft_strncmp(str, "./", 2), &str, tmp[0]))
+			str = ft_resolv_path_do(ft_strjoin(tmp[0], str + 2), 0, true);
+		free(tmp[0]);
 	}
-	ELSE_UNI((str = ft_strdup(str)));
-	str = ft_resolv_path_do(str, 0, true);
-	home = ft_resolv_path_do(env_singleton()->get("HOME"), 1, false);
+	else
+		str = ft_resolv_path_do(ft_strdup(str), 0, true);
+	tmp[1] = ft_resolv_path_do(env_singleton()->get("HOME"), 1, false);
 	if (first)
 	{
-		tmp = str;
-		str = ft_regmatch_replace_all(str, get_reg(0), home);
-		free(tmp);
+		tmp[0] = str;
+		str = ft_regmatch_replace_all(str, get_reg(0), tmp[1]);
+		free(tmp[0]);
 	}
-	free(home);
-	resolv_bis_2(&str, &tmp);
-	return (resolv_bis_3(str, tmp));
+	free(tmp[1]);
+	resolv_bis_2(&str, &tmp[0]);
+	return (resolv_bis_3(str, tmp[0]));
 }

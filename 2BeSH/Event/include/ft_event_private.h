@@ -60,38 +60,39 @@
 #  define BACK_KEY (27 << 24) | (79 << 16) | (70 << 8) | 0
 # endif
 
-struct			s_event_item
+struct				s_event_item
 {
 	int				key;
 	void			(*function)(void);
 	t_event_item	*next;
 };
 
-void			p_event_init_attributes(t_event *event);
-void			p_event_init_methodes(t_event *event);
-void			p_event_init_mapping_key(t_event *event);
-void			p_event_reprint_str(void);
+void				p_event_init_attributes(t_event *event);
+void				p_event_init_methodes(t_event *event);
+void				p_event_init_mapping_key(t_event *event);
+void				p_event_reprint_str(void);
 
-t_event			*p_event_reset(char *cmd);
-t_event			*p_event_map_rm_prev(void);
-t_event			*p_event_map_rm_cur(void);
-t_event			*p_event_map_front(void);
-t_event			*p_event_map_back(void);
-t_event			*p_event_map_next(void);
-t_event			*p_event_map_prev(void);
-t_event			*p_event_map_word_prev(void);
-t_event			*p_event_map_word_next(void);
-t_event			*p_event_map_history_prev(void);
-t_event			*p_event_map_history_next(void);
-t_event			*p_event_map_history_mprev(void);
-t_event			*p_event_map_history_mnext(void);
-t_event			*p_event_read(char *c);
-t_event			*p_event_init_terms(void);
-t_event			*p_event_end(void);
-t_event			*p_event_map_tab(void);
-t_event			*p_event_map_silent(void);
-t_event			*p_event_map_clean(void);
+t_event				*p_event_reset(char *cmd);
+t_event				*p_event_map_rm_prev(void);
+t_event				*p_event_map_rm_cur(void);
+t_event				*p_event_map_front(void);
+t_event				*p_event_map_back(void);
+t_event				*p_event_map_next(void);
+t_event				*p_event_map_prev(void);
+t_event				*p_event_map_word_prev(void);
+t_event				*p_event_map_word_next(void);
+t_event				*p_event_map_history_prev(void);
+t_event				*p_event_map_history_next(void);
+t_event				*p_event_map_history_mprev(void);
+t_event				*p_event_map_history_mnext(void);
+t_event				*p_event_read(char *c);
+t_event				*p_event_init_terms(void);
+t_event				*p_event_end(void);
+t_event				*p_event_map_tab(void);
+t_event				*p_event_map_silent(void);
+t_event				*p_event_map_clean(void);
 
-t_event_item	*p_event_add_item(t_event_item *p, int key, void (*f)(void));
+t_event_item		*p_event_add_item(t_event_item *p, int key, \
+	void (*f)(void));
 
 #endif

@@ -12,14 +12,21 @@
 
 #include "astr_private.h"
 
-char	*p_astr_erase(t_astr *astr, size_t index)
+static t_bool	zero(size_t *i, size_t *i2)
+{
+	*i = 0;
+	*i2 = 0;
+	return (true);
+}
+
+char			*p_astr_erase(t_astr *astr, size_t index)
 {
 	char	**new;
 	char	*str;
 	size_t	j;
 	size_t	k;
 
-	if (astr && index < astr->m_size && DO_ZERO(j, k = 0))
+	if (astr && index < astr->m_size && zero(&j, &k))
 	{
 		new = (char **)malloc(sizeof(char *) * (astr->m_size - 1));
 		while (j < astr->m_size)
